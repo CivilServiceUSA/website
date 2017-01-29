@@ -1,0 +1,11 @@
+test:
+  override:
+    - echo "no tests"
+deployment:
+  prod:
+    branch: master
+    commands:
+      - aws s3 cp web/assets/css/plugins.css s3://campaign-zero-widget/assets/css/plugins.css --acl public-read
+      - aws s3 cp web/assets/css/style.css s3://campaign-zero-widget/assets/css/style.css --acl public-read
+      - aws s3 cp web/assets/js/plugins.js s3://campaign-zero-widget/assets/js/plugins.js --acl public-read
+      - aws s3 cp web/assets/js/site.js s3://campaign-zero-widget/assets/js/site.js --acl public-read

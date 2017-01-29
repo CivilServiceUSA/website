@@ -1,0 +1,13 @@
+include ~/.nano/syntax/css.nanorc
+include ~/.nano/syntax/dot.nanorc
+include ~/.nano/syntax/html.nanorc
+include ~/.nano/syntax/ini.nanorc
+include ~/.nano/syntax/javascript.nanorc
+include ~/.nano/syntax/json.nanorc
+include ~/.nano/syntax/markdown.nanorc
+include ~/.nano/syntax/nginx.nanorc
+include ~/.nano/syntax/properties.nanorc
+include ~/.nano/syntax/shell.nanorc
+include ~/.nano/syntax/sql.nanorc
+include ~/.nano/syntax/php.nanorc
+include ~/.nano/syntax/ALL.nanorc
