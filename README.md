@@ -9,42 +9,44 @@ Website at [https://civil.services](https://civil.services)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/CivilServiceUSA/website/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/CivilServiceUSA/website.svg)](https://github.com/CivilServiceUSA/website/graphs/contributors)
 
 
-Docker
+Developers
 ---
 
-To make setup easy, we are using [Docker](https://www.docker.com) for getting a development environment up and running quickly.
+This project uses the [Codeigniter Framework](https://www.codeigniter.com/user_guide/) and requires PHP 7.0+
 
-### Installation
 
-Once you have Docker Installed, you will want to use the `DOCKER CLI` to run a few commands.
+Virtual Machine
+---
 
-Pull the image from the docker index rather than downloading the git repo. This prevents you having to build the image on every docker host.
+### Docker Setup
 
-Once you are done pulling the Docker Image, you will need to run the initial setup.
+To make developer setup easy, we are using [Docker](https://www.docker.com) for getting a development environment up and running quickly.
 
-__NOTE:__ Make sure to change the `/path/to/civil-services/website` path below to your actual to this project on your local machine.
+Once you have [Docker](https://www.docker.com) installed, you will want to use terminal to run a few commands.
 
-```
-cd /path/to/this/project
+__NOTE:__ Make sure to change the `/path/to/civil-services/website` path below to your actual path to this project on your local machine.
+
+```bash
+cd /path/to/civil-services/website
 docker build -t civil_services --rm .
-docker run -p 80:80 -p 9000:9000 --name civil_services_website -v /Users/peter/Projects/CivilServices/website/web-root:/var/www/html -t civil_services
+docker run -p 80:80 -p 9000:9000 --name civil_services_website -v /path/to/civil-services/website/web-root:/var/www/html -t civil_services
 ```
 
 ### Managing Docker Image
 
 Start Project:
 
-```
+```bash
 docker start civil_services_website
 ```
 
 Stop Project:
 
-```
+```bash
 docker stop civil_services_website
 ```
 
-SSH into docker
+SSH into Docker Image
 
 ```bash
 docker exec -it civil_services_website zsh
