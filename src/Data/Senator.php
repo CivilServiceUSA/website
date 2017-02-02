@@ -8,7 +8,7 @@ use Exception;
 class Senator
 {
     /* @var Illuminate/Support/Collection */
-    private $senate;
+    private $senators;
 
     private $states = [
         'alabama' => 'AL',
@@ -65,7 +65,7 @@ class Senator
 
     public function __construct()
     {
-        $this->senate = collect(json_decode(file_get_contents(resource_path('data/senate.json'))));
+        $this->senators = collect(json_decode(file_get_contents(resource_path('data/senate.json'))));
     }
 
     /**
@@ -75,18 +75,18 @@ class Senator
      */
     public function all()
     {
-        return $this->senate;
+        return $this->senators;
     }
 
     /**
      * Get Single Senator by Slug
      *
      * @param $slug
-     * @return array
+     * @return stdClass
      */
     public function findBySlug($slug)
     {
-        return $this->senate->first(function ($senator) use ($slug) {
+        return $this->senators->first(function ($senator) use ($slug) {
             return $senator->slug == $slug;
         });
     }
@@ -105,7 +105,7 @@ class Senator
             throw new Exception('Invalid party.');
         }
 
-        return $this->senate->where('party', $party);
+        return $this->senators->where('party', $party);
     }
 
     /**
@@ -122,7 +122,7 @@ class Senator
             throw new Exception('Invalid class.');
         }
 
-        return $this->senate->where('class', $class);
+        return $this->senators->where('class', $class);
     }
 
     /**
@@ -139,7 +139,7 @@ class Senator
             throw new Exception('Invalid gender.');
         }
 
-        return $this->senate->where('gender', $gender);
+        return $this->senators->where('gender', $gender);
     }
 
     /**
@@ -156,7 +156,7 @@ class Senator
             throw new Exception('Invalid ethnicity.');
         }
 
-        return $this->senate->where('ethnicity', $ethnicity);
+        return $this->senators->where('ethnicity', $ethnicity);
     }
 
     /**
@@ -173,7 +173,7 @@ class Senator
             throw new Exception('Invalid state.');
         }
 
-        return $this->senate->where('state', $this->states[$state]);
+        return $this->senators->where('state', $this->states[$state]);
     }
 
     /**
@@ -183,7 +183,7 @@ class Senator
      */
     public function majorityLeaders()
     {
-        return $this->senate->where('majority_leader', true)
+        return $this->senators->where('majority_leader', true)
             ->orWhere('majority_whip', true)
             ->get();
     }
@@ -195,7 +195,7 @@ class Senator
      */
     public function minorityLeaders()
     {
-        return $this->senate->where('minority_leader', true)
+        return $this->senators->where('minority_leader', true)
             ->orWhere('minority_whip', true)
             ->get();
     }
@@ -207,7 +207,7 @@ class Senator
      */
     public function autocomplete()
     {
-        return $this->senate->map(function ($senator) {
+        return $this->senators->map(function ($senator) {
             return [
                 'url' => '/senate/senator/' . $senator->slug,
                 'name' => $senator->name,
