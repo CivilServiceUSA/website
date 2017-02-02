@@ -1,6 +1,13 @@
-!.gitignore
 .DS_Store
 Thumbs.db
 .idea
 .well-known
 *.log
+
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
+.env
