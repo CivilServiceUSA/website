@@ -65,7 +65,7 @@ class Senator
 
     public function __construct()
     {
-        $this->senators = collect(json_decode(file_get_contents(resource_path('data/senate.json'))));
+        $this->senators = collect(json_decode(file_get_contents(resource_path('data/senators.json'))));
     }
 
     /**
