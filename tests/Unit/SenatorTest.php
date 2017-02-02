@@ -1,9 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use CivilServices\Data\Senator;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -32,4 +31,6 @@ class SenatorTest extends TestCase
         $this->assertTrue(is_object($one));
         $this->assertEquals($slug, $one->slug);
     }
+
+    // @todo write tests for all the other get methods to make sure we're filtering and returning correctly
 }
