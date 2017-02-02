@@ -4,7 +4,8 @@ namespace CivilServices\Data;
 
 use Exception;
 
-class Senators
+// @todo: Consider a Façade so we could use Senator::all() syntax
+class Senator
 {
     /* @var Illuminate/Support/Collection */
     private $senate;
@@ -64,7 +65,7 @@ class Senators
 
     public function __construct()
     {
-        $this->senate = collect(json_decode(file_get_contents(resource_path('data/senate.json')), true));
+        $this->senate = collect(json_decode(file_get_contents(resource_path('data/senate.json'))));
     }
 
     /**
@@ -86,7 +87,7 @@ class Senators
     public function findBySlug($slug)
     {
         return $this->senate->first(function ($senator) use ($slug) {
-            return $senator['slug'] == $slug;
+            return $senator->slug == $slug;
         });
     }
 
@@ -117,7 +118,7 @@ class Senators
     {
         $class = strtoupper($class);
 
-        if (! in_array($class, ['I', 'II', 'III']])) {
+        if (! in_array($class, ['I', 'II', 'III'])) {
             throw new Exception('Invalid class.');
         }
 
@@ -134,7 +135,7 @@ class Senators
     {
         $gender = strtolower($gender);
 
-        if (! in_array($gender, ['male', 'female']])) {
+        if (! in_array($gender, ['male', 'female'])) {
             throw new Exception('Invalid gender.');
         }
 
@@ -151,7 +152,7 @@ class Senators
     {
         $ethnicity = strtolower($ethnicity);
 
-        if (! in_array($ethnicity, ['african-american', 'asian-american', 'hispanic-american', 'white']])) {
+        if (! in_array($ethnicity, ['african-american', 'asian-american', 'hispanic-american', 'white'])) {
             throw new Exception('Invalid ethnicity.');
         }
 
@@ -208,9 +209,9 @@ class Senators
     {
         return $this->senate->map(function ($senator) {
             return [
-                'url' => '/senate/senator/' . $senator['slug'],
-                'name' => $senator['name'],
-                'slug' => $senator['slug'],
+                'url' => '/senate/senator/' . $senator->slug,
+                'name' => $senator->name,
+                'slug' => $senator->slug,
             ];
         });
     }
