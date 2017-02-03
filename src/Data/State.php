@@ -45,7 +45,7 @@ class State
         return $this->states->map(function ($state) {
             return [
                 'url' => '/state/' . $state->slug,
-                'name' => $state->name,
+                'name' => $state->state,
                 'slug' => $state->slug,
             ];
         });

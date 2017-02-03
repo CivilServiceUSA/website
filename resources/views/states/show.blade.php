@@ -30,7 +30,7 @@
                 <h3>United States Senate</h3>
 
                 <a href="/senate/state/{{ $state->slug }}">
-                    <img src="{{ asset('/assets/img/senate.png') }}" alt="" class="img-responsive center-block">
+                    <img src="{{ asset('img/senate.png') }}" alt="" class="img-responsive center-block">
                     <h5>Contact {{ $state->state }} Senators</h5>
                 </a>
 
@@ -41,7 +41,7 @@
             <div class="col-sm-6">
                 <h3>House of Representatives</h3>
 
-                <img src="{{ asset('/assets/img/house.png') }}" alt="" class="img-responsive center-block">
+                <img src="{{ asset('img/house.png') }}" alt="" class="img-responsive center-block">
                 <h5>Contact {{ $state->state }} House Members</h5>
 
                 <p>We are currently collecting this information and will release it as soon as it is available.</p>

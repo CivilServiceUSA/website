@@ -52,11 +52,11 @@
     <script type="application/ld+json">{{ meta('json_ld') }}</script>
 
     <!-- App Icons -->
-    <link rel="shortcut icon" href="{{ asset('/assets/img/icons/favicon.ico') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/assets/img/icons/favicon-retina-ipad.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/assets/img/icons/favicon-retina-iphone.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/assets/img/icons/favicon-standard-ipad.png') }}">
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/assets/img/icons/favicon-standard-iphone.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/icons/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icons/favicon-retina-ipad.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/favicon-retina-iphone.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/icons/favicon-standard-ipad.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/favicon-standard-iphone.png') }}">
 
     <!-- Minimal CSS to prevent blocking page load -->
     <style>
