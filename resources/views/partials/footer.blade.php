@@ -50,17 +50,29 @@
 <!-- Load Page CSS -->
 <script>
   var cb = function() {
+    var head = document.getElementsByTagName('head')[0];
+
     var plugins = document.createElement('link');
     plugins.rel = 'stylesheet';
     plugins.href = '{{ asset('css/plugins.css') }}';
 
-    // @todo load the three @imports at the top of style.scss that webpack barfed on
+    {{-- @todo: Move these back into style.scss --}}
+    var fonts = [
+        'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Roboto+Mono:100,400|Caveat',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
+    ];
+    fonts.forEach(function (fontUrl) {
+        var font = document.createElement('link');
+        font.rel = 'stylesheet';
+        font.href = fontUrl;
+        head.appendChild(font);
+    });
 
     var styles = document.createElement('link');
     styles.rel = 'stylesheet';
     styles.href = '{{ asset('css/style.css') }}';
 
-    var head = document.getElementsByTagName('head')[0];
     head.appendChild(plugins);
 
     // Remove Loading Screen if required CSS files were loaded
@@ -78,8 +90,8 @@
   }
 </script>
 
-<script src="{{ asset('assets/js/plugins.js') }}"></script>
-<script src="{{ asset('assets/js/site.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 <!--[if lt IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>

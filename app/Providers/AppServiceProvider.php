@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use CivilServices\Data\Senator;
 use CivilServices\Data\State;
+use CivilServices\SiteMetaData;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 

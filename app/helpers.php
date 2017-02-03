@@ -8,8 +8,6 @@ if (! function_exists('meta')) {
      */
     function meta($key)
     {
-        // @todo: Make a meta service; instantiate it within this helper; pull
-        // out the value by $key
-        return '@todo';
+        return app(CivilServices\SiteMetaData::class)->get($key);
     }
 }

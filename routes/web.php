@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('privacy-policy', 'LegalController@showPrivacyPolicy');
+Route::get('terms-of-use', 'LegalController@showTermsOfUse');
 
 Route::get('state/{state}', 'StateController@show');
