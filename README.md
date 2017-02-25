@@ -1,6 +1,6 @@
-![Civil Services Logo](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/logo.png "Civil Services Logo")
+![Civil Services Logo](https://cdn.civil.services/common/github-logo.png "Civil Services Logo")
 
-__Civil Services__ is a collection of tools that make it possible for citizens to be apart of what is happening in their Local, State & Federal Governments.
+__Civil Services__ is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 
 Website at [https://civil.services](https://civil.services)
@@ -8,46 +8,85 @@ Website at [https://civil.services](https://civil.services)
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/CivilServiceUSA/website/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/CivilServiceUSA/website.svg)](https://github.com/CivilServiceUSA/website/graphs/contributors)
 
+![App Image](public/img/app-image.jpg "App Image")
 
-Developers
+
+Requirements
 ---
 
-This project uses the [Codeigniter Framework](https://www.codeigniter.com/user_guide/) and requires PHP 7.0+
+* [Composer](https://getcomposer.org/)
+* [Yarn](https://yarnpkg.com)
+* [Docker](https://www.docker.com/) ( for local development )
 
+This project uses the [Laravel Framework](https://laravel.com/) and requires PHP 7.0+
 
-Virtual Machine
+#### Install Dependencies:
+
+```bash
+yarn install
+composer install
+```
+
+#### Build Development:
+
+```bash
+cp .env.example .env
+yarn run dev
+```
+
+#### Build Production:
+
+```bash
+cp .env.example .env
+yarn run production
+```
+
+Docker Setup
 ---
-
-### Docker Setup
 
 To make developer setup easy, we are using [Docker](https://www.docker.com) for getting a development environment up and running quickly.
 
 Once you have [Docker](https://www.docker.com) installed, you will want to use terminal to run a few commands.
 
-__NOTE:__ Make sure to change the `/path/to/civil-services/website` path below to your actual path to this project on your local machine.
-
 ```bash
-cd /path/to/civil-services/website
-docker build -t civil_services --rm .
-docker run -p 80:80 -p 9000:9000 --name civil_services_website -v /path/to/civil-services/website/web-root:/var/www/html -t civil_services
+cd ./laradock
+docker-compose up -d nginx
+docker-compose exec workspace bash
+php artisan key:generate
 ```
 
-### Managing Docker Image
+Now you can open your web browser to [http://localhost](http://localhost)
 
-Start Project:
+Internally we are using [http://civil-services.loc](http://civil-services.loc) as a developer domain.  This can be added to your `/etc/hosts` by adding:
 
-```bash
-docker start civil_services_website
+```apacheconfig
+127.0.0.1 civil-services.loc
 ```
 
-Stop Project:
+Managing Docker
+---
 
-```bash
-docker stop civil_services_website
-```
+After you you completed the Docker Setup, you can run the following from within this project directory.
 
-SSH into Docker Image
+#### Start Docker:
 
-```bash
-docker exec -it civil_services_website zsh
-```
+`docker-compose start`
+
+#### Stop Docker:
+
+`docker-compose stop`
+
+#### Restart Docker:
+
+`docker-compose restart`
+
+#### Delete Docker:
+
+`docker-compose down`
+
+Join us on Slack
+---
+
+__[Join us on Slack](https://slack.civil.services/bkx7n2)__ if you need help developing our Website, or you are interested in contributing.
+
+[![Slack Team Invite](https://cdn.civil.services/common/slack-invite.png)](https://slack.civil.services/bkx7n2)

@@ -1,17 +1,49 @@
 {
-  "private": true,
+  "name": "civil-services-website",
+  "version": "1.0.0",
+  "description": "Civil Services Website",
+  "license": "MIT",
   "scripts": {
     "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "help": "node node_modules/npm-scripts-help"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/civilserviceusa/website.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/civilserviceusa/website/issues"
+  },
+  "homepage": "https://github.com/civilserviceusa/website#readme",
   "devDependencies": {
     "axios": "^0.15.2",
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.1.0",
     "laravel-mix": "^0.5.0",
     "lodash": "^4.16.2",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "npm-scripts-help": "^0.7.0"
+  },
+  "scriptshelp": {
+    "help-message": "Civil Services Website Commands:",
+    "dev": {
+      "Desciption": "Build Website for Development"
+    },
+    "watch": {
+      "Desciption": "Build Website for Development and Watch for Live Changes"
+    },
+    "hot": {
+      "Desciption": "Build Website for Development and Enable Hot Module Replacement"
+    },
+    "production": {
+      "Desciption": "Build Website for Production"
+    },
+    "help": {
+      "Desciption": "Generates List of Scripts you can run"
+    }
   }
 }
