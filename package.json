@@ -4,6 +4,11 @@
   "description": "Civil Services Website",
   "license": "MIT",
   "scripts": {
+    "docker-build": "cd ./laradock && docker-compose up -d nginx && docker-compose run workspace php artisan key:generate",
+    "docker-start": "cd ./laradock && docker-compose start",
+    "docker-stop": "cd ./laradock && docker-compose stop",
+    "docker-restart": "cd ./laradock && docker-compose restart",
+    "docker-destroy": "cd ./laradock && docker-compose down",
     "dev": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",

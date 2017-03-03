@@ -51,15 +51,14 @@ Once you have [Docker](https://www.docker.com) installed, you will want to use t
 ```bash
 cd ./laradock
 docker-compose up -d nginx
-docker-compose exec workspace bash
-php artisan key:generate
+docker-compose run workspace php artisan key:generate
 ```
 
 Now you can open your web browser to [http://localhost](http://localhost)
 
 Internally we are using [http://civil-services.loc](http://civil-services.loc) as a developer domain.  This can be added to your `/etc/hosts` by adding:
 
-```apacheconfig
+```
 127.0.0.1 civil-services.loc
 ```
 
@@ -70,19 +69,31 @@ After you you completed the Docker Setup, you can run the following from within 
 
 #### Start Docker:
 
-`docker-compose start`
+```bash
+cd ./laradock
+docker-compose start
+```
 
 #### Stop Docker:
 
-`docker-compose stop`
+```bash
+cd ./laradock
+docker-compose stop
+```
 
 #### Restart Docker:
 
-`docker-compose restart`
+```bash
+cd ./laradock
+docker-compose restart
+```
 
 #### Delete Docker:
 
-`docker-compose down`
+```bash
+cd ./laradock
+docker-compose down
+```
 
 Join us on Slack
 ---
