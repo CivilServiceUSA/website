@@ -56,6 +56,19 @@
     plugins.rel = 'stylesheet';
     plugins.href = '{{ asset('css/plugins.css') }}';
 
+    {{-- @todo: Move these back into style.scss --}}
+    var fonts = [
+        'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Roboto+Mono:100,400|Caveat',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
+    ];
+    fonts.forEach(function (fontUrl) {
+        var font = document.createElement('link');
+        font.rel = 'stylesheet';
+        font.href = fontUrl;
+        head.appendChild(font);
+    });
+
     var styles = document.createElement('link');
     styles.rel = 'stylesheet';
     styles.href = '{{ asset('css/style.css') }}';
@@ -64,7 +77,7 @@
 
     // Remove Loading Screen if required CSS files were loaded
     plugins.addEventListener('load', function(){ head.appendChild(styles); });
-    styles.addEventListener('load', function(){ document.body.className = 'top'; });
+    styles.addEventListener('load', function(){ document.body.className = 'top'; initWebsite(); });
 
   };
 
