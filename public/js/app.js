@@ -10297,7 +10297,7 @@ return jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($, jQuery) {(function () {
+/* WEBPACK VAR INJECTION */(function(jQuery) {(function ($) {
 
   function doSearch() {
     var value = $('#search').val();
@@ -10324,10 +10324,9 @@ return jQuery;
   }
 
   function initWebsite() {
-
-    jQuery(window).load(function () {
-      jQuery("#preloader").fadeOut();
-      jQuery("#loading").fadeOut("slow");
+    $(window).on('load', function () {
+      $("#preloader").fadeOut();
+      $("#loading").fadeOut("slow");
     });
 
     $('a.toggle-search').on('click', function () {
@@ -10735,9 +10734,9 @@ return jQuery;
     shuffleme.init(); //filter portfolio
   }
 
-  setTimeout(initWebsite, 1000);
-})();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(0)))
+  initWebsite();
+})(jQuery);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 2 */

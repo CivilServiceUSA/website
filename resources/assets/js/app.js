@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
 
   function doSearch() {
     var value = $('#search').val();
@@ -25,10 +25,9 @@
   }
 
   function initWebsite() {
-
-    jQuery(window).load(function () {
-      jQuery("#preloader").fadeOut();
-      jQuery("#loading").fadeOut("slow");
+    $(window).on('load', function () {
+      $("#preloader").fadeOut();
+      $("#loading").fadeOut("slow");
     });
 
     $('a.toggle-search').on('click', function(){
@@ -433,4 +432,4 @@
 
   initWebsite();
 
-})();
+})(jQuery);
