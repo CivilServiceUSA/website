@@ -16,3 +16,5 @@ mix.sass('resources/assets/sass/style.scss', 'public/css', {
 });
 
 mix.copy('resources/assets/js/app.js', 'public/js/app.js');
+
+mix.version();

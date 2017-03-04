@@ -5,7 +5,7 @@
 
     <title>{{ meta('title') }}</title>
 
-    <meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src * 'self' gap: ws:; style-src 'self' 'unsafe-inline' https://ton.twimg.com http://platform.twitter.com https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://connect.facebook.net https://cdn.syndication.twimg.com http://platform.twitter.com http://www.google-analytics.com https://maps.googleapis.com https://www.google-analytics.com https://cdnjs.cloudflare.com;">
+    <meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src * 'self' gap: ws:; style-src 'self' 'unsafe-inline' data: https://ton.twimg.com http://platform.twitter.com https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://d2wy8f7a9ursnm.cloudfront.net http://cdn.segment.com http://connect.facebook.net https://cdn.syndication.twimg.com http://platform.twitter.com http://www.google-analytics.com https://maps.googleapis.com https://www.google-analytics.com https://cdnjs.cloudflare.com;">
 
     <meta name="description" content="{{ meta('description') }}">
     <meta name="keywords" content="{{ meta('keywords') }}" />
@@ -49,7 +49,7 @@
     <meta name="dc:description" content="{{ meta('description') }}">
 
     <!-- Structured Metadata -->
-    <script type="application/ld+json">{{ meta('json_ld') }}</script>
+    <script type="application/ld+json">{!! meta('json_ld') !!}</script>
 
     <!-- App Icons -->
     <link rel="shortcut icon" href="{{ asset('img/icons/favicon.ico') }}">

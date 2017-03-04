@@ -47,6 +47,10 @@
     </div>
 </section>
 
+<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="2070965b720f8a895ab228e900a50000"></script>
+<script src="{{ asset('/js/plugins.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
+
 <!-- Load Page CSS -->
 <script>
   var cb = function() {
@@ -71,13 +75,19 @@
 
     var styles = document.createElement('link');
     styles.rel = 'stylesheet';
-    styles.href = '{{ asset('css/style.css') }}';
+    styles.href = '{{ mix('/css/style.css') }}';
 
     head.appendChild(plugins);
 
     // Remove Loading Screen if required CSS files were loaded
     plugins.addEventListener('load', function(){ head.appendChild(styles); });
-    styles.addEventListener('load', function(){ document.body.className = 'top'; initWebsite(); });
+    styles.addEventListener('load', function(){
+      document.body.className = 'top';
+      CivilServices.anon = '{{ anon(Request::ip()) }}';
+      CivilServices.env = '{{ env("APP_ENV") }}';
+      CivilServices.devFlags.debug = {{ isDevelopment() }};
+      CivilServices.init();
+    });
 
   };
 
@@ -90,8 +100,26 @@
   }
 </script>
 
-<script src="{{ asset('js/plugins.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+  if (typeof Bugsnag !== 'undefined') {
+    Bugsnag.notifyReleaseStages = ['staging', 'production'];
+    Bugsnag.releaseStage = '{{ env("APP_ENV") }}';
+    Bugsnag.apiKey = '{{ env("BUGSNAG_API_KEY") }}';
+  }
+
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+    analytics.load('{{ env("SEGMENT_API_KEY") }}');
+    analytics.debug({{ isDevelopment() }});
+    analytics.page({}, {
+      context: {
+        ip: "{{ anon(Request::ip()) }}"
+      },
+      integrations: {
+        'All': {{ isProduction() }}
+      }
+    });
+  }}();
+</script>
 
 <!--[if lt IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
