@@ -1,0 +1,26 @@
+machine:
+  php:
+    version: 7.0.4
+  environment:
+    APP_ENV: testing
+    APP_KEY: base64:8x4uTYQ5ozEgi1u4oigGWqsb99XmShJnKBItCaP7Rq0=
+
+general:
+  artifacts:
+    - "reports"
+
+dependencies:
+  pre:
+    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini # enables xdebug needed for code coverage
+  override:
+    # Checks all php files within /app for syntax errors
+    - tests/commands/phplint.sh
+    - composer install --prefer-dist --no-interaction
+  cache_directories:
+    - "~/.composer/cache"
+    - "reports/phplint/.cache"
+    - "vendor"
+
+test:
+  override:
+   - vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/

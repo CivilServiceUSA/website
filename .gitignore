@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+.idea
+.well-known
+*.log
+composer.phar
+composer
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
+.env
+/reports

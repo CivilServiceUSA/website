@@ -1,0 +1,94 @@
+{
+  "name": "civil-services-website",
+  "version": "1.0.0",
+  "description": "Civil Services Website",
+  "license": "MIT",
+  "scripts": {
+    "docker-build": "cd ./laradock && docker-compose up -d nginx && docker-compose run workspace php artisan key:generate",
+    "docker-start": "cd ./laradock && docker-compose start",
+    "docker-logs": "cd ./laradock && docker-compose logs",
+    "docker-stop": "cd ./laradock && docker-compose stop",
+    "docker-restart": "cd ./laradock && docker-compose restart",
+    "docker-destroy": "cd ./laradock && docker-compose down",
+    "test-lint": "./tests/commands/phplint.sh",
+    "test-unit": "./vendor/bin/phpunit",
+    "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
+    "test": "yarn run test-lint && yarn run test-unit",
+    "clean": "rm -f ./public/css/style.*.css && rm -f ./public/js/app.*.js",
+    "dev": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "help": "node node_modules/npm-scripts-help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/civilserviceusa/website.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/civilserviceusa/website/issues"
+  },
+  "homepage": "https://github.com/civilserviceusa/website#readme",
+  "devDependencies": {
+    "axios": "^0.15.2",
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^3.1.0",
+    "laravel-mix": "^0.5.0",
+    "lodash": "^4.16.2",
+    "npm-scripts-help": "^0.7.0",
+    "vue": "^2.0.1",
+    "graceful-fs": "^4.1.11"
+  },
+  "scriptshelp": {
+    "help-message": "Civil Services Website Commands:",
+    "docker-build": {
+      "Desciption": "Build or Rebuild Docker Services"
+    },
+    "docker-start": {
+      "Desciption": "Start Docker Services"
+    },
+    "docker-logs": {
+      "Desciption": "View output from Docker containers"
+    },
+    "docker-stop": {
+      "Desciption": "Stop Docker Services"
+    },
+    "docker-restart": {
+      "Desciption": "Restart Docker Services"
+    },
+    "docker-destroy": {
+      "Desciption": "Stop and remove Docker Containers, Networks, Images & Volumes"
+    },
+    "test-lint": {
+      "Desciption": "Check PHP Code for Invalid Markup"
+    },
+    "test-unit": {
+      "Desciption": "Run PHP Unit Tests"
+    },
+    "test-coverage": {
+      "Desciption": "Generate Code Coverage Reports into ./reports/clover_html/"
+    },
+    "test": {
+      "Desciption": "Runs `yarn run test-lint` and `yarn run test-unit`"
+    },
+    "clean": {
+      "Desciption": "Remove Generated JS & CSS Files"
+    },
+    "dev": {
+      "Desciption": "Build Website for Development"
+    },
+    "watch": {
+      "Desciption": "Build Website for Development and Watch for Live Changes"
+    },
+    "hot": {
+      "Desciption": "Build Website for Development and Enable Hot Module Replacement"
+    },
+    "production": {
+      "Desciption": "Build Website for Production"
+    },
+    "help": {
+      "Desciption": "Generates List of Scripts you can run"
+    }
+  }
+}
