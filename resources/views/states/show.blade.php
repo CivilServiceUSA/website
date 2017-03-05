@@ -2,7 +2,7 @@
 
 @section('body')
 <!-- Header-->
-<header data-background="{{ $state->landscape_background_url }}" class="intro introhalf">
+<header data-background="{{ $state->skyline_background_url }}" class="intro introhalf">
     <!-- Intro Header-->
     <div class="intro-body">
         <h1>{{ $state->state }}</h1>

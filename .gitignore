@@ -12,3 +12,4 @@ composer
 /vendor
 /.idea
 .env
+/reports

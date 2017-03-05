@@ -3,97 +3,28 @@
 __Civil Services__ is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 
-Website at [https://civil.services](https://civil.services)
+Civil Services Website
 ===
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/CivilServiceUSA/website/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/CivilServiceUSA/website.svg)](https://github.com/CivilServiceUSA/website/graphs/contributors)
+[![Build Status](https://circleci.com/gh/CivilServiceUSA/website/tree/master.svg?style=shield)](https://circleci.com/gh/CivilServiceUSA/website/tree/master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/CivilServiceUSA/website/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/CivilServiceUSA/website.svg)](https://github.com/CivilServiceUSA/website/graphs/contributors)
 
-![App Image](public/img/app-image.jpg "App Image")
+![Website Image](docs/img/website.jpg "Website Image")
 
 
-Requirements
+Developer Overview
 ---
 
-* [Composer](https://getcomposer.org/)
-* [Yarn](https://yarnpkg.com)
-* [Docker](https://www.docker.com/) ( for local development )
+* [Downloading Website](docs/downloading-website.md)
+* [Getting Setup with Docker ( Recommended )](docs/getting-setup-with-docker.md)
+* [Development Scripts](docs/development-scripts.md)
+* [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
+* [Troubleshooting](docs/troubleshooting.md)
 
-This project uses the [Laravel Framework](https://laravel.com/) and requires PHP 7.0+
+#### Additional Setup without Docker
 
-#### Install Dependencies:
+* [Getting Setup without Docker](docs/getting-setup-without-docker.md)
+* [Redis Configuration](docs/redis-configuration.md)
 
-```bash
-yarn install
-composer install
-```
-
-#### Build Development:
-
-```bash
-cp .env.example .env
-yarn run dev
-```
-
-#### Build Production:
-
-```bash
-cp .env.example .env
-yarn run production
-```
-
-Docker Setup
----
-
-To make developer setup easy, we are using [Docker](https://www.docker.com) for getting a development environment up and running quickly.
-
-Once you have [Docker](https://www.docker.com) installed, you will want to use terminal to run a few commands.
-
-```bash
-cd ./laradock
-docker-compose up -d nginx
-docker-compose run workspace php artisan key:generate
-```
-
-Now you can open your web browser to [http://localhost](http://localhost)
-
-Internally we are using [http://civil-services.loc](http://civil-services.loc) as a developer domain.  This can be added to your `/etc/hosts` by adding:
-
-```
-127.0.0.1 civil-services.loc
-```
-
-Managing Docker
----
-
-After you you completed the Docker Setup, you can run the following from within this project directory.
-
-#### Start Docker:
-
-```bash
-cd ./laradock
-docker-compose start
-```
-
-#### Stop Docker:
-
-```bash
-cd ./laradock
-docker-compose stop
-```
-
-#### Restart Docker:
-
-```bash
-cd ./laradock
-docker-compose restart
-```
-
-#### Delete Docker:
-
-```bash
-cd ./laradock
-docker-compose down
-```
 
 Join us on Slack
 ---
