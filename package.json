@@ -4,12 +4,6 @@
   "description": "Civil Services Website",
   "license": "MIT",
   "scripts": {
-    "docker-build": "cd ./laradock && docker-compose up -d nginx && docker-compose run workspace php artisan key:generate",
-    "docker-start": "cd ./laradock && docker-compose start",
-    "docker-logs": "cd ./laradock && docker-compose logs",
-    "docker-stop": "cd ./laradock && docker-compose stop",
-    "docker-restart": "cd ./laradock && docker-compose restart",
-    "docker-destroy": "cd ./laradock && docker-compose down",
     "test-lint": "./tests/commands/phplint.sh",
     "test-unit": "./vendor/bin/phpunit",
     "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
@@ -42,24 +36,6 @@
   },
   "scriptshelp": {
     "help-message": "Civil Services Website Commands:",
-    "docker-build": {
-      "Desciption": "Build or Rebuild Docker Services"
-    },
-    "docker-start": {
-      "Desciption": "Start Docker Services"
-    },
-    "docker-logs": {
-      "Desciption": "View output from Docker containers"
-    },
-    "docker-stop": {
-      "Desciption": "Stop Docker Services"
-    },
-    "docker-restart": {
-      "Desciption": "Restart Docker Services"
-    },
-    "docker-destroy": {
-      "Desciption": "Stop and remove Docker Containers, Networks, Images & Volumes"
-    },
     "test-lint": {
       "Desciption": "Check PHP Code for Invalid Markup"
     },

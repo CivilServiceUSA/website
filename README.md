@@ -14,11 +14,11 @@ Civil Services Website
 Developer Overview
 ---
 
-* [Downloading Website](docs/downloading-website.md)
-* [Getting Setup with Docker ( Recommended )](docs/getting-setup-with-docker.md)
-* [Development Scripts](docs/development-scripts.md)
-* [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
-* [Troubleshooting](docs/troubleshooting.md)
+1. [Downloading Website](docs/downloading-website.md)
+2. [Getting Setup with Docker ( Recommended )](docs/getting-setup-with-docker.md)
+3. [Development Scripts](docs/development-scripts.md)
+4. [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
+5. [Troubleshooting](docs/troubleshooting.md)
 
 #### Additional Setup without Docker
 
