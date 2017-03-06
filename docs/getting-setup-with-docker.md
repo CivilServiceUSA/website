@@ -22,7 +22,7 @@ Build Docker Containers
 Build the Docker Containers we need:
 
 ```bash
-cd /path/to/website/docker
+cd ./docker
 docker-compose up --build -d nginx redis
 ```
 
@@ -32,8 +32,8 @@ Install Dependencies
 Connect to Docker Container to prepare to run Bash Commands:
 
 ```bash
-cd /path/to/website/docker
-docker-compose exec workspace bash
+cd ./docker
+docker-compose exec civilservices bash
 ```
 
 First, let's remove folders that may cause problems:
@@ -56,12 +56,6 @@ Build Website
 ---
 
 Now that we have all the dependencies installed, we can build the website.
-
-If you are not already connected to the Docker Container, you will need to do that:
-
-```bash
-docker-compose exec workspace bash
-```
 
 #### Build for Development
 
@@ -93,7 +87,7 @@ Managing Docker
 From your local development machine, you can manage our docker containers using `docker-compose`
 
 ```bash
-cd /path/to/website/docker
+cd ./docker
 ```
 
 | command                  | description                                                     |

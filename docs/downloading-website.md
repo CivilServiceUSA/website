@@ -18,7 +18,6 @@ Setup Environment
 ---
 
 ```bash
-cd /path/to/website
 cp .env.example .env
 ```
 
