@@ -18,13 +18,16 @@ Developer Overview
 2. [Getting Setup with Docker ( Recommended )](docs/getting-setup-with-docker.md)
 3. [Development Scripts](docs/development-scripts.md)
 4. [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
-5. [Troubleshooting](docs/troubleshooting.md)
 
 #### Additional Setup without Docker
 
 * [Getting Setup without Docker](docs/getting-setup-without-docker.md)
 * [Redis Configuration](docs/redis-configuration.md)
 
+#### Additional Information
+
+* [Remote Device Testing](docs/device-testing.md)
+* [Troubleshooting](docs/troubleshooting.md)
 
 Join us on Slack
 ---
