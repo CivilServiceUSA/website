@@ -168,7 +168,7 @@ return [
     |
     */
 
-    'notify_release_stages' => empty(env('BUGSNAG_NOTIFY_RELEASE_STAGES')) ? null : explode(',', str_replace(' ', '', env('BUGSNAG_NOTIFY_RELEASE_STAGES'))),
+    'notify_release_stages' => array('staging', 'production'),
 
     /*
     |--------------------------------------------------------------------------
