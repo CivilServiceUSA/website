@@ -30,6 +30,10 @@ APP_LOG_LEVEL=debug
 APP_URL=http://localhost
 BUGSNAG_API_KEY=
 SEGMENT_API_KEY=
+CIVIL_SERVICES_API_BASE=
+CIVIL_SERVICES_API_KEY=
 ```
 
-Ping us on Slack if you need a `BUGSNAG_API_KEY` or `SEGMENT_API_KEY`.
+__NOTE__: for `CIVIL_SERVICES_API_BASE` if you are connecting to an API running on your local development machine, 
+you will need to set this to your local IP address.  Not, `http://localhost:5000` or `http://127.0.0.1:5000` but rather 
+something like `http://192.168.1.123:5000`
