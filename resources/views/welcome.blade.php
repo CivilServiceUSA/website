@@ -79,8 +79,8 @@
                             <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark">Subscribe</button>
                         </span>
                         <div id="mce-responses"></div>
-                        <div id="mce-error-response" style="display:none" class="response"></div>
-                        <div id="mce-success-response" style="display:none" class="response"></div>
+                        <div id="mce-error-response" class="response"></div>
+                        <div id="mce-success-response" class="response"></div>
                     </div>
                 </form>
             </div>

@@ -2705,7 +2705,7 @@ ul.state-list {
   margin: 0 auto;
 
   .row {
-    display: flex;
+    display: block;
     width: 100%;
     margin: 0;
 
@@ -2715,7 +2715,7 @@ ul.state-list {
   }
 
   .block {
-    display: inline-flex;
+    display: block;
     background: #FFF;
     float: left;
     position: relative;
