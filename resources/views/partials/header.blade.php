@@ -17,7 +17,8 @@
             <ul class="nav navbar-nav navbar-left">
                 <li class="hidden"><a href="#page-top"></a></li>
                 <li><a href="/">Home</a></li>
-                <li><a href="/senate">Senate</a></li>
+                <li><a href="/us-house">House</a></li>
+                <li><a href="/us-senate">Senate</a></li>
                 <li class="menu-divider visible-lg">&nbsp;</li>
                 <li>
                     <a href="javascript:void(0);" class="toggle-search">

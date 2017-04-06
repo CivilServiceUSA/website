@@ -16,6 +16,9 @@
     <meta name="cache-control" content="public">
     <meta name="googlebot" content="index,follow">
 
+    <!-- Progressive Web App -->
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Mobile Metadata -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">

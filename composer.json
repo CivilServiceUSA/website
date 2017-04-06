@@ -8,6 +8,7 @@
         "php": ">=5.6.4",
         "alt-three/segment": "^1.4",
         "bugsnag/bugsnag-laravel": "^2.0",
+        "civilservices/api-client-laravel": "^0.2.0",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",

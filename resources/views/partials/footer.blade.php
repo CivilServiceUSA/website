@@ -18,7 +18,7 @@
             <div class="col-sm-2 footer-menu">
                 <h5>Developers</h5>
                 <h6 class="no-pad"><a href="https://github.com/CivilServiceUSA">Use Our Data</a></h6>
-                <h6 class="no-pad"><a href="http://docs.civilservices.apiary.io/">API Docs</a></h6>
+                <h6 class="no-pad"><a href="https://api.civil.services/guide/">API Docs</a></h6>
             </div>
             <div class="col-sm-3 text-right">
                 <h5>Next Federal Election</h5>
@@ -34,7 +34,7 @@
                 <h6>Powered By <a href="https://civil.services"> civil.services</a></h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1">
-                <h6>For <i class="fa fa-heart fa-fw"></i> the people</h6>
+                <h6>By the People <i class="fa fa-heart fa-fw"></i> For the People</h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-right">
                 <ul class="list-inline">

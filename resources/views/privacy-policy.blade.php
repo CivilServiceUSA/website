@@ -32,7 +32,7 @@
                         </div>
                         <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p><a href="https://manifestinteractive.com">Manifest Interactive, LLC</a> ("us", "we", or "our") operates the <a href="https://civil.services">https://civil.services</a> website (the "Service").</p>
+                                <p><a href="https://civil.services">Civil Service USA Corp</a> ("us", "we", or "our") operates the <a href="https://civil.services">https://civil.services</a> website (the "Service").</p>
 
                                 <p>This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.</p>
 
@@ -40,7 +40,7 @@
 
                                 <p><strong>We use your Personal Information for providing and improving the Service. By using the Service, you agree to the collection and use of information in accordance with this policy.</strong> </p>
 
-                                <p>Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible at <a href="https://civil.services">https://civil.services</a></p>
+                                <p>Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible at <a href="/terms-of-use">https://civil.services</a></p>
                             </div>
                         </div>
                     </div>

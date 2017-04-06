@@ -15,4 +15,13 @@ Route::get('/', 'HomeController@index');
 Route::get('privacy-policy', 'LegalController@showPrivacyPolicy');
 Route::get('terms-of-use', 'LegalController@showTermsOfUse');
 
-Route::get('state/{state}', 'StateController@show');
+Route::get('state', 'StateController@index');
+Route::get('state/{state}', 'StateController@getState');
+
+Route::get('us-house', 'FederalHouseController@index');
+Route::get('us-house/{state}', 'FederalHouseController@getState');
+
+Route::get('us-senate', 'FederalSenateController@index');
+Route::get('us-senate/list/{filter}', 'FederalSenateController@getList');
+
+Route::get('us-senate/{state}', 'FederalSenateController@getState');

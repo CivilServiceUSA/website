@@ -1,7 +1,10 @@
 /* Custom colors */
+$civil-services-light-red: #e52025;
 $civil-services-red: #A31E23;
 $civil-services-dark-red: #631316;
+$civil-services-light-blue: #2ab3f3;
 $civil-services-blue: #1E72A1;
+$civil-services-dark-blue: #1d4c7a;
 $civil-services-black: #191919;
 $civil-services-grey: #666666;
 $civil-services-white: #FFFFFF;
@@ -291,6 +294,7 @@ header .icon-big {
   -moz-transform: rotate(-3deg) !important;
   -webkit-transform: rotate(-3deg) !important;
   opacity: .8;
+  text-shadow: -1px -1px 0 #FFF;
 }
 
 .classic2 {
@@ -450,11 +454,11 @@ a .fa {
       }
       &.active {
         outline: 0;
-        background-color: transparent!important;
+        background-color: transparent !important;
         a {
-          color: #789!important;
+          color: $civil-services-light-blue !important;
           &:hover {
-            color: #789;
+            color: $civil-services-light-blue !important;
           }
         }
       }
@@ -572,7 +576,7 @@ a .fa {
 .navbar-toggle {
   padding: 10px 0;
   .icon-bar {
-    width: 30px;
+    width: 22px;
     border-radius: 0;
     background: #fff;
   }
@@ -1040,7 +1044,7 @@ a.btn-nav .btn {
 }
 
 .bg-img {
-  background: url(/img/header/19.jpg);
+  background: url(/img/header/statue-of-liberty.jpg);
 }
 
 .bg-img2 {
@@ -1108,10 +1112,11 @@ a.btn-nav .btn {
 .intro .intro-body {
   display: table-cell;
   vertical-align: middle;
-  padding: 150px 0 50px;
+  padding: 150px 0 100px 0 !important;
   width: 100%;
   position: relative;
   z-index: 1;
+
   .badge {
     background-color: rgba(0, 0, 0, 0.4);
     color: #eee;
@@ -1140,7 +1145,7 @@ a.btn-nav .btn {
 }
 
 .intro-body:before {
-  background: rgba(7,9,21,0.5);
+  background: rgba(7,9,21,0.65);
   content: "";
   left: 0;
   top: 0;
@@ -1171,9 +1176,12 @@ a.btn-nav .btn {
     margin: 0 0 5px;
   }
   h1 {
-    font-size: 60px;
-    font-weight: 900;
-    line-height: 80px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 60px;
+    text-transform: none;
+    margin: 0;
+
     &.classic {
       font-size: 100px;
       line-height: 100px;
@@ -1184,6 +1192,10 @@ a.btn-nav .btn {
       line-height: 110px;
     }
   }
+  h4 {
+    font-weight: 500;
+    text-transform: none;
+  }
   .lead {
     margin: 40px 0 0;
   }
@@ -1191,6 +1203,7 @@ a.btn-nav .btn {
     h1, h4 {
       text-indent: -10000px;
       display: none;
+      text-transform: none;
     }
   }
 }
@@ -1474,7 +1487,6 @@ input {
 /* Team */
 #team {
   h2 {
-    margin-top: -40px!important;
     padding-bottom: 0!important;
   }
   p {
@@ -1485,6 +1497,7 @@ input {
   }
   img {
     border-radius: 50%;
+    max-width: 80%;
   }
 }
 
@@ -2469,9 +2482,25 @@ li .shop-cart {
 }
 
 @media (max-width: 480px) {
+  #about h3 {
+    font-size: 90%;
+  }
   .intro h1 {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 40px;
+    font-weight: 800;
+  }
+  .state-selection h4 {
+    font-size: 80%;
+  }
+  .map {
+    .block {
+      a {
+        font-size: 70%;
+        font-weight: 700;
+        line-height: 20px !important;
+      }
+    }
   }
 }
 
@@ -2663,4 +2692,309 @@ ul.state-list {
 
 .nowrap {
   white-space: nowrap;
+}
+
+.state-selection {
+  margin-top: 30px;
+}
+
+.map {
+  width: 100%;
+  z-index: 10;
+  max-width: 470px;
+  margin: 0 auto;
+
+  .row {
+    display: flex;
+    width: 100%;
+    margin: 0;
+
+    &:not(:first-child) {
+      padding: 0;
+    }
+  }
+
+  .block {
+    display: inline-flex;
+    background: #FFF;
+    float: left;
+    position: relative;
+    width: calc(100% / 12);
+    padding-bottom: calc((100% / 12) - 4px);
+    overflow: hidden;
+    border: 1px solid transparent;
+
+    &.empty {
+      background: none;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      position: absolute;
+      color: #FFF;
+      transition: background 0.25s ease-in-out;
+      vertical-align: middle;
+      line-height: 35px;
+
+      &.democrat {
+        background: $civil-services-blue;
+        color: #FFF;
+      }
+
+      &.democrat:hover,
+      &.democrat.active {
+        background: $civil-services-dark-blue;
+      }
+
+      &.republican {
+        background: $civil-services-red;
+        color: #FFF;
+      }
+
+      &.republican:hover,
+      &.republican.active {
+        background: $civil-services-dark-red;
+      }
+    }
+  }
+}
+
+/* Preload images */
+body:after {
+  content: url(/img/lightbox/close.png) url(/img/lightbox/prev.png) url(/img/lightbox/next.png);
+  display: none;
+}
+
+body.lb-disable-scrolling {
+  overflow: hidden;
+}
+
+.lightboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: rgba(0,0,0,0.95);
+  display: none;
+}
+
+.lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  line-height: 0;
+  font-weight: normal;
+}
+
+.lightbox .lb-image {
+  display: block;
+  height: auto;
+  max-width: inherit;
+  max-height: none;
+}
+
+.lightbox a img {
+  border: none;
+}
+
+.lb-outerContainer {
+  position: relative;
+  *zoom: 1;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-loader {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+.lb-cancel {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.lb-container > .nav {
+  left: 0;
+}
+
+.lb-nav a {
+  outline: none;
+  background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+}
+
+.lb-prev, .lb-next {
+  height: 100%;
+  cursor: pointer;
+  display: block;
+}
+
+.lb-nav a.lb-prev {
+  width: 34%;
+  left: 0;
+  float: left;
+  background: url(/img/lightbox/prev.png) left 48% no-repeat;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  -o-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-prev:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.lb-nav a.lb-next {
+  width: 64%;
+  right: 0;
+  float: right;
+  background: url(/img/lightbox/next.png) right 48% no-repeat;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  -o-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-next:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.lb-dataContainer {
+  margin: 0 auto;
+  padding-top: 5px;
+  *zoom: 1;
+  width: 100%;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.lb-dataContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-data {
+  padding: 0 4px;
+  color: #ccc;
+}
+
+.lb-data .lb-details {
+  width: 85%;
+  float: left;
+  text-align: left;
+  line-height: 1.1em;
+}
+
+.lb-data .lb-caption {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1em;
+}
+
+.lb-data .lb-caption a {
+  color: #4ae;
+}
+
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  padding-bottom: 1em;
+  font-size: 12px;
+  color: #999999;
+}
+
+.lb-data .lb-close {
+  display: block;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background: url(/img/lightbox/close.png) top right no-repeat;
+  text-align: right;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.lb-data .lb-close:hover {
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.filter-list {
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+
+      a {
+        text-transform: uppercase;
+        line-height: 24px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        margin: 0 0 35px;
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .filter-list {
+    h4 {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+  }
 }

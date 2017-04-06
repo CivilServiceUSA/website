@@ -39,6 +39,7 @@ var CivilServices = {
   bindEvents: function() {
     // Cache Element Lookups
     var mobileMenuButton = $('.navbar-onepage .navbar-collapse ul li a');
+    var navbarBrand = $('a.navbar-brand');
     var pageScroll = $('a.page-scroll');
     var searchButton = $('button.search-button');
     var searchForm = $('#search');
@@ -47,7 +48,8 @@ var CivilServices = {
     // Remove Current Event Listeners
     $(document).off('scroll.civil-services', CivilServices.scrollWindow);
     mobileMenuButton.off('click.civil-services', CivilServices.closeMobileMenu);
-    pageScroll.off('click.civil-services', CivilServices.backToTop);
+    navbarBrand.off('click.civil-services', CivilServices.backToTop);
+    pageScroll.off('click.civil-services', CivilServices.pageScroll);
     searchButton.off('click.civil-services', CivilServices.doSearch);
     searchForm.off('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.off('click.civil-services', CivilServices.toggleSearch);
@@ -55,7 +57,8 @@ var CivilServices = {
     // Add New Event Listeners
     $(document).on('scroll.civil-services', CivilServices.scrollWindow);
     mobileMenuButton.on('click.civil-services', CivilServices.closeMobileMenu);
-    pageScroll.on('click.civil-services', CivilServices.backToTop);
+    navbarBrand.on('click.civil-services', CivilServices.backToTop);
+    pageScroll.on('click.civil-services', CivilServices.pageScroll);
     searchButton.on('click.civil-services', CivilServices.doSearch);
     searchForm.on('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.on('click.civil-services', CivilServices.toggleSearch);
@@ -66,7 +69,25 @@ var CivilServices = {
    * @param event
    */
   backToTop: function (event) {
-    var $anchor = $('a.page-scroll');
+
+    if ($('body').scrollTop() === 0) {
+      window.location = '/';
+    } else {
+      var $anchor = $('a.navbar-brand');
+      $('html, body').stop().animate({
+        scrollTop: ($($anchor.attr('href')).offset().top - 55)
+      }, 1500, 'easeInOutExpo');
+    }
+
+    event.preventDefault();
+  },
+
+  /**
+   * Page Scroll
+   * @param event
+   */
+  pageScroll: function (event) {
+    var $anchor = $(this);
     $('html, body').stop().animate({
       scrollTop: ($($anchor.attr('href')).offset().top - 55)
     }, 1500, 'easeInOutExpo');
@@ -204,6 +225,16 @@ var CivilServices = {
     $('ul.state-list a').filter(function () {
       return this.href == url;
     }).parent().addClass('active');
+
+    if (typeof lightbox === 'object') {
+      lightbox.option({
+        'fadeDuration': 200,
+        'resizeDuration': 200,
+        'imageFadeDuration': 200,
+        'showImageNumberLabel': false,
+        'wrapAround': true
+      })
+    }
   },
 
   /**
@@ -352,3 +383,16 @@ var CivilServices = {
     CivilServices.renderGrid();
   }
 };
+
+/**
+ * Attempt to Register Service Worker
+ */
+if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || document.location.protocol === 'https:')) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/pwa/serviceworker.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
