@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ssh -i id_6b807e557c63097610e78edbac36506f civilservices@192.81.212.49 << EOF
+ssh -i id_801d9288e1a0bf1dd4ed46ed1da6d975 civilservices@192.81.212.49 << EOF
 
 echo -e "\n\033[38;5;34m✓ Civil Services › Automated Deployment\033[0m\n"
 
