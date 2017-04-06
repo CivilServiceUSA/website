@@ -5,8 +5,8 @@ var version = 'v1::';
 var urlsToCache = [
   '',
   '/',
-  '/css/plugins.js',
-  '/css/style.67fef13b4ac498061216.css',
+  '/css/plugins.css',
+  '/css/style.css',
   '/js/app.js',
   '/js/plugins.js'
 ];

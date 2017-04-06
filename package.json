@@ -8,7 +8,7 @@
     "test-unit": "./vendor/bin/phpunit",
     "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
     "test": "yarn run test-lint && yarn run test-unit",
-    "clean": "rm -f ./public/css/style.*.css && rm -f ./public/js/app.*.js",
+    "clean": "rm -f ./public/css/style.css && rm -f ./public/js/app.*.js",
     "dev": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",

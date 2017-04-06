@@ -18,6 +18,10 @@ echo -e "\n\033[38;5;34m✓ Civil Services › Update Yarn Package\033[0m\n"
 yarn install
 composer install
 
+echo -e "\n\033[38;5;34m✓ Civil Services › Update Static Assets\033[0m\n"
+
+yarn run dev
+
 echo -e "\n\033[38;5;34m✓ Civil Services › Deployment Complete\033[0m\n"
 
 EOF
