@@ -1,12 +1,37 @@
 "use strict";
 
-var version = 'v1::';
+var version = 'v1.0.0::';
 
 var urlsToCache = [
   '',
   '/',
   '/css/plugins.css',
   '/css/style.css',
+  'public/img/header/civil-services-bg.jpg',
+  'public/img/header/legal-header.jpg',
+  'public/img/header/office.jpg',
+  'public/img/header/statue-of-liberty.jpg',
+  'public/img/header/us-house.jpg',
+  'public/img/header/us-senate.jpg',
+  'public/img/icons/favicon-retina-ipad.png',
+  'public/img/icons/favicon-retina-ipad.png',
+  'public/img/icons/favicon-standard-ipad.png',
+  'public/img/icons/favicon-standard-iphone.png',
+  'public/img/lightbox/close.png',
+  'public/img/lightbox/loading.gif',
+  'public/img/lightbox/next.png',
+  'public/img/lightbox/prev.png',
+  'public/img/team/john-kramlich.jpg',
+  'public/img/team/matt-stauffer.jpg',
+  'public/img/team/peter-schmalfeldt.jpg',
+  'public/img/team/samuel-sinyangwe.jpg',
+  'public/img/app-image.jpg',
+  'public/img/house.png',
+  'public/img/logo.png',
+  'public/img/logo.svg',
+  'public/img/logo-square.svg',
+  'public/img/logo-white.svg',
+  'public/img/senate.png',
   '/js/app.js',
   '/js/plugins.js'
 ];
