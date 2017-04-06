@@ -389,7 +389,7 @@ var CivilServices = {
  */
 if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || document.location.protocol === 'https:')) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/pwa/serviceworker.js').then(function(registration) {
+    navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }).catch(function(err) {
       console.log('ServiceWorker registration failed: ', err);
