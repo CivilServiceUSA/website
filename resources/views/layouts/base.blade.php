@@ -18,6 +18,7 @@
 
     <!-- Progressive Web App -->
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1E72A1">
 
     <!-- Mobile Metadata -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">

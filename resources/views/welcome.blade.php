@@ -42,7 +42,7 @@
             <div data-wow-delay=".2s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-bookmarks-outline"></i> Developer API</h4>
                 <p>Software Developers and Researchers can use our API to help people find useful information.</p>
-                <p><a href="https://api.civil.services/guide/" target="_blank" class="btn btn-dark btn-xs">More Info</a></p>
+                <p><a href="https://api.civil.services/guide/" rel="noopener" target="_blank" class="btn btn-dark btn-xs">More Info</a></p>
             </div>
             <div data-wow-delay=".4s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-chatboxes-outline"></i> Contact Officials</h4>
@@ -74,8 +74,10 @@
                 <!-- MailChimp Signup Form - Replace the form action in the line below with your MailChimp embed action! For more information on how to do this please visit the Docs!-->
                 <form id="mc-embedded-subscribe-form" action="https://forbetterweb.us11.list-manage.com/subscribe/post?u=4f751a6c58b225179404715f0&amp;id=18fc72763a" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="" class="form-inline subscribe-form">
                     <div class="input-group input-group-lg">
-                        <input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control"><span class="input-group-btn">
-                  <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark">Subscribe</button></span>
+                        <label><input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control"></label>
+                        <span class="input-group-btn">
+                            <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark">Subscribe</button>
+                        </span>
                         <div id="mce-responses"></div>
                         <div id="mce-error-response" style="display:none" class="response"></div>
                         <div id="mce-success-response" style="display:none" class="response"></div>
@@ -96,9 +98,9 @@
                 <p><img src="{{ asset('img/team/peter-schmalfeldt.jpg') }}" alt="Peter Schmalfeldt" class="img-responsive center-block"></p>
                 <h2 class="classic">Peter Schmalfeldt</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/mrmidi" target="_blank" title="Peter Schmalfeldt's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/manifestinteractive" target="_blank" title="Peter Schmalfeldt's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://peterschmalfeldt.com" target="_blank" title="Peter Schmalfeldt's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/mrmidi" rel="noopener" target="_blank" title="Peter Schmalfeldt's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/manifestinteractive" rel="noopener" target="_blank" title="Peter Schmalfeldt's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://peterschmalfeldt.com" rel="noopener" target="_blank" title="Peter Schmalfeldt's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6>Founder &nbsp;|&nbsp; Engineer &nbsp;|&nbsp; Designer</h6>
             </div>
@@ -106,9 +108,9 @@
                 <p><img  src="{{ asset('img/team/matt-stauffer.jpg') }}" alt="Matt Stauffer" class="img-responsive center-block"></p>
                 <h2 class="classic">Matt Stauffer</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/stauffermatt" target="_blank" title="Matt Stauffer's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/mattstauffer" target="_blank" title="Matt Stauffer's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://mattstauffer.co" target="_blank" title="Matt Stauffer's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/stauffermatt" rel="noopener" target="_blank" title="Matt Stauffer's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/mattstauffer" rel="noopener" target="_blank" title="Matt Stauffer's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://mattstauffer.co" rel="noopener" target="_blank" title="Matt Stauffer's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6>Director &nbsp;|&nbsp; Engineer</h6>
             </div>
@@ -116,9 +118,9 @@
                 <p><img  src="{{ asset('img/team/john-kramlich.jpg') }}" alt="John Kramlich" class="img-responsive center-block"></p>
                 <h2 class="classic">John Kramlich</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/jkramlich" target="_blank" title="John Kramlich's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/johnkramlich" target="_blank" title="John Kramlich's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="http://johnkramlich.com" target="_blank" title="John Kramlich's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/jkramlich" rel="noopener" target="_blank" title="John Kramlich's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/johnkramlich" rel="noopener" target="_blank" title="John Kramlich's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="http://johnkramlich.com" rel="noopener" target="_blank" title="John Kramlich's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6>Director &nbsp;|&nbsp; Engineer</h6>
             </div>
@@ -126,9 +128,9 @@
                 <p><img  src="{{ asset('img/team/samuel-sinyangwe.jpg') }}" alt="Samuel Sinyangwe" class="img-responsive center-block"></p>
                 <h2 class="classic">Samuel Sinyangwe</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/samswey" target="_blank" title="Samuel Sinyangwe's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/campaignzero" target="_blank" title="Samuel Sinyangwe's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" target="_blank" title="Samuel Sinyangwe's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/samswey" rel="noopener" target="_blank" title="Samuel Sinyangwe's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/campaignzero" rel="noopener" target="_blank" title="Samuel Sinyangwe's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" rel="noopener" target="_blank" title="Samuel Sinyangwe's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6>Policy Analyst &nbsp;|&nbsp; Advisor</h6>
             </div>
