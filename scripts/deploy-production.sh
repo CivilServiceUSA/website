@@ -8,6 +8,11 @@ cd /var/www/civil.services/html
 git checkout --force master
 git pull
 
+echo -e "\n\033[38;5;34m✓ Civil Services › Remove Old Packages\033[0m\n"
+
+rm -fr node_modules
+rm -fr vendor
+
 echo -e "\n\033[38;5;34m✓ Civil Services › Update Yarn Package\033[0m\n"
 
 yarn install
