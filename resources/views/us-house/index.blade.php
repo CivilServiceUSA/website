@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h6 class="breadcrumb">
-                        <a href="/">Home</a> / US House
+                        <a href="/">Home</a> / U.S. House
                     </h6>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3>House of Representatives</h3>
+                    <h3>U.S. House of Representatives</h3>
                     <p class="no-pad">Select a State to access Government &amp; Demographic data on the 115th United States House of Representatives. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                     <h2 class="classic">Civil Services Team</h2>
                 </div>
@@ -38,5 +38,7 @@
             </div>
         </div>
     </section>
+
+    @include('partials.house-lists')
 
 @endsection

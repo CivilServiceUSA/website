@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use CivilServices\Data\Senator;
+use CivilServices\Data\House;
+use CivilServices\Data\Senate;
 use CivilServices\Data\State;
-use CivilServices\SiteMetaData;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,10 +17,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('partials.header', function ($view) {
+        View::composer('partials.footer', function ($view) {
             return $view->with(
                 'searchAutocomplete',
-                (new State)->autocomplete()->merge((new Senator)->autocomplete())
+                (new State)->autocomplete()->merge((new Senate)->autocomplete())->merge((new House)->autocomplete())
             );
         });
     }

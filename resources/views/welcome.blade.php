@@ -3,7 +3,7 @@
 @section('body')
 
 <!-- Header-->
-<header data-background="{{ asset('img/header/civil-services-bg.jpg') }}" class="intro">
+<header data-background="{{ asset('img/header/lady-justice.jpg') }}" class="intro">
     <!-- Intro Header-->
     <div class="intro-body">
         <h1>Accountability in Action</h1>
@@ -20,7 +20,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <h3>By the People. For the People.</h3>
-                <p class="no-pad"><strong>Civil Service USA Corp</strong> is a nonpartisan, independent and <strong>Non-Profit Organization</strong> with the goal to help United States Citizens to be a part of what is happening in their Local, State & Federal Governments.</p>
+                <p><strong>Civil Service USA Corp</strong> is a nonpartisan, independent and <strong>Non-Profit Organization</strong> with the goal to help United States Citizens to be a part of what is happening in their Local, State & Federal Governments.</p>
+                <p class="no-pad">Select a State to access Government & Demographic data on the 115th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                 <h2 class="classic">Civil Services Team</h2>
             </div>
             <div class="col-lg-5 col-lg-offset-1">
@@ -41,22 +42,22 @@
         <div class="row">
             <div data-wow-delay=".2s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-bookmarks-outline"></i> Developer API</h4>
-                <p>Software Developers and Researchers can use our API to help people find useful information.</p>
+                <p>Use our API in your application to connect users to government.</p>
                 <p><a href="https://api.civil.services/guide/" rel="noopener" target="_blank" class="btn btn-dark btn-xs">More Info</a></p>
             </div>
             <div data-wow-delay=".4s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-chatboxes-outline"></i> Contact Officials</h4>
-                <p>Open Search Engine to locate your Local, State & Federal Government Elected Officials.</p>
+                <p>Search for Elected Officials and get their Contact Information.</p>
                 <p><a href="/state" class="btn btn-dark btn-xs">Get Started</a></p>
             </div>
             <div data-wow-delay=".6s" class="col-lg-3 col-sm-6 wow fadeIn">
-                <h4><i class="icon-big ion-ios-navigate-outline"></i> District Maps</h4>
-                <p>Easily Locate, View & Download Map Files for Local, State & Federal Government Districts.</p>
+                <h4><i class="icon-big ion-ios-contact-outline"></i> State Legislators</h4>
+                <p>Find the Elected Officials for your States House &amp; Senate.</p>
                 <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs">Coming Soon</a></p>
             </div>
             <div data-wow-delay=".8s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-search"></i> Legislation Searches</h4>
-                <p>Find Local, State & Federal Legislation and which elected officials are involved.</p>
+                <p>Search for Bills in your state and how Elected Officials Voted.</p>
                 <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs">Coming Soon</a></p>
             </div>
         </div>
@@ -76,7 +77,7 @@
                     <div class="input-group input-group-lg">
                         <label><input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control"></label>
                         <span class="input-group-btn">
-                            <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark">Subscribe</button>
+                            <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark btn-sm">Subscribe</button>
                         </span>
                         <div id="mce-responses"></div>
                         <div id="mce-error-response" class="response"></div>
@@ -165,13 +166,24 @@
         <div class="row">
             <div class="col-md-5">
                 <h3>contact us</h3>
-                <p>Feel free to contact us. A business has to be involving, it has to be fun, and it has to exercise your creative instincts. Start where you are. Use what you have. Do what you can. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>
+                    Be a part of your Local, State & Federal Government. The Civil Services team is here to help!
+                </p>
+
                 <hr>
-                <h5><i class="fa fa-map-marker fa-fw fa-lg"></i> 1234 Some Avenue, New York, NY 56789
+
+                <h5>
+                    <i class="fa fa-map-marker fa-fw fa-lg"></i> 200 2nd Avenue South<br>
+                    <i class="fa fa-fw fa-lg"></i> Suite 420<br>
+                    <i class="fa fa-fw fa-lg"></i> St. Petersburg, FL 33701
                 </h5>
-                <h5><i class="fa fa-envelope fa-fw fa-lg"></i> info@youwebsite.com
+                <h5>
+                    <i class="fa fa-envelope fa-fw fa-lg"></i>
+                    <a href="mailto:hello@civil.services">hello@civil.services</a>
                 </h5>
-                <h5><i class="fa fa-phone fa-fw fa-lg"></i> (123) 456-7890
+                <h5>
+                    <i class="fa fa-phone fa-fw fa-lg"></i>
+                    <a href="tel:7273145214">(727) 314-5214</a>
                 </h5>
             </div>
             <div class="col-md-5 col-md-offset-2">

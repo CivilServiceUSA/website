@@ -60,19 +60,6 @@
     plugins.rel = 'stylesheet';
     plugins.href = '{{ asset('css/plugins.css') }}';
 
-    {{-- @todo: Move these back into style.scss --}}
-    var fonts = [
-        'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Roboto+Mono:100,400|Caveat',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
-    ];
-    fonts.forEach(function (fontUrl) {
-        var font = document.createElement('link');
-        font.rel = 'stylesheet';
-        font.href = fontUrl;
-        head.appendChild(font);
-    });
-
     var styles = document.createElement('link');
     styles.rel = 'stylesheet';
     styles.href = '{{ mix('/css/style.css') }}';
@@ -119,6 +106,8 @@
       }
     });
   }}();
+
+  var searchAutoComplete = <?php echo json_encode($searchAutocomplete); ?>;
 </script>
 
 <!--[if lt IE 9]>

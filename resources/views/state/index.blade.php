@@ -3,7 +3,7 @@
 @section('body')
 
 <!-- Header-->
-<header data-background="{{ asset('img/header/5.jpg') }}" class="intro introhalf">
+<header data-background="{{ asset('img/header/statue-of-liberty.jpg') }}" class="intro introhalf">
     <!-- Intro Header-->
     <div class="intro-body">
         <h1>State Government</h1>

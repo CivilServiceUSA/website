@@ -386,7 +386,7 @@ a .fa {
   min-width: 300px;
   width: 100%;
   margin: 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: #FFF;
   border-radius: 4px; }
   .search-form .form-control {
     color: #333;

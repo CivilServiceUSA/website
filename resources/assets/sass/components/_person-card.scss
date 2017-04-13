@@ -1,0 +1,28 @@
+.component-person-card {
+  .person-name {
+    white-space: nowrap;
+  }
+  .person-title {
+    color: #BBB;
+    white-space: nowrap;
+  }
+  .person-district {
+    color: #BBB;
+  }
+  .person-image picture {
+    background: url(/img/no-photo.jpg) center center no-repeat;
+    width: 1024px;
+    height: 1024px;
+  }
+  .person-state{
+    &.with-district {
+      margin: 0;
+    }
+    &.democrat {
+      color: $civil-services-blue;
+    }
+    &.republican {
+      color: $civil-services-red;
+    }
+  }
+}

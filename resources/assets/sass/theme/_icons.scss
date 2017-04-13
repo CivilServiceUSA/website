@@ -1,0 +1,29 @@
+a {
+  .fa, .icon {
+    text-decoration: none;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
+}
+
+a .fa {
+  opacity: .6!important;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+.iconsmall {
+  font-size: 46px;
+  float: left;
+  line-height: 54px;
+  padding-right: 10px;
+}
+
+.icon-big {
+  font-size: 80px;
+  line-height: 120px;
+  display: block;
+}

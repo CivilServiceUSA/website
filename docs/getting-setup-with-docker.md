@@ -97,3 +97,11 @@ cd ./docker
 | `docker-compose stop`    | Stop Docker Services                                            |
 | `docker-compose restart` | Restart Docker Services                                         |
 | `docker-compose down`    | Stop and remove Docker Containers, Networks, Images & Volumes   |
+
+
+#### Flush Docker Redis Cache
+
+```bash
+cd ./docker
+docker-compose run redis redis-cli -h redis FLUSHALL
+```

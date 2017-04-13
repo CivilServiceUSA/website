@@ -1,0 +1,11 @@
+.page-my-elected-officials {
+  input.short, select.short {
+    width: 150px;
+  }
+  select {
+    appearance: none;
+    padding: 0 16px;
+    margin: 0;
+    color: #999;
+  }
+}

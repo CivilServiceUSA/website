@@ -1,0 +1,82 @@
+::-moz-selection, ::selection {
+  color: #fff;
+  background: #000;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: manipulation;
+}
+
+body {
+  width: 100% !important;
+  height: 100% !important;
+  font: normal 15px/1.8 Raleway, sans-serif;
+  letter-spacing: 0.03em;
+  color: #444;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 35px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  font-weight: 800;
+}
+
+h4, h5, h6 {
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 35px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+  img {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+}
+
+img {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+}
+
+a, img, :focus, input {
+  outline: none !important;
+}
+
+a {
+  &:hover, &:focus {
+    color: #666;
+    text-decoration: none;
+  }
+}
+
+ul, ol {
+  margin-bottom: 1.5em;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px;
+}

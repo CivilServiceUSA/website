@@ -1,0 +1,77 @@
+.btn {
+  font-size: 12px !important;
+  letter-spacing: 2px;
+  outline: 0;
+  text-transform: uppercase;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  text-shadow: none;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px 6px 15px;
+}
+
+.btn-lg {
+  font-size: 13px !important;
+  padding: 10px 35px;
+}
+
+.btn-sm {
+  font-size: 11px !important;
+}
+
+.btn-xs {
+  font-size: 10px !important;
+  padding: 4px 10px;
+}
+
+.btn-border {
+  border: 2px solid #fff;
+  color: #fff !important;
+  background-color: transparent;
+}
+
+.btn-dark-border {
+  border: 1px solid #000;
+  color: #000;
+  background-color: transparent;
+}
+
+.btn-white {
+  border: 2px solid #fff;
+  color: #000 !important;
+  background-color: #fff;
+}
+
+.btn-gray {
+  border: 2px solid #ddd;
+  background-color: #ddd;
+  color: #000!important;
+}
+
+.btn-dark {
+  border: 2px solid #18191B;
+  background-color: #18191B;
+  color: #fff !important;
+}
+
+.btn-universal {
+  border: 2px solid #789;
+  background-color: #789;
+  color: #fff !important;
+}
+
+.btn-violet {
+  border: 2px solid #ff4081;
+  background-color: #ff4081;
+  color: #fff !important;
+}
+
+.btn:hover {
+  opacity: 0.65;
+}
+
+.btn-border:focus, .btn-dark-border:focus, .btn-gray:focus, .btn-border:focus, .btn-white:focus, .btn-universal:focus, .btn-violet:focus {
+  opacity: 1;
+}

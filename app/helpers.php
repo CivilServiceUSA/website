@@ -1,17 +1,4 @@
 <?php
-if (! function_exists('meta')) {
-    /**
-     * Return the meta value for a given key
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    function meta($key)
-    {
-        return app(CivilServices\SiteMetaData::class)->get($key);
-    }
-}
-
 if (! function_exists('anon')) {
     /**
      * Anonymize an IPv4 or IPv6 address.
@@ -66,6 +53,7 @@ if (! function_exists('titleCase')) {
     function titleCase($string)
     {
         $title = str_replace('-', ' ', $string);
+        $title = str_replace('_', ' ', $title);
 
         $regx = '/<(code|var)[^>]*>.*?<\/\1>|<[^>]+>|&\S+;/';
 
@@ -98,6 +86,63 @@ if (! function_exists('titleCase')) {
             $title = substr_replace ($title, $tag[0], $tag[1], 0);
         }
 
+        // We have some Roman Numberals we need to consider too
+        $title = preg_replace_callback('/\b(?=[LXIVCDM]+\b)([a-z]+)\b/i',
+            function($matches) {
+                return strtoupper($matches[0]);
+            }, ucwords(strtolower($title))
+        );
+
         return $title;
+    }
+}
+
+if (! function_exists('truncateText')) {
+    /**
+     * Truncate Text
+     * @param $string
+     * @param $limit
+     * @param string $break
+     * @param string $pad
+     * @return string
+     */
+    function truncateText($string, $limit, $break=" ", $pad=" ...")
+    {
+        // return with no change if string is shorter than $limit
+        if(strlen($string) <= $limit) return $string;
+
+        // is $break present between $limit and the end of the string?
+        if(false !== ($breakpoint = strpos($string, $break, $limit))) {
+            if($breakpoint < strlen($string) - 1) {
+                $string = substr($string, 0, $breakpoint) . $pad;
+            }
+        }
+
+        return $string;
+    }
+}
+
+if (! function_exists('pageClass')) {
+    /**
+     * Convert Current Page to Class
+     * @param string $url
+     * @return string
+     */
+    function pageClass($url)
+    {
+        list($page, $sub) = array_pad(explode('/', $url), 2, '');
+        $classes = array();
+
+        if ($page) {
+            $classes[] = 'page-' . $page;
+        } else {
+            $classes[] = 'page-home';
+        }
+
+        if ($sub) {
+            $classes[] = 'sub-page-' . $sub;
+        }
+
+        return implode(' ', $classes);
     }
 }
