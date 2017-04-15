@@ -87,11 +87,13 @@
                 <?php if($state->admission_date && $state->admission_number): ?><h5><i class="fa fa-clock-o fa-fw fa-lg"></i> Admission:&nbsp; {{ date_format(date_create($state->admission_date), 'F jS, Y') }} <small>( {{ $state->admission_number }} / 50 )</small></h5><?php endif; ?>
                 <?php if($state->constitution_url): ?><h5><i class="fa fa-gavel fa-fw fa-lg"></i> <a href="{{ $state->constitution_url }}" rel="noopener" title="Read {{ $state->state_name }}'s Constitution">{{ $state->state_name }}'s Constitution</a></h5><?php endif; ?>
                 <hr>
+                <h5><i class="fa fa-globe fa-fw fa-lg"></i> <a href="/state/{{ $state->state_name_slug }}/zip-codes">{{ $state->state_name }} Cities &amp; Zip Codes</a></h5>
                 <h5><i class="fa fa-share-alt fa-fw fa-lg"></i> Links:&nbsp;
                 <?php if($state->website): ?><a href="{{ $state->website }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Website"><i class="fa fa-fw fa-lg fa-external-link-square"></i></a><?php endif; ?>
                 <?php if($state->twitter_url): ?><a href="{{ $state->twitter_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Twitter Page"><i class="fa fa-fw fa-lg fa-twitter-square"></i></a><?php endif; ?>
                 <?php if($state->facebook_url): ?><a href="{{ $state->facebook_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Facebook Page"><i class="fa fa-fw fa-lg fa-facebook-square"></i></a><?php endif; ?>
                 </h5>
+
             </div>
 
             <div class="col-md-5 col-md-offset-2">

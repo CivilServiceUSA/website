@@ -25,6 +25,7 @@ Route::get('my-elected-officials/geolocation/{latitude}/{longitude}', 'MyElected
 
 Route::get('state', 'StateController@index');
 Route::get('state/{state}', 'StateController@getState');
+Route::get('state/{state}/zip-codes', 'StateController@getZipCodes');
 
 Route::get('us-house', 'FederalHouseController@index');
 Route::get('us-house/{state}', 'FederalHouseController@getState');

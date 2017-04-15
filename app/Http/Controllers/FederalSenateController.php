@@ -52,10 +52,12 @@ class FederalSenateController extends Controller
         MetaTag::set('keywords', join(', ', $keywords));
 
         if (is_array($stateSenators) && is_object($stateData)) {
+            $clean = removeEmpty($stateSenators, 'name');
+
             return view('us-senate.state')
                 ->with('slug', $state)
                 ->with('state', $stateData)
-                ->with('senators', $stateSenators);
+                ->with('senators', $clean);
 
         } else if(!is_array($stateSenators)) {
             abort(400, 'Unable to Fetch Senators');

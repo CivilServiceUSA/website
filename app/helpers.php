@@ -146,3 +146,22 @@ if (! function_exists('pageClass')) {
         return implode(' ', $classes);
     }
 }
+
+if (! function_exists('removeEmpty')) {
+
+    function removeEmpty($data, $key_name)
+    {
+        $clean = array();
+        $arr = (array) $data;
+        foreach ($arr as $key => $item) {
+            $arr = (array) $item;
+            $check = trim($arr[$key_name]);
+
+            if (isset($arr[$key_name]) && !empty($check) && strlen($check) > 0) {
+                $clean[] = $item;
+            }
+        }
+
+        return $clean;
+    }
+}

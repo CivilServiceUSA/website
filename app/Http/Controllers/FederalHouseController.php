@@ -52,10 +52,13 @@ class FederalHouseController extends Controller
         MetaTag::set('keywords', join(', ', $keywords));
 
         if (is_array($stateRepresentatives) && is_object($stateData)) {
+
+            $clean = removeEmpty($stateRepresentatives, 'name');
+
             return view('us-house.state')
                 ->with('slug', $state)
                 ->with('state', $stateData)
-                ->with('representatives', $stateRepresentatives);
+                ->with('representatives', $clean);
 
         } else if(!is_array($stateRepresentatives)) {
             abort(400, 'Unable to Fetch Senators');
