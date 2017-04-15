@@ -1,9 +1,6 @@
 {
   "short_name": "CivilService",
   "name": "Civil Services",
-  "description": "",
-  "lang": "en-US",
-  ​​"orientation": "portrait-primary",
   "icons": [
     {
       "src": "pwa/icon-128x128.png",
