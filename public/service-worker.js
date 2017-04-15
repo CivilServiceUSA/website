@@ -1,5 +1,5 @@
-var dataCacheName = 'data-cache-name-1492243445988';
-var cacheName = 'cache-name-1492243445988';
+var dataCacheName = 'data-cache-name-1492244691806';
+var cacheName = 'cache-name-1492244691806';
 
 var filesToCache = [
   '/',
