@@ -11,10 +11,10 @@ if (!Date.now) {
 // Update Service Worker Version
 var htmlFiles = {
   files: [
-    base + '/public/serviceworker.js'
+    base + '/public/service-worker.js'
   ],
-  from: [/var version = '[^']+';/g],
-  to: ["var version = 'v_" + Date.now() + "::';"]
+  from: [/var dataCacheName = '[^']+';/g, /var cacheName = '[^']+';/g],
+  to: ["var dataCacheName = 'data-cache-name-" + Date.now() + "';", "var cacheName = 'cache-name-" + Date.now() + "';"]
 };
 
 replace(htmlFiles, function (error, changedFiles) {

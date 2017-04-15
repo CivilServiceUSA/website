@@ -22,7 +22,7 @@
                 <h3>By the People. For the People.</h3>
                 <p><strong>Civil Service USA Corp</strong> is a nonpartisan, independent and <strong>Non-Profit Organization</strong> with the goal to help United States Citizens to be a part of what is happening in their Local, State & Federal Governments.</p>
                 <p class="no-pad">Select a State to access Government & Demographic data on the 115th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
-                <h2 class="classic">Civil Services Team</h2>
+                <h2 class="classic">- Civil Services Team</h2>
             </div>
             <div class="col-lg-5 col-lg-offset-1">
                 @include('partials.map', ['base' => '/state'])
@@ -93,7 +93,8 @@
 <section id="team" class="bg-white text-center">
     <div class="container">
         <h3>MEET OUR TEAM</h3>
-        <p>Below are the main people that keep things moving at Civil Services.</p><p>We would also like to thank 100+ volunteers that help us with our data entry.</p>
+        <p>Below are the main people that keep things moving at Civil Services.</p>
+        <p>We would also like to thank the 100+ volunteers that help us with data collection.</p>
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <p><img src="{{ asset('img/team/peter-schmalfeldt.jpg') }}" alt="Peter Schmalfeldt" class="img-responsive center-block"></p>

@@ -41,7 +41,7 @@
             <div class="col-lg-6">
                 <h3>State Government</h3>
                 <p class="no-pad">Select a State to access Government &amp; Demographic data.  We also provide a Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts of each State Senator &amp; House Representative.  In the next few months, we will be providing access to State Legislators, Bills & Votes on Legislation.</p>
-                <h2 class="classic">Civil Services Team</h2>
+                <h2 class="classic">- Civil Services Team</h2>
             </div>
             <div class="col-lg-5 col-lg-offset-1">
                 @include('partials.map', ['base' => '/state'])

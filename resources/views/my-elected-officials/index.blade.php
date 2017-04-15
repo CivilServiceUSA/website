@@ -27,7 +27,7 @@
                     determine your exact location. <a href="/privacy-policy">We do not collect personal information</a>,
                     and your address is only used to determine your district's Representative.
                 </p>
-                <h2 class="classic">Civil Services Team</h2>
+                <h2 class="classic">- Civil Services Team</h2>
             </div>
             <div class="col-md-5 col-md-offset-2">
                 <h3>My Address</h3>

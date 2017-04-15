@@ -1,6 +1,10 @@
 {
+  "manifest_version": 2,
   "short_name": "CivilService",
   "name": "Civil Services",
+  "description": "",
+  "lang": "en-US",
+  ​​"orientation": "portrait-primary",
   "icons": [
     {
       "src": "pwa/icon-128x128.png",
@@ -23,6 +27,7 @@
       "sizes": "192x192"
     }
   ],
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1E72A1",
