@@ -96,45 +96,45 @@
         <p>Below are the main people that keep things moving at Civil Services.</p>
         <p>We would also like to thank the 100+ volunteers that help us with data collection.</p>
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <p><img src="{{ asset('img/team/peter-schmalfeldt.jpg') }}" alt="Peter Schmalfeldt" class="img-responsive center-block"></p>
-                <h2 class="classic">Peter Schmalfeldt</h2>
+            <div class="col-md-3 col-sm-6" itemscope itemtype="http://schema.org/Person">
+                <p><img itemprop="image" src="{{ asset('img/team/peter-schmalfeldt.jpg') }}" alt="Peter Schmalfeldt" class="img-responsive center-block"></p>
+                <h2 class="classic" itemprop="name">Peter Schmalfeldt</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/mrmidi" rel="noopener" target="_blank" title="Peter Schmalfeldt's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/manifestinteractive" rel="noopener" target="_blank" title="Peter Schmalfeldt's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://peterschmalfeldt.com" rel="noopener" target="_blank" title="Peter Schmalfeldt's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/mrmidi" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/manifestinteractive" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://peterschmalfeldt.com" itemprop="url" rel="noopener" target="_blank" title="Peter Schmalfeldt's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
-                <h6>Founder &nbsp;|&nbsp; Engineer &nbsp;|&nbsp; Designer</h6>
+                <h6 itemprop="jobTitle">Founder &nbsp;|&nbsp; Engineer &nbsp;|&nbsp; Designer</h6>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <p><img  src="{{ asset('img/team/matt-stauffer.jpg') }}" alt="Matt Stauffer" class="img-responsive center-block"></p>
-                <h2 class="classic">Matt Stauffer</h2>
+            <div class="col-md-3 col-sm-6" itemscope itemtype="http://schema.org/Person">
+                <p><img itemprop="image"  src="{{ asset('img/team/matt-stauffer.jpg') }}" alt="Matt Stauffer" class="img-responsive center-block"></p>
+                <h2 class="classic"itemprop="name">Matt Stauffer</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/stauffermatt" rel="noopener" target="_blank" title="Matt Stauffer's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/mattstauffer" rel="noopener" target="_blank" title="Matt Stauffer's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://mattstauffer.co" rel="noopener" target="_blank" title="Matt Stauffer's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/stauffermatt" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/mattstauffer" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://mattstauffer.co" rel="noopener" itemprop="url" target="_blank" title="Matt Stauffer's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
-                <h6>Director &nbsp;|&nbsp; Engineer</h6>
+                <h6 itemprop="jobTitle">Director &nbsp;|&nbsp; Engineer</h6>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <p><img  src="{{ asset('img/team/john-kramlich.jpg') }}" alt="John Kramlich" class="img-responsive center-block"></p>
-                <h2 class="classic">John Kramlich</h2>
+            <div class="col-md-3 col-sm-6" itemscope itemtype="http://schema.org/Person">
+                <p><img itemprop="image" src="{{ asset('img/team/john-kramlich.jpg') }}" alt="John Kramlich" class="img-responsive center-block"></p>
+                <h2 class="classic"itemprop="name">John Kramlich</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/jkramlich" rel="noopener" target="_blank" title="John Kramlich's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/johnkramlich" rel="noopener" target="_blank" title="John Kramlich's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="http://johnkramlich.com" rel="noopener" target="_blank" title="John Kramlich's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/jkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/johnkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="http://johnkramlich.com" rel="noopener" itemprop="url" target="_blank" title="John Kramlich's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
-                <h6>Director &nbsp;|&nbsp; Engineer</h6>
+                <h6 itemprop="jobTitle">Director &nbsp;|&nbsp; Engineer</h6>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <p><img  src="{{ asset('img/team/samuel-sinyangwe.jpg') }}" alt="Samuel Sinyangwe" class="img-responsive center-block"></p>
-                <h2 class="classic">Samuel Sinyangwe</h2>
+            <div class="col-md-3 col-sm-6" itemscope itemtype="http://schema.org/Person">
+                <p><img itemprop="image" src="{{ asset('img/team/samuel-sinyangwe.jpg') }}" alt="Samuel Sinyangwe" class="img-responsive center-block"></p>
+                <h2 class="classic"itemprop="name">Samuel Sinyangwe</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/samswey" rel="noopener" target="_blank" title="Samuel Sinyangwe's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/campaignzero" rel="noopener" target="_blank" title="Samuel Sinyangwe's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" rel="noopener" target="_blank" title="Samuel Sinyangwe's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/samswey" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/campaignzero" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" itemprop="url" rel="noopener" target="_blank" title="Samuel Sinyangwe's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
-                <h6>Policy Analyst &nbsp;|&nbsp; Advisor</h6>
+                <h6 itemprop="jobTitle">Policy Analyst &nbsp;|&nbsp; Advisor</h6>
             </div>
         </div>
     </div>

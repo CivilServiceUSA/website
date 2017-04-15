@@ -1,6 +1,3 @@
-"use strict";
-
-// The following `version` is generated dynamically. do not change
 var dataCacheName = 'data-cache-name-1492243445988';
 var cacheName = 'cache-name-1492243445988';
 
