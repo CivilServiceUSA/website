@@ -15,9 +15,20 @@
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-md-12">
-                    <h6 class="breadcrumb">
-                        <a href="/">Home</a> / US Senate
-                    </h6>
+                    <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                                <span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate">
+                                <span itemprop="name">U.S. Senate</span>
+                            </a>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                    </ol>
                 </div>
             </div>
         </div>

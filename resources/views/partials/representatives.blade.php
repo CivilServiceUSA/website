@@ -1,5 +1,9 @@
 <div class="component-person-card wow fadeIn {{ $classes }} <?php if ($key === 0 || $key % 5 === 0) { echo $offset; } ?>">
-    <h5 class="no-pad person-name">{{ $representative->name }}</h5>
+    <h5 class="no-pad person-name">
+        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
+            {{ $representative->name }}
+        </a>
+    </h5>
     <h6 class="person-title">{{ titleCase($representative->title) }}</h6>
     <p>
         <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="person-image" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
@@ -24,7 +28,12 @@
     <h5 class="person-district">At-Large</h5>
     <?php endif; ?>
 
-    <p class="person-bio">{{ truncateText($representative->biography, 100) }}</p>
+    <p class="person-bio">
+        {{ truncateText($representative->biography, 90) }}<br><br>
+        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="btn btn-gray btn-xs" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
+            Read More
+        </a>
+    </p>
 
     <!-- Structured Metadata -->
     <script type="application/ld+json">

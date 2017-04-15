@@ -11,13 +11,30 @@
         </div>
     </header>
 
-    <div class="section section-breadcrumb">
+    <div class="section section-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-md-12">
-                    <h6 class="breadcrumb">
-                        <a href="/">Home</a> / <a href="/us-house">U.S. House</a> / {{ titleCase($filter)  }}
-                    </h6>
+                    <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                                <span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house">
+                                <span itemprop="name">U.S. House</span>
+                            </a>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $filter }}">
+                                <span itemprop="name">{{ titleCase($filter) }}</span>
+                            </a>
+                            <meta itemprop="position" content="3" />
+                        </li>
+                    </ol>
                 </div>
             </div>
         </div>

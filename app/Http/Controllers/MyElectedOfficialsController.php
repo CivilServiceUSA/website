@@ -42,6 +42,10 @@ class MyElectedOfficialsController extends Controller
                 ->with('representatives', $geolocation->house)
                 ->with('senators', $geolocation->senate)
                 ->with('state', $geolocation->state)
+                ->with('breadcrumb', (object) array(
+                    'name' => $zipcode,
+                    'url' => 'zipcode/' . $zipcode
+                ))
                 ->with('subtitle', $geolocation->state);
 
         } else if(!is_object($geolocation)) {
@@ -67,6 +71,10 @@ class MyElectedOfficialsController extends Controller
             return view('my-elected-officials.results')
                 ->with('representatives', $geolocation->house)
                 ->with('senators', $geolocation->senate)
+                ->with('breadcrumb', (object) array(
+                    'name' => 'Results',
+                    'url' => 'geolocation/' . $latitude . '/' . $longitude
+                ))
                 ->with('state', $geolocation->state);
 
         } else if(!is_object($geolocation)) {

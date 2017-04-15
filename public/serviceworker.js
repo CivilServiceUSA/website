@@ -1,6 +1,7 @@
 "use strict";
 
-var version = 'v1.0.0::';
+// The following `version` is generated dynamically. do not change
+var version = 'v_1492230442186::';
 
 var urlsToCache = [
   '/',

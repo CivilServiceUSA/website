@@ -10,13 +10,30 @@
     </div>
 </header>
 
-<div class="section section-breadcrumb">
+<div class="section section-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
     <div class="container wow fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <h6 class="breadcrumb">
-                    <a href="/">Home</a> / <a href="/state">State</a> / {{ $state->state_name }}
-                </h6>
+                <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state">
+                            <span itemprop="name">State</span>
+                        </a>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}">
+                            <span itemprop="name">{{ $state->state_name }}</span>
+                        </a>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

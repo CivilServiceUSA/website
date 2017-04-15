@@ -38,6 +38,7 @@
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-right">
                 <ul class="list-inline">
+                    <li><a href="https://slack.civil.services/bkx7n2" title="Join us on Slack"><i class="fa fa-slack fa-fw fa-2x"></i></a></li>
                     <li><a href="https://github.com/CivilServiceUSA" title="View our Open Source Projects"><i class="fa fa-github fa-fw fa-2x"></i></a></li>
                     <li><a href="https://twitter.com/CivilServiceUSA" title="Visit our Twitter Account"><i class="fa fa-twitter fa-fw fa-2x"></i></a></li>
                     <li><a href="https://www.facebook.com/CivilServiceUSA/" title="Visit our Facebook Account"><i class="fa fa-facebook fa-fw fa-2x"></i></a></li>

@@ -15,9 +15,26 @@
     <div class="container wow fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <h6 class="breadcrumb">
-                    <a href="/">Home</a> / <a href="/my-elected-officials">My Elected Officials</a> / Results
-                </h6>
+                <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials">
+                            <span itemprop="name">My Elected Officials</span>
+                        </a>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials/{{ $breadcrumb->url }}">
+                            <span itemprop="name">{{ $breadcrumb->name }}</span>
+                        </a>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                </ol>
             </div>
         </div>
     </div>

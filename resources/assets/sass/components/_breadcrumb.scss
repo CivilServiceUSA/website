@@ -1,0 +1,35 @@
+.component-breadcrumb {
+  margin: 0;
+  padding: 0;
+
+  &.breadcrumb {
+    margin: 0;
+    padding: 0;
+  }
+
+  &.breadcrumb>li+li:before {
+    padding: 0;
+    color: #AAA;
+    content: "/\00a0";
+  }
+
+  li {
+
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    font-size: 12px;
+
+    a {
+      text-transform: uppercase;
+      color: #444;
+      font-weight: 500;
+    }
+
+    &:last-child {
+      a {
+        color: #666;
+        cursor: default;
+      }
+    }
+  }
+}
