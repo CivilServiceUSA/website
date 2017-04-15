@@ -16,6 +16,8 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
       return cache.addAll(filesToCache);
+    }).catch(function(error){
+      console.error('Server Worker Install Error', error);
     })
   );
 });
@@ -28,6 +30,8 @@ self.addEventListener('activate', function(e) {
           return caches.delete(key);
         }
       }));
+    }).catch(function(error){
+      console.error('Server Worker Active Error', error);
     })
   );
 
@@ -66,6 +70,8 @@ self.addEventListener('fetch', function(event) {
           headers: new Headers({ 'Content-Type': 'text/html' })
         });
       }
+    }).catch(function(error){
+      console.error('Server Worker Fetch Error', error);
     })
   );
 });
