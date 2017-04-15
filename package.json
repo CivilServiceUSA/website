@@ -8,9 +8,8 @@
     "test-unit": "./vendor/bin/phpunit",
     "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
     "test": "yarn run test-lint && yarn run test-unit",
-    "update-service-worker": "node ./scripts/update-service-worker.js",
     "clean": "rm -f ./public/css/style.css && rm -f ./public/js/app.*.js",
-    "dev": "yarn run clean && yarn run update-service-worker && node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -49,9 +48,6 @@
     "test": {
       "Desciption": "Runs `yarn run test-lint` and `yarn run test-unit`"
     },
-    "update-service-worker": {
-      "Desciption": "Update Version Info in Service Worker File"
-    },
     "clean": {
       "Desciption": "Remove Generated JS & CSS Files"
     },
@@ -71,7 +67,5 @@
       "Desciption": "Generates List of Scripts you can run"
     }
   },
-  "dependencies": {
-    "replace-in-file": "^2.5.0"
-  }
+  "dependencies": {}
 }
