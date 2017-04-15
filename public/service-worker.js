@@ -3,10 +3,9 @@ var cacheName = 'cache-name-1492244691806';
 
 var filesToCache = [
   '/',
-  '/index.php',
   '/css/plugins.css',
   '/css/style.css',
-  'favicon.ico',
+  '/favicon.ico',
   '/js/app.js',
   '/js/plugins.js'
 ];
