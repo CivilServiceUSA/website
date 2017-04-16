@@ -10,12 +10,23 @@ class StateController extends Controller
 {
     public function index()
     {
+        // Setup Meta Tags
+        MetaTag::set('title', 'Civil Services - Privacy Policy');
+        MetaTag::set('description', 'Select a State to access Government & Demographic data. We also provide a Phone Number, Mailing Address, Official Website,');
+        MetaTag::set('image', asset('img/header/statue-of-liberty.jpg'));
+
         return view('state.index');
     }
 
     public function getState($stateSlug)
     {
         $state = (new State)->findBySlug($stateSlug);
+
+        // Setup Meta Tags
+        MetaTag::set('title', $state->state_name . ' Government Data & Social Media');
+        MetaTag::set('description', $state->state_name . ' Government Data & Social Media');
+        MetaTag::set('image', $state->skyline->size_1280x720);
+        MetaTag::set('keywords', 'Cities, Zip Code, ' . $state->state_name);
 
         return view('state.show')
             ->with('state', $state);
