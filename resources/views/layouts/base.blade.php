@@ -31,6 +31,171 @@
     {!! MetaTag::twitterCard() !!}
     <!-- Open Graph Metadata -->
     {!! MetaTag::openGraph() !!}
+    <!-- Structured Metadata -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "{{ Request::fullUrl() }}",
+        "name": "{{ MetaTag::get('title') }}",
+        "keywords": "{{ MetaTag::get('keywords') }}",
+        "thumbnailUrl": "{{ MetaTag::get('image') }}",
+        "author": {
+            "@type": "Person",
+            "name": "Civil Services"
+        },
+        "description": "{{ MetaTag::get('description') }}",
+        "publisher": "Civil Services"
+    }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "Service",
+        "serviceType": "Public Service",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Civil Services",
+          "image": "https://civil.services/img/app-image.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "St. Petersburg",
+            "addressRegion": "FL",
+            "postOfficeBoxNumber": "Suite 420",
+            "postalCode": "33701",
+            "streetAddress": "200 2nd Avenue South"
+          },
+          "description": "Accountability in Action",
+          "name": "Civil Services",
+          "telephone": "(727) 314-5214",
+          "priceRange": "0",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "27.7691736",
+            "longitude": "-82.6379893"
+          },
+          "sameAs": [
+            "https://github.com/CivilServiceUSA",
+            "https://twitter.com/CivilServiceUSA",
+            "https://www.facebook.com/CivilServiceUSA/"
+          ]
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "US"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Civil Services",
+          "itemListElement": [
+            {
+              "@type": "OfferCatalog",
+              "name": "Federal Government",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Developer API"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Legislation Searches"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "District Zoning Maps"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Elected Official Contact Information"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "OfferCatalog",
+              "name": "State Government",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Developer API"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Legislation Searches"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "District Zoning Maps"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Elected Official Contact Information"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "OfferCatalog",
+              "name": "Local Government",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Developer API"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Legislation Searches"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "District Zoning Maps"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Elected Official Contact Information"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    </script>
+
     <!-- App Icons -->
     <link rel="shortcut icon" href="{{ asset('img/icons/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icons/favicon-retina-ipad.png') }}">
