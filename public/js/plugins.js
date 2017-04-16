@@ -890,3 +890,16 @@ var EasyAutocomplete=function(a){return a.Configuration=function(a){function b()
   }
 
 })(jQuery);
+
+(function(){
+  function e(e, t) {
+    var n = 'font-size: 14px;' + (e ? "font-weight: bold;" : "") + "color: " + t + ";";
+    return n
+  }
+  console.log("%c★ Want to Volunteer? %c> %cjoinUsOnSlack()", e(!0, "#1E72A1"), e(!0, "#666"), e(!0, "#e52025")),
+    window.joinUsOnSlack = function() {
+      return console.log("%cWe look forward to chatting with you! %cRedirecting ...", e(!1, "#1E72A1"), e(!1, "#666")),
+        setTimeout(function(){ window.location.href = 'https://slack.civil.services/bkx7n2' }, 5000),
+        ""
+    }
+})();
