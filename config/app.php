@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
 
         /**
          * Application Service Providers...
@@ -182,6 +183,8 @@ return [
          */
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         AltThree\Segment\SegmentServiceProvider::class,
+
+        CivilServices\Api\ApiServiceProvider::class,
     ],
 
     /*
@@ -231,7 +234,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'CivilServices' => CivilServices\Api\Facades\CivilServices::class,
+        'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
     ],
 
 ];

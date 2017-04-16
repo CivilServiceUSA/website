@@ -13,8 +13,10 @@ jQuery.easing.jswing=jQuery.easing.swing,jQuery.extend(jQuery.easing,{def:"easeO
 /*! device.js 0.2.0 */
 (function(){"use strict";var n,e,o,i,t,r,d,a,c,u;e=window.device,n={},window.device=n,i=window.document.documentElement,u=window.navigator.userAgent.toLowerCase(),n.ios=function(){return n.iphone()||n.ipod()||n.ipad()},n.iphone=function(){return t("iphone")},n.ipod=function(){return t("ipod")},n.ipad=function(){return t("ipad")},n.android=function(){return t("android")},n.androidPhone=function(){return n.android()&&t("mobile")},n.androidTablet=function(){return n.android()&&!t("mobile")},n.blackberry=function(){return t("blackberry")||t("bb10")||t("rim")},n.blackberryPhone=function(){return n.blackberry()&&!t("tablet")},n.blackberryTablet=function(){return n.blackberry()&&t("tablet")},n.windows=function(){return t("windows")},n.windowsPhone=function(){return n.windows()&&t("phone")},n.windowsTablet=function(){return n.windows()&&t("touch")&&!n.windowsPhone()},n.fxos=function(){return(t("(mobile;")||t("(tablet;"))&&t("; rv:")},n.fxosPhone=function(){return n.fxos()&&t("mobile")},n.fxosTablet=function(){return n.fxos()&&t("tablet")},n.meego=function(){return t("meego")},n.cordova=function(){return window.cordova&&"file:"===location.protocol},n.nodeWebkit=function(){return"object"==typeof window.process},n.mobile=function(){return n.androidPhone()||n.iphone()||n.ipod()||n.windowsPhone()||n.blackberryPhone()||n.fxosPhone()||n.meego()},n.tablet=function(){return n.ipad()||n.androidTablet()||n.blackberryTablet()||n.windowsTablet()||n.fxosTablet()},n.desktop=function(){return!n.tablet()&&!n.mobile()},n.portrait=function(){return window.innerHeight/window.innerWidth>1},n.landscape=function(){return window.innerHeight/window.innerWidth<1},n.noConflict=function(){return window.device=e,this},t=function(n){return-1!==u.indexOf(n)},d=function(n){var e;return e=new RegExp(n,"i"),i.className.match(e)},o=function(n){d(n)||(i.className+=" "+n)},c=function(n){d(n)&&(i.className=i.className.replace(" "+n,""))},n.ios()?n.ipad()?o("ios ipad tablet"):n.iphone()?o("ios iphone mobile"):n.ipod()&&o("ios ipod mobile"):o(n.android()?n.androidTablet()?"android tablet":"android mobile":n.blackberry()?n.blackberryTablet()?"blackberry tablet":"blackberry mobile":n.windows()?n.windowsTablet()?"windows tablet":n.windowsPhone()?"windows mobile":"desktop":n.fxos()?n.fxosTablet()?"fxos tablet":"fxos mobile":n.meego()?"meego mobile":n.nodeWebkit()?"node-webkit":"desktop"),n.cordova()&&o("cordova"),r=function(){n.landscape()?(c("portrait"),o("landscape")):(c("landscape"),o("portrait"))},a=window.hasOwnProperty("onorientationchange")?"orientationchange":"resize",window.addEventListener?window.addEventListener(a,r,!1):window.attachEvent?window.attachEvent(a,r):window[a]=r,r(),"function"==typeof define&&"object"==typeof define.amd&&define.amd?define(function(){return n}):"undefined"!=typeof module&&module.exports?module.exports=n:window.device=n}).call(this);
 
-/*! Contact Form Scripts */
-$(function(){"use strict";$("#contactForm input,#contactForm textarea").jqBootstrapValidation({preventSubmit:!0,submitError:function(a,t,e){},submitSuccess:function(a,t){t.preventDefault();var e=$("input#name").val(),i=$("input#email").val(),n=$("input#phone").val(),r=$("textarea#message").val(),o=e;o.indexOf(" ")>=0&&(o=e.split(" ").slice(0,-1).join(" ")),$.ajax({url:"././mail/contact_me.php",type:"POST",data:{name:e,phone:n,email:i,message:r},cache:!1,success:function(){$("#success").html("<div class='alert alert-success'>"),$("#success > .alert-success").html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>"),$("#success > .alert-success").append("<strong>Your message has been sent. </strong>"),$("#success > .alert-success").append("</div>"),$("#contactForm").trigger("reset")},error:function(){$("#success").html("<div class='alert alert-danger'>"),$("#success > .alert-danger").html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>"),$("#success > .alert-danger").append("<strong>Sorry "+o+", it seems that my mail server is not responding. Please try again later!"),$("#success > .alert-danger").append("</div>"),$("#contactForm").trigger("reset")}})},filter:function(){return $(this).is(":visible")}}),$('a[data-toggle="tab"]').click(function(a){a.preventDefault(),$(this).tab("show")})}),$("#name").focus(function(){$("#success").html("")}),function(a){function t(a){return new RegExp("^"+a+"$")}function e(a,t){for(var e=Array.prototype.slice.call(arguments).splice(2),i=a.split("."),n=i.pop(),r=0;r<i.length;r++)t=t[i[r]];return t[n].apply(this,e)}var i=[],n={options:{prependExistingHelpBlock:!1,sniffHtml:!0,preventSubmit:!0,submitError:!1,submitSuccess:!1,semanticallyStrict:!1,autoAdd:{helpBlocks:!0},filter:function(){return!0}},methods:{init:function(t){var e=a.extend(!0,{},n);e.options=a.extend(!0,e.options,t);var s=this,l=a.unique(s.map(function(){return a(this).parents("form")[0]}).toArray());return a(l).bind("submit",function(t){var i=a(this),n=0,r=i.find("input,textarea,select").not("[type=submit],[type=image]").filter(e.options.filter);r.trigger("submit.validation").trigger("validationLostFocus.validation"),r.each(function(t,e){var i=a(e),r=i.parents(".form-group").first();r.hasClass("warning")&&(r.removeClass("warning").addClass("error"),n++)}),r.trigger("validationLostFocus.validation"),n?(e.options.preventSubmit&&t.preventDefault(),i.addClass("error"),a.isFunction(e.options.submitError)&&e.options.submitError(i,t,r.jqBootstrapValidation("collectErrors",!0))):(i.removeClass("error"),a.isFunction(e.options.submitSuccess)&&e.options.submitSuccess(i,t))}),this.each(function(){var t=a(this),n=t.parents(".form-group").first(),s=n.find(".help-block").first(),l=t.parents("form").first(),d=[];if(!s.length&&e.options.autoAdd&&e.options.autoAdd.helpBlocks&&(s=a('<div class="help-block" />'),n.find(".controls").append(s),i.push(s[0])),e.options.sniffHtml){var c="";if(void 0!==t.attr("pattern")&&(c="Not in the expected format<!-- data-validation-pattern-message to override -->",t.data("validationPatternMessage")&&(c=t.data("validationPatternMessage")),t.data("validationPatternMessage",c),t.data("validationPatternRegex",t.attr("pattern"))),void 0!==t.attr("max")||void 0!==t.attr("aria-valuemax")){var u=void 0!==t.attr("max")?t.attr("max"):t.attr("aria-valuemax");c="Too high: Maximum of '"+u+"'<!-- data-validation-max-message to override -->",t.data("validationMaxMessage")&&(c=t.data("validationMaxMessage")),t.data("validationMaxMessage",c),t.data("validationMaxMax",u)}if(void 0!==t.attr("min")||void 0!==t.attr("aria-valuemin")){var m=void 0!==t.attr("min")?t.attr("min"):t.attr("aria-valuemin");c="Too low: Minimum of '"+m+"'<!-- data-validation-min-message to override -->",t.data("validationMinMessage")&&(c=t.data("validationMinMessage")),t.data("validationMinMessage",c),t.data("validationMinMin",m)}void 0!==t.attr("maxlength")&&(c="Too long: Maximum of '"+t.attr("maxlength")+"' characters<!-- data-validation-maxlength-message to override -->",t.data("validationMaxlengthMessage")&&(c=t.data("validationMaxlengthMessage")),t.data("validationMaxlengthMessage",c),t.data("validationMaxlengthMaxlength",t.attr("maxlength"))),void 0!==t.attr("minlength")&&(c="Too short: Minimum of '"+t.attr("minlength")+"' characters<!-- data-validation-minlength-message to override -->",t.data("validationMinlengthMessage")&&(c=t.data("validationMinlengthMessage")),t.data("validationMinlengthMessage",c),t.data("validationMinlengthMinlength",t.attr("minlength"))),(void 0!==t.attr("required")||void 0!==t.attr("aria-required"))&&(c=e.builtInValidators.required.message,t.data("validationRequiredMessage")&&(c=t.data("validationRequiredMessage")),t.data("validationRequiredMessage",c)),void 0!==t.attr("type")&&"number"===t.attr("type").toLowerCase()&&(c=e.builtInValidators.number.message,t.data("validationNumberMessage")&&(c=t.data("validationNumberMessage")),t.data("validationNumberMessage",c)),void 0!==t.attr("type")&&"email"===t.attr("type").toLowerCase()&&(c="Not a valid email address<!-- data-validator-validemail-message to override -->",t.data("validationValidemailMessage")?c=t.data("validationValidemailMessage"):t.data("validationEmailMessage")&&(c=t.data("validationEmailMessage")),t.data("validationValidemailMessage",c)),void 0!==t.attr("minchecked")&&(c="Not enough options checked; Minimum of '"+t.attr("minchecked")+"' required<!-- data-validation-minchecked-message to override -->",t.data("validationMincheckedMessage")&&(c=t.data("validationMincheckedMessage")),t.data("validationMincheckedMessage",c),t.data("validationMincheckedMinchecked",t.attr("minchecked"))),void 0!==t.attr("maxchecked")&&(c="Too many options checked; Maximum of '"+t.attr("maxchecked")+"' required<!-- data-validation-maxchecked-message to override -->",t.data("validationMaxcheckedMessage")&&(c=t.data("validationMaxcheckedMessage")),t.data("validationMaxcheckedMessage",c),t.data("validationMaxcheckedMaxchecked",t.attr("maxchecked")))}void 0!==t.data("validation")&&(d=t.data("validation").split(",")),a.each(t.data(),function(a,t){var e=a.replace(/([A-Z])/g,",$1").split(",");"validation"===e[0]&&e[1]&&d.push(e[1])});var g=d,v=[];do a.each(d,function(a,t){d[a]=r(t)}),d=a.unique(d),v=[],a.each(g,function(i,n){if(void 0!==t.data("validation"+n+"Shortcut"))a.each(t.data("validation"+n+"Shortcut").split(","),function(a,t){v.push(t)});else if(e.builtInValidators[n.toLowerCase()]){var o=e.builtInValidators[n.toLowerCase()];"shortcut"===o.type.toLowerCase()&&a.each(o.shortcut.split(","),function(a,t){t=r(t),v.push(t),d.push(t)})}}),g=v;while(g.length>0);var h={};a.each(d,function(i,n){var o=t.data("validation"+n+"Message"),s=void 0!==o,l=!1;if(o=o?o:"'"+n+"' validation failed <!-- Add attribute 'data-validation-"+n.toLowerCase()+"-message' to input to change this message -->",a.each(e.validatorTypes,function(e,i){void 0===h[e]&&(h[e]=[]),l||void 0===t.data("validation"+n+r(i.name))||(h[e].push(a.extend(!0,{name:r(i.name),message:o},i.init(t,n))),l=!0)}),!l&&e.builtInValidators[n.toLowerCase()]){var d=a.extend(!0,{},e.builtInValidators[n.toLowerCase()]);s&&(d.message=o);var c=d.type.toLowerCase();"shortcut"===c?l=!0:a.each(e.validatorTypes,function(e,i){void 0===h[e]&&(h[e]=[]),l||c!==e.toLowerCase()||(t.data("validation"+n+r(i.name),d[i.name.toLowerCase()]),h[c].push(a.extend(d,i.init(t,n))),l=!0)})}l||a.error("Cannot find validation info for '"+n+"'")}),s.data("original-contents",s.data("original-contents")?s.data("original-contents"):s.html()),s.data("original-role",s.data("original-role")?s.data("original-role"):s.attr("role")),n.data("original-classes",n.data("original-clases")?n.data("original-classes"):n.attr("class")),t.data("original-aria-invalid",t.data("original-aria-invalid")?t.data("original-aria-invalid"):t.attr("aria-invalid")),t.bind("validation.validation",function(i,n){var r=o(t),s=[];return a.each(h,function(i,o){(r||r.length||n&&n.includeEmpty||e.validatorTypes[i].blockSubmit&&n&&n.submitting)&&a.each(o,function(a,n){e.validatorTypes[i].validate(t,r,n)&&s.push(n.message)})}),s}),t.bind("getValidators.validation",function(){return h}),t.bind("submit.validation",function(){return t.triggerHandler("change.validation",{submitting:!0})}),t.bind(["keyup","focus","blur","click","keydown","keypress","change"].join(".validation ")+".validation",function(i,r){var d=o(t),c=[];n.find("input,textarea,select").each(function(e,i){var n=c.length;if(a.each(a(i).triggerHandler("validation.validation",r),function(a,t){c.push(t)}),c.length>n)a(i).attr("aria-invalid","true");else{var o=t.data("original-aria-invalid");a(i).attr("aria-invalid",void 0!==o?o:!1)}}),l.find("input,select,textarea").not(t).not('[name="'+t.attr("name")+'"]').trigger("validationLostFocus.validation"),c=a.unique(c.sort()),c.length?(n.removeClass("success error").addClass("warning"),e.options.semanticallyStrict&&1===c.length?s.html(c[0]+(e.options.prependExistingHelpBlock?s.data("original-contents"):"")):s.html('<ul role="alert"><li>'+c.join("</li><li>")+"</li></ul>"+(e.options.prependExistingHelpBlock?s.data("original-contents"):""))):(n.removeClass("warning error success"),d.length>0&&n.addClass("success"),s.html(s.data("original-contents"))),"blur"===i.type&&n.removeClass("success")}),t.bind("validationLostFocus.validation",function(){n.removeClass("success")})})},destroy:function(){return this.each(function(){var t=a(this),e=t.parents(".form-group").first(),n=e.find(".help-block").first();t.unbind(".validation"),n.html(n.data("original-contents")),e.attr("class",e.data("original-classes")),t.attr("aria-invalid",t.data("original-aria-invalid")),n.attr("role",t.data("original-role")),i.indexOf(n[0])>-1&&n.remove()})},collectErrors:function(t){var e={};return this.each(function(t,i){var n=a(i),r=n.attr("name"),o=n.triggerHandler("validation.validation",{includeEmpty:!0});e[r]=a.extend(!0,o,e[r])}),a.each(e,function(a,t){0===t.length&&delete e[a]}),e},hasErrors:function(){var t=[];return this.each(function(e,i){t=t.concat(a(i).triggerHandler("getValidators.validation")?a(i).triggerHandler("validation.validation",{submitting:!0}):[])}),t.length>0},override:function(t){n=a.extend(!0,n,t)}},validatorTypes:{callback:{name:"callback",init:function(a,t){return{validatorName:t,callback:a.data("validation"+t+"Callback"),lastValue:a.val(),lastValid:!0,lastFinished:!0}},validate:function(a,t,i){if(i.lastValue===t&&i.lastFinished)return!i.lastValid;if(i.lastFinished===!0){i.lastValue=t,i.lastValid=!0,i.lastFinished=!1;var n=i,r=a;e(i.callback,window,a,t,function(a){n.lastValue===a.value&&(n.lastValid=a.valid,a.message&&(n.message=a.message),n.lastFinished=!0,r.data("validation"+n.validatorName+"Message",n.message),setTimeout(function(){r.trigger("change.validation")},1))})}return!1}},ajax:{name:"ajax",init:function(a,t){return{validatorName:t,url:a.data("validation"+t+"Ajax"),lastValue:a.val(),lastValid:!0,lastFinished:!0}},validate:function(t,e,i){return""+i.lastValue==""+e&&i.lastFinished===!0?i.lastValid===!1:(i.lastFinished===!0&&(i.lastValue=e,i.lastValid=!0,i.lastFinished=!1,a.ajax({url:i.url,data:"value="+e+"&field="+t.attr("name"),dataType:"json",success:function(a){""+i.lastValue==""+a.value&&(i.lastValid=!!a.valid,a.message&&(i.message=a.message),i.lastFinished=!0,t.data("validation"+i.validatorName+"Message",i.message),setTimeout(function(){t.trigger("change.validation")},1))},failure:function(){i.lastValid=!0,i.message="ajax call failed",i.lastFinished=!0,t.data("validation"+i.validatorName+"Message",i.message),setTimeout(function(){t.trigger("change.validation")},1)}})),!1)}},regex:{name:"regex",init:function(a,e){return{regex:t(a.data("validation"+e+"Regex"))}},validate:function(a,t,e){return!e.regex.test(t)&&!e.negative||e.regex.test(t)&&e.negative}},required:{name:"required",init:function(a,t){return{}},validate:function(a,t,e){return!(0!==t.length||e.negative)||!!(t.length>0&&e.negative)},blockSubmit:!0},match:{name:"match",init:function(a,t){var e=a.parents("form").first().find('[name="'+a.data("validation"+t+"Match")+'"]').first();return e.bind("validation.validation",function(){a.trigger("change.validation",{submitting:!0})}),{element:e}},validate:function(a,t,e){return t!==e.element.val()&&!e.negative||t===e.element.val()&&e.negative},blockSubmit:!0},max:{name:"max",init:function(a,t){return{max:a.data("validation"+t+"Max")}},validate:function(a,t,e){return parseFloat(t,10)>parseFloat(e.max,10)&&!e.negative||parseFloat(t,10)<=parseFloat(e.max,10)&&e.negative}},min:{name:"min",init:function(a,t){return{min:a.data("validation"+t+"Min")}},validate:function(a,t,e){return parseFloat(t)<parseFloat(e.min)&&!e.negative||parseFloat(t)>=parseFloat(e.min)&&e.negative}},maxlength:{name:"maxlength",init:function(a,t){return{maxlength:a.data("validation"+t+"Maxlength")}},validate:function(a,t,e){return t.length>e.maxlength&&!e.negative||t.length<=e.maxlength&&e.negative}},minlength:{name:"minlength",init:function(a,t){return{minlength:a.data("validation"+t+"Minlength")}},validate:function(a,t,e){return t.length<e.minlength&&!e.negative||t.length>=e.minlength&&e.negative}},maxchecked:{name:"maxchecked",init:function(a,t){var e=a.parents("form").first().find('[name="'+a.attr("name")+'"]');return e.bind("click.validation",function(){a.trigger("change.validation",{includeEmpty:!0})}),{maxchecked:a.data("validation"+t+"Maxchecked"),elements:e}},validate:function(a,t,e){return e.elements.filter(":checked").length>e.maxchecked&&!e.negative||e.elements.filter(":checked").length<=e.maxchecked&&e.negative},blockSubmit:!0},minchecked:{name:"minchecked",init:function(a,t){var e=a.parents("form").first().find('[name="'+a.attr("name")+'"]');return e.bind("click.validation",function(){a.trigger("change.validation",{includeEmpty:!0})}),{minchecked:a.data("validation"+t+"Minchecked"),elements:e}},validate:function(a,t,e){return e.elements.filter(":checked").length<e.minchecked&&!e.negative||e.elements.filter(":checked").length>=e.minchecked&&e.negative},blockSubmit:!0}},builtInValidators:{email:{name:"Email",type:"shortcut",shortcut:"validemail"},validemail:{name:"Validemail",type:"regex",regex:"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}",message:"Not a valid email address<!-- data-validator-validemail-message to override -->"},passwordagain:{name:"Passwordagain",type:"match",match:"password",message:"Does not match the given password<!-- data-validator-paswordagain-message to override -->"},positive:{name:"Positive",type:"shortcut",shortcut:"number,positivenumber"},negative:{name:"Negative",type:"shortcut",shortcut:"number,negativenumber"},number:{name:"Number",type:"regex",regex:"([+-]?\\d+(\\.\\d*)?([eE][+-]?[0-9]+)?)?",message:"Must be a number<!-- data-validator-number-message to override -->"},integer:{name:"Integer",type:"regex",regex:"[+-]?\\d+",message:"No decimal places allowed<!-- data-validator-integer-message to override -->"},positivenumber:{name:"Positivenumber",type:"min",min:0,message:"Must be a positive number<!-- data-validator-positivenumber-message to override -->"},negativenumber:{name:"Negativenumber",type:"max",max:0,message:"Must be a negative number<!-- data-validator-negativenumber-message to override -->"},required:{name:"Required",type:"required",message:"This is required<!-- data-validator-required-message to override -->"},checkone:{name:"Checkone",type:"minchecked",minchecked:1,message:"Check at least one option<!-- data-validation-checkone-message to override -->"}}},r=function(a){return a.toLowerCase().replace(/(^|\s)([a-z])/g,function(a,t,e){return t+e.toUpperCase()})},o=function(t){var e=t.val(),i=t.attr("type");return"checkbox"===i&&(e=t.is(":checked")?e:""),"radio"===i&&(e=a('input[name="'+t.attr("name")+'"]:checked').length>0?e:""),e};a.fn.jqBootstrapValidation=function(t){return n.methods[t]?n.methods[t].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof t&&t?(a.error("Method "+t+" does not exist on jQuery.jqBootstrapValidation"),null):n.methods.init.apply(this,arguments)},a.jqBootstrapValidation=function(t){a(":input").not("[type=image],[type=submit]").jqBootstrapValidation.apply(this,arguments)}}(jQuery),$(function(){$("body").on("input propertychange",".floating-label-form-group",function(a){$(this).toggleClass("floating-label-form-group-with-value",!!$(a.target).val())}).on("focus",".floating-label-form-group",function(){$(this).addClass("floating-label-form-group-with-focus")}).on("blur",".floating-label-form-group",function(){$(this).removeClass("floating-label-form-group-with-focus")})});
+/*! jqBootstrapValidation - v1.3.7 - 2013-05-07
+ * http://reactiveraven.github.com/jqBootstrapValidation
+ * Copyright (c) 2013 David Godfrey; Licensed MIT */
+(function(e){function s(e){return new RegExp("^"+e+"$")}function o(e,t){var n=Array.prototype.slice.call(arguments,2),r=e.split("."),i=r.pop();for(var s=0;s<r.length;s++)t=t[r[s]];return t[i].apply(t,n)}var t=[],n={options:{prependExistingHelpBlock:!1,sniffHtml:!0,preventSubmit:!0,submitError:!1,submitSuccess:!1,semanticallyStrict:!1,bindEvents:[],autoAdd:{helpBlocks:!0},filter:function(){return!0}},methods:{init:function(s){var o=e.extend(!0,{},n);o.options=e.extend(!0,o.options,s);var u=this,a=e.unique(u.map(function(){return e(this).parents("form")[0]}).toArray());return e(a).bind("submit.validationSubmit",function(t){var n=e(this),r=0,i=n.find("input,textarea,select").not("[type=submit],[type=image]").filter(o.options.filter),s=n.find(".control-group"),u=i.filter(function(){return e(this).triggerHandler("getValidatorCount.validation")>0});u.trigger("submit.validation"),i.trigger("validationLostFocus.validation"),s.each(function(t,n){var i=e(n);if(i.hasClass("warning")||i.hasClass("error"))i.removeClass("warning").addClass("error"),r++}),r?(o.options.preventSubmit&&(t.preventDefault(),t.stopImmediatePropagation()),n.addClass("error"),e.isFunction(o.options.submitError)&&o.options.submitError(n,t,u.jqBootstrapValidation("collectErrors",!0))):(n.removeClass("error"),e.isFunction(o.options.submitSuccess)&&o.options.submitSuccess(n,t))}),this.each(function(){var n=e(this),s=n.parents(".control-group").first(),u=s.find(".help-block").first(),a=n.parents("form").first(),f=[];!u.length&&o.options.autoAdd&&o.options.autoAdd.helpBlocks&&(u=e('<div class="help-block" />'),s.find(".controls").append(u),t.push(u[0]));if(o.options.sniffHtml){var l;n.data("validationPatternPattern")&&n.attr("pattern",n.data("validationPatternPattern")),n.attr("pattern")!==undefined&&(l="Not in the expected format<!-- data-validation-pattern-message to override -->",n.data("validationPatternMessage")&&(l=n.data("validationPatternMessage")),n.data("validationPatternMessage",l),n.data("validationPatternRegex",n.attr("pattern")));if(n.attr("max")!==undefined||n.attr("aria-valuemax")!==undefined){var c=n.attr("max")!==undefined?n.attr("max"):n.attr("aria-valuemax");l="Too high: Maximum of '"+c+"'<!-- data-validation-max-message to override -->",n.data("validationMaxMessage")&&(l=n.data("validationMaxMessage")),n.data("validationMaxMessage",l),n.data("validationMaxMax",c)}if(n.attr("min")!==undefined||n.attr("aria-valuemin")!==undefined){var h=n.attr("min")!==undefined?n.attr("min"):n.attr("aria-valuemin");l="Too low: Minimum of '"+h+"'<!-- data-validation-min-message to override -->",n.data("validationMinMessage")&&(l=n.data("validationMinMessage")),n.data("validationMinMessage",l),n.data("validationMinMin",h)}n.attr("maxlength")!==undefined&&(l="Too long: Maximum of '"+n.attr("maxlength")+"' characters<!-- data-validation-maxlength-message to override -->",n.data("validationMaxlengthMessage")&&(l=n.data("validationMaxlengthMessage")),n.data("validationMaxlengthMessage",l),n.data("validationMaxlengthMaxlength",n.attr("maxlength"))),n.attr("minlength")!==undefined&&(l="Too short: Minimum of '"+n.attr("minlength")+"' characters<!-- data-validation-minlength-message to override -->",n.data("validationMinlengthMessage")&&(l=n.data("validationMinlengthMessage")),n.data("validationMinlengthMessage",l),n.data("validationMinlengthMinlength",n.attr("minlength")));if(n.attr("required")!==undefined||n.attr("aria-required")!==undefined)l=o.builtInValidators.required.message,n.data("validationRequiredMessage")&&(l=n.data("validationRequiredMessage")),n.data("validationRequiredMessage",l);if(n.attr("type")!==undefined&&n.attr("type").toLowerCase()==="number"){l=o.validatorTypes.number.message,n.data("validationNumberMessage")&&(l=n.data("validationNumberMessage")),n.data("validationNumberMessage",l);var p=o.validatorTypes.number.step;n.data("validationNumberStep")&&(p=n.data("validationNumberStep")),n.data("validationNumberStep",p);var d=o.validatorTypes.number.decimal;n.data("validationNumberDecimal")&&(d=n.data("validationNumberDecimal")),n.data("validationNumberDecimal",d)}n.attr("type")!==undefined&&n.attr("type").toLowerCase()==="email"&&(l="Not a valid email address<!-- data-validation-email-message to override -->",n.data("validationEmailMessage")&&(l=n.data("validationEmailMessage")),n.data("validationEmailMessage",l)),n.attr("minchecked")!==undefined&&(l="Not enough options checked; Minimum of '"+n.attr("minchecked")+"' required<!-- data-validation-minchecked-message to override -->",n.data("validationMincheckedMessage")&&(l=n.data("validationMincheckedMessage")),n.data("validationMincheckedMessage",l),n.data("validationMincheckedMinchecked",n.attr("minchecked"))),n.attr("maxchecked")!==undefined&&(l="Too many options checked; Maximum of '"+n.attr("maxchecked")+"' required<!-- data-validation-maxchecked-message to override -->",n.data("validationMaxcheckedMessage")&&(l=n.data("validationMaxcheckedMessage")),n.data("validationMaxcheckedMessage",l),n.data("validationMaxcheckedMaxchecked",n.attr("maxchecked")))}n.data("validation")!==undefined&&(f=n.data("validation").split(",")),e.each(n.data(),function(e,t){var n=e.replace(/([A-Z])/g,",$1").split(",");n[0]==="validation"&&n[1]&&f.push(n[1])});var v=f,m=[],g=function(e,t){f[e]=r(t)},y=function(t,i){if(n.data("validation"+i+"Shortcut")!==undefined)e.each(n.data("validation"+i+"Shortcut").split(","),function(e,t){m.push(t)});else if(o.builtInValidators[i.toLowerCase()]){var s=o.builtInValidators[i.toLowerCase()];s.type.toLowerCase()==="shortcut"&&e.each(s.shortcut.split(","),function(e,t){t=r(t),m.push(t),f.push(t)})}};do e.each(f,g),f=e.unique(f),m=[],e.each(v,y),v=m;while(v.length>0);var b={};e.each(f,function(t,i){var s=n.data("validation"+i+"Message"),u=!!s,a=!1;s||(s="'"+i+"' validation failed <!-- Add attribute 'data-validation-"+i.toLowerCase()+"-message' to input to change this message -->"),e.each(o.validatorTypes,function(t,o){b[t]===undefined&&(b[t]=[]);if(!a&&n.data("validation"+i+r(o.name))!==undefined){var f=o.init(n,i);u&&(f.message=s),b[t].push(e.extend(!0,{name:r(o.name),message:s},f)),a=!0}});if(!a&&o.builtInValidators[i.toLowerCase()]){var f=e.extend(!0,{},o.builtInValidators[i.toLowerCase()]);u&&(f.message=s);var l=f.type.toLowerCase();l==="shortcut"?a=!0:e.each(o.validatorTypes,function(t,s){b[t]===undefined&&(b[t]=[]),!a&&l===t.toLowerCase()&&(n.data("validation"+i+r(s.name),f[s.name.toLowerCase()]),b[l].push(e.extend(f,s.init(n,i))),a=!0)})}a||e.error("Cannot find validation info for '"+i+"'")}),u.data("original-contents",u.data("original-contents")?u.data("original-contents"):u.html()),u.data("original-role",u.data("original-role")?u.data("original-role"):u.attr("role")),s.data("original-classes",s.data("original-clases")?s.data("original-classes"):s.attr("class")),n.data("original-aria-invalid",n.data("original-aria-invalid")?n.data("original-aria-invalid"):n.attr("aria-invalid")),n.bind("validation.validation",function(t,r){var s=i(n),u=[];return e.each(b,function(t,i){(s||s.length||r&&r.includeEmpty||!!o.validatorTypes[t].includeEmpty||!!o.validatorTypes[t].blockSubmit&&r&&!!r.submitting)&&e.each(i,function(e,r){o.validatorTypes[t].validate(n,s,r)&&u.push(r.message)})}),u}),n.bind("getValidators.validation",function(){return b});var w=0;e.each(b,function(e,t){w+=t.length}),n.bind("getValidatorCount.validation",function(){return w}),n.bind("submit.validation",function(){return n.triggerHandler("change.validation",{submitting:!0})}),n.bind((o.options.bindEvents.length>0?o.options.bindEvents:["keyup","focus","blur","click","keydown","keypress","change"]).concat(["revalidate"]).join(".validation ")+".validation",function(t,r){var f=i(n),l=[];r&&!!r.submitting?s.data("jqbvIsSubmitting",!0):t.type!=="revalidate"&&s.data("jqbvIsSubmitting",!1);var c=!!s.data("jqbvIsSubmitting");s.find("input,textarea,select").each(function(t,i){var s=l.length;e.each(e(i).triggerHandler("validation.validation",r),function(e,t){l.push(t)});if(l.length>s)e(i).attr("aria-invalid","true");else{var o=n.data("original-aria-invalid");e(i).attr("aria-invalid",o!==undefined?o:!1)}}),a.find("input,select,textarea").not(n).not('[name="'+n.attr("name")+'"]').trigger("validationLostFocus.validation"),l=e.unique(l.sort()),l.length?(s.removeClass("success error warning").addClass(c?"error":"warning"),o.options.semanticallyStrict&&l.length===1?u.html(l[0]+(o.options.prependExistingHelpBlock?u.data("original-contents"):"")):u.html('<ul role="alert"><li>'+l.join("</li><li>")+"</li></ul>"+(o.options.prependExistingHelpBlock?u.data("original-contents"):""))):(s.removeClass("warning error success"),f.length>0&&s.addClass("success"),u.html(u.data("original-contents"))),t.type==="blur"&&s.removeClass("success")}),n.bind("validationLostFocus.validation",function(){s.removeClass("success")})})},destroy:function(){return this.each(function(){var n=e(this),r=n.parents(".control-group").first(),i=r.find(".help-block").first(),s=n.parents("form").first();n.unbind(".validation"),s.unbind(".validationSubmit"),i.html(i.data("original-contents")),r.attr("class",r.data("original-classes")),n.attr("aria-invalid",n.data("original-aria-invalid")),i.attr("role",n.data("original-role")),e.inArray(i[0],t)>-1&&i.remove()})},collectErrors:function(t){var n={};return this.each(function(t,r){var i=e(r),s=i.attr("name"),o=i.triggerHandler("validation.validation",{includeEmpty:!0});n[s]=e.extend(!0,o,n[s])}),e.each(n,function(e,t){t.length===0&&delete n[e]}),n},hasErrors:function(){var t=[];return this.find("input,select,textarea").add(this).each(function(n,r){t=t.concat(e(r).triggerHandler("getValidators.validation")?e(r).triggerHandler("validation.validation",{submitting:!0}):[])}),t.length>0},override:function(t){n=e.extend(!0,n,t)}},validatorTypes:{callback:{name:"callback",init:function(e,t){var n={validatorName:t,callback:e.data("validation"+t+"Callback"),lastValue:e.val(),lastValid:!0,lastFinished:!0},r="Not valid";return e.data("validation"+t+"Message")&&(r=e.data("validation"+t+"Message")),n.message=r,n},validate:function(e,t,n){if(n.lastValue===t&&n.lastFinished)return!n.lastValid;if(n.lastFinished===!0){n.lastValue=t,n.lastValid=!0,n.lastFinished=!1;var r=n,i=e;o(n.callback,window,e,t,function(t){r.lastValue===t.value&&(r.lastValid=t.valid,t.message&&(r.message=t.message),r.lastFinished=!0,i.data("validation"+r.validatorName+"Message",r.message),setTimeout(function(){!e.is(":focus")&&e.parents("form").first().data("jqbvIsSubmitting")?i.trigger("blur.validation"):i.trigger("revalidate.validation")},1))})}return!1}},ajax:{name:"ajax",init:function(e,t){return{validatorName:t,url:e.data("validation"+t+"Ajax"),lastValue:e.val(),lastValid:!0,lastFinished:!0}},validate:function(t,n,r){return""+r.lastValue==""+n&&r.lastFinished===!0?r.lastValid===!1:(r.lastFinished===!0&&(r.lastValue=n,r.lastValid=!0,r.lastFinished=!1,e.ajax({url:r.url,data:"value="+encodeURIComponent(n)+"&field="+t.attr("name"),dataType:"json",success:function(e){""+r.lastValue==""+e.value&&(r.lastValid=!!e.valid,e.message&&(r.message=e.message),r.lastFinished=!0,t.data("validation"+r.validatorName+"Message",r.message),setTimeout(function(){t.trigger("revalidate.validation")},1))},failure:function(){r.lastValid=!0,r.message="ajax call failed",r.lastFinished=!0,t.data("validation"+r.validatorName+"Message",r.message),setTimeout(function(){t.trigger("revalidate.validation")},1)}})),!1)}},regex:{name:"regex",init:function(t,n){var r={},i=t.data("validation"+n+"Regex");r.regex=s(i),i===undefined&&e.error("Can't find regex for '"+n+"' validator on '"+t.attr("name")+"'");var o="Not in the expected format";return t.data("validation"+n+"Message")&&(o=t.data("validation"+n+"Message")),r.message=o,r.originalName=n,r},validate:function(e,t,n){return!n.regex.test(t)&&!n.negative||n.regex.test(t)&&n.negative}},email:{name:"email",init:function(e,t){var n={};n.regex=s("[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");var r="Not a valid email address";return e.data("validation"+t+"Message")&&(r=e.data("validation"+t+"Message")),n.message=r,n.originalName=t,n},validate:function(e,t,n){return!n.regex.test(t)&&!n.negative||n.regex.test(t)&&n.negative}},required:{name:"required",init:function(e,t){var n="This is required";return e.data("validation"+t+"Message")&&(n=e.data("validation"+t+"Message")),{message:n,includeEmpty:!0}},validate:function(e,t,n){return!!(t.length===0&&!n.negative||t.length>0&&n.negative)},blockSubmit:!0},match:{name:"match",init:function(t,n){var r=t.data("validation"+n+"Match"),i=t.parents("form").first(),s=i.find('[name="'+r+'"]').first();s.bind("validation.validation",function(){t.trigger("revalidate.validation",{submitting:!0})});var o={};o.element=s,s.length===0&&e.error("Can't find field '"+r+"' to match '"+t.attr("name")+"' against in '"+n+"' validator");var u="Must match",a=null;return(a=i.find('label[for="'+r+'"]')).length?u+=" '"+a.text()+"'":(a=s.parents(".control-group").first().find("label")).length&&(u+=" '"+a.first().text()+"'"),t.data("validation"+n+"Message")&&(u=t.data("validation"+n+"Message")),o.message=u,o},validate:function(e,t,n){return t!==n.element.val()&&!n.negative||t===n.element.val()&&n.negative},blockSubmit:!0,includeEmpty:!0},max:{name:"max",init:function(e,t){var n={};return n.max=e.data("validation"+t+"Max"),n.message="Too high: Maximum of '"+n.max+"'",e.data("validation"+t+"Message")&&(n.message=e.data("validation"+t+"Message")),n},validate:function(e,t,n){return parseFloat(t,10)>parseFloat(n.max,10)&&!n.negative||parseFloat(t,10)<=parseFloat(n.max,10)&&n.negative}},min:{name:"min",init:function(e,t){var n={};return n.min=e.data("validation"+t+"Min"),n.message="Too low: Minimum of '"+n.min+"'",e.data("validation"+t+"Message")&&(n.message=e.data("validation"+t+"Message")),n},validate:function(e,t,n){return parseFloat(t)<parseFloat(n.min)&&!n.negative||parseFloat(t)>=parseFloat(n.min)&&n.negative}},maxlength:{name:"maxlength",init:function(e,t){var n={};return n.maxlength=e.data("validation"+t+"Maxlength"),n.message="Too long: Maximum of '"+n.maxlength+"' characters",e.data("validation"+t+"Message")&&(n.message=e.data("validation"+t+"Message")),n},validate:function(e,t,n){return t.length>n.maxlength&&!n.negative||t.length<=n.maxlength&&n.negative}},minlength:{name:"minlength",init:function(e,t){var n={};return n.minlength=e.data("validation"+t+"Minlength"),n.message="Too short: Minimum of '"+n.minlength+"' characters",e.data("validation"+t+"Message")&&(n.message=e.data("validation"+t+"Message")),n},validate:function(e,t,n){return t.length<n.minlength&&!n.negative||t.length>=n.minlength&&n.negative}},maxchecked:{name:"maxchecked",init:function(e,t){var n={},r=e.parents("form").first().find('[name="'+e.attr("name")+'"]');r.bind("change.validation click.validation",function(){e.trigger("revalidate.validation",{includeEmpty:!0})}),n.elements=r,n.maxchecked=e.data("validation"+t+"Maxchecked");var i="Too many: Max '"+n.maxchecked+"' checked";return e.data("validation"+t+"Message")&&(i=e.data("validation"+t+"Message")),n.message=i,n},validate:function(e,t,n){return n.elements.filter(":checked").length>n.maxchecked&&!n.negative||n.elements.filter(":checked").length<=n.maxchecked&&n.negative},blockSubmit:!0},minchecked:{name:"minchecked",init:function(e,t){var n={},r=e.parents("form").first().find('[name="'+e.attr("name")+'"]');r.bind("change.validation click.validation",function(){e.trigger("revalidate.validation",{includeEmpty:!0})}),n.elements=r,n.minchecked=e.data("validation"+t+"Minchecked");var i="Too few: Min '"+n.minchecked+"' checked";return e.data("validation"+t+"Message")&&(i=e.data("validation"+t+"Message")),n.message=i,n},validate:function(e,t,n){return n.elements.filter(":checked").length<n.minchecked&&!n.negative||n.elements.filter(":checked").length>=n.minchecked&&n.negative},blockSubmit:!0,includeEmpty:!0},number:{name:"number",init:function(e,t){var n={};n.step=1,e.attr("step")&&(n.step=e.attr("step")),e.data("validation"+t+"Step")&&(n.step=e.data("validation"+t+"Step")),n.decimal=".",e.data("validation"+t+"Decimal")&&(n.decimal=e.data("validation"+t+"Decimal")),n.thousands="",e.data("validation"+t+"Thousands")&&(n.thousands=e.data("validation"+t+"Thousands")),n.regex=s("([+-]?\\d+(\\"+n.decimal+"\\d+)?)?"),n.message="Must be a number";var r=e.data("validation"+t+"Message");return r&&(n.message=r),n},validate:function(e,t,n){var r=t.replace(n.decimal,".").replace(n.thousands,""),i=parseFloat(r),s=parseFloat(n.step);while(s%1!==0)s=parseFloat(s.toPrecision(12))*10,i=parseFloat(i.toPrecision(12))*10;var o=n.regex.test(t),u=parseFloat(i)%parseFloat(s)===0,a=!isNaN(parseFloat(r))&&isFinite(r),f=!(o&&u&&a);return f},message:"Must be a number"}},builtInValidators:{email:{name:"Email",type:"email"},passwordagain:{name:"Passwordagain",type:"match",match:"password",message:"Does not match the given password<!-- data-validator-paswordagain-message to override -->"},positive:{name:"Positive",type:"shortcut",shortcut:"number,positivenumber"},negative:{name:"Negative",type:"shortcut",shortcut:"number,negativenumber"},integer:{name:"Integer",type:"regex",regex:"[+-]?\\d+",message:"No decimal places allowed<!-- data-validator-integer-message to override -->"},positivenumber:{name:"Positivenumber",type:"min",min:0,message:"Must be a positive number<!-- data-validator-positivenumber-message to override -->"},negativenumber:{name:"Negativenumber",type:"max",max:0,message:"Must be a negative number<!-- data-validator-negativenumber-message to override -->"},required:{name:"Required",type:"required",message:"This is required<!-- data-validator-required-message to override -->"},checkone:{name:"Checkone",type:"minchecked",minchecked:1,message:"Check at least one option<!-- data-validation-checkone-message to override -->"},number:{name:"Number",type:"number",decimal:".",step:"1"},pattern:{name:"Pattern",type:"regex",message:"Not in expected format"}}},r=function(e){return e.toLowerCase().replace(/(^|\s)([a-z])/g,function(e,t,n){return t+n.toUpperCase()})},i=function(t){var n=null,r=t.attr("type");if(r==="checkbox"){n=t.is(":checked")?n:"";var i=t.parents("form").first()||t.parents(".control-group").first();i&&(n=i.find("input[name='"+t.attr("name")+"']:checked").map(function(t,n){return e(n).val()}).toArray().join(","))}else if(r==="radio"){n=e('input[name="'+t.attr("name")+'"]:checked').length>0?t.val():"";var s=t.parents("form").first()||t.parents(".control-group").first();s&&(n=s.find("input[name='"+t.attr("name")+"']:checked").map(function(t,n){return e(n).val()}).toArray().join(","))}else n=t.val();return n};e.fn.jqBootstrapValidation=function(t){return n.methods[t]?n.methods[t].apply(this,Array.prototype.slice.call(arguments,1)):typeof t=="object"||!t?n.methods.init.apply(this,arguments):(e.error("Method "+t+" does not exist on jQuery.jqBootstrapValidation"),null)},e.jqBootstrapValidation=function(t){e(":input").not("[type=image],[type=submit]").jqBootstrapValidation.apply(this,arguments)}})(jQuery);
 
 /*! HTML5 Placeholder jQuery Plugin - v2.1.1 | Copyright (c)2015 Mathias Bynens */
 !function(e){"use strict";"function"==typeof define&&define.amd?define(["jquery-1.12.4.min"],e):e(jQuery)}(function(e){"use strict";function t(t){var a={},l=/^jQuery\d+$/;return e.each(t.attributes,function(e,t){t.specified&&!l.test(t.name)&&(a[t.name]=t.value)}),a}function a(t,a){var l=this,o=e(l);if(l.value==o.attr("placeholder")&&o.hasClass(p.customClass))if(o.data("placeholder-password")){if(o=o.hide().nextAll('input[type="password"]:first').show().attr("id",o.removeAttr("id").data("placeholder-id")),t===!0)return o[0].value=a;o.focus()}else l.value="",o.removeClass(p.customClass),l==r()&&l.select()}function l(){var l,r=this,o=e(r),s=this.id;if(""===r.value){if("password"===r.type){if(!o.data("placeholder-textinput")){try{l=o.clone().attr({type:"text"})}catch(n){l=e("<input>").attr(e.extend(t(this),{type:"text"}))}l.removeAttr("name").data({"placeholder-password":o,"placeholder-id":s}).bind("focus.placeholder",a),o.data({"placeholder-textinput":l,"placeholder-id":s}).before(l)}o=o.removeAttr("id").hide().prevAll('input[type="text"]:first').attr("id",s).show()}o.addClass(p.customClass),o[0].value=o.attr("placeholder")}else o.removeClass(p.customClass)}function r(){try{return document.activeElement}catch(e){}}var o,s,n="[object OperaMini]"==Object.prototype.toString.call(window.operamini),c="placeholder"in document.createElement("input")&&!n,i="placeholder"in document.createElement("textarea")&&!n,u=e.valHooks,d=e.propHooks;if(c&&i)s=e.fn.placeholder=function(){return this},s.input=s.textarea=!0;else{var p={};s=e.fn.placeholder=function(t){var r={customClass:"placeholder"};p=e.extend({},r,t);var o=this;return o.filter((c?"textarea":":input")+"[placeholder]").not("."+p.customClass).bind({"focus.placeholder":a,"blur.placeholder":l}).data("placeholder-enabled",!0).trigger("blur.placeholder"),o},s.input=c,s.textarea=i,o={get:function(t){var a=e(t),l=a.data("placeholder-password");return l?l[0].value:a.data("placeholder-enabled")&&a.hasClass(p.customClass)?"":t.value},set:function(t,o){var s=e(t),n=s.data("placeholder-password");return n?n[0].value=o:s.data("placeholder-enabled")?(""===o?(t.value=o,t!=r()&&l.call(t)):s.hasClass(p.customClass)?a.call(t,!0,o)||(t.value=o):t.value=o,s):t.value=o}},c||(u.input=o,d.value=o),i||(u.textarea=o,d.value=o),e(function(){e(document).delegate("form","submit.placeholder",function(){var t=e("."+p.customClass,this).each(a);setTimeout(function(){t.each(l)},10)})}),e(window).bind("beforeunload.placeholder",function(){e("."+p.customClass).each(function(){this.value=""})})}});
@@ -185,3 +187,719 @@ var shuffleme = (function ($) {
     init: init
   };
 }(jQuery));
+
+/*!
+ * Lightbox v2.9.0
+ * by Lokesh Dhakar
+ *
+ * More info:
+ * http://lokeshdhakar.com/projects/lightbox2/
+ *
+ * Copyright 2007, 2015 Lokesh Dhakar
+ * Released under the MIT license
+ * https://github.com/lokesh/lightbox2/blob/master/LICENSE
+ *
+ * @preserve
+ */
+
+// Uses Node, AMD or browser globals to create a module.
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory(require('jquery'));
+  } else {
+    // Browser globals (root is window)
+    root.lightbox = factory(root.jQuery);
+  }
+}(this, function ($) {
+
+  function Lightbox(options) {
+    this.album = [];
+    this.currentImageIndex = void 0;
+    this.init();
+
+    // options
+    this.options = $.extend({}, this.constructor.defaults);
+    this.option(options);
+  }
+
+  // Descriptions of all options available on the demo site:
+  // http://lokeshdhakar.com/projects/lightbox2/index.html#options
+  Lightbox.defaults = {
+    albumLabel: 'Image %1 of %2',
+    alwaysShowNavOnTouchDevices: false,
+    fadeDuration: 600,
+    fitImagesInViewport: true,
+    imageFadeDuration: 600,
+    // maxWidth: 800,
+    // maxHeight: 600,
+    positionFromTop: 50,
+    resizeDuration: 700,
+    showImageNumberLabel: true,
+    wrapAround: false,
+    disableScrolling: false,
+    /*
+     Sanitize Title
+     If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
+     This will free you to add html tags, such as links, in the caption.
+
+     If the caption data is user submitted or from some other untrusted source, then set this to true
+     to prevent xss and other injection attacks.
+     */
+    sanitizeTitle: false
+  };
+
+  Lightbox.prototype.option = function(options) {
+    $.extend(this.options, options);
+  };
+
+  Lightbox.prototype.imageCountLabel = function(currentImageNum, totalImages) {
+    return this.options.albumLabel.replace(/%1/g, currentImageNum).replace(/%2/g, totalImages);
+  };
+
+  Lightbox.prototype.init = function() {
+    var self = this;
+    // Both enable and build methods require the body tag to be in the DOM.
+    $(document).ready(function() {
+      self.enable();
+      self.build();
+    });
+  };
+
+  // Loop through anchors and areamaps looking for either data-lightbox attributes or rel attributes
+  // that contain 'lightbox'. When these are clicked, start lightbox.
+  Lightbox.prototype.enable = function() {
+    var self = this;
+    $('body').on('click', 'a[rel^=lightbox], area[rel^=lightbox], a[data-lightbox], area[data-lightbox]', function(event) {
+      self.start($(event.currentTarget));
+      return false;
+    });
+  };
+
+  // Build html for the lightbox and the overlay.
+  // Attach event handlers to the new DOM elements. click click click
+  Lightbox.prototype.build = function() {
+    var self = this;
+    $('<div id="lightboxOverlay" class="lightboxOverlay"></div><div id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /><div class="lb-nav"><a class="lb-prev" href="" ></a><a class="lb-next" href="" ></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>').appendTo($('body'));
+
+    // Cache jQuery objects
+    this.$lightbox       = $('#lightbox');
+    this.$overlay        = $('#lightboxOverlay');
+    this.$outerContainer = this.$lightbox.find('.lb-outerContainer');
+    this.$container      = this.$lightbox.find('.lb-container');
+    this.$image          = this.$lightbox.find('.lb-image');
+    this.$nav            = this.$lightbox.find('.lb-nav');
+
+    // Store css values for future lookup
+    this.containerPadding = {
+      top: parseInt(this.$container.css('padding-top'), 10),
+      right: parseInt(this.$container.css('padding-right'), 10),
+      bottom: parseInt(this.$container.css('padding-bottom'), 10),
+      left: parseInt(this.$container.css('padding-left'), 10)
+    };
+
+    this.imageBorderWidth = {
+      top: parseInt(this.$image.css('border-top-width'), 10),
+      right: parseInt(this.$image.css('border-right-width'), 10),
+      bottom: parseInt(this.$image.css('border-bottom-width'), 10),
+      left: parseInt(this.$image.css('border-left-width'), 10)
+    };
+
+    // Attach event handlers to the newly minted DOM elements
+    this.$overlay.hide().on('click', function() {
+      self.end();
+      return false;
+    });
+
+    this.$lightbox.hide().on('click', function(event) {
+      if ($(event.target).attr('id') === 'lightbox') {
+        self.end();
+      }
+      return false;
+    });
+
+    this.$outerContainer.on('click', function(event) {
+      if ($(event.target).attr('id') === 'lightbox') {
+        self.end();
+      }
+      return false;
+    });
+
+    this.$lightbox.find('.lb-prev').on('click', function() {
+      if (self.currentImageIndex === 0) {
+        self.changeImage(self.album.length - 1);
+      } else {
+        self.changeImage(self.currentImageIndex - 1);
+      }
+      return false;
+    });
+
+    this.$lightbox.find('.lb-next').on('click', function() {
+      if (self.currentImageIndex === self.album.length - 1) {
+        self.changeImage(0);
+      } else {
+        self.changeImage(self.currentImageIndex + 1);
+      }
+      return false;
+    });
+
+    /*
+     Show context menu for image on right-click
+
+     There is a div containing the navigation that spans the entire image and lives above of it. If
+     you right-click, you are right clicking this div and not the image. This prevents users from
+     saving the image or using other context menu actions with the image.
+
+     To fix this, when we detect the right mouse button is pressed down, but not yet clicked, we
+     set pointer-events to none on the nav div. This is so that the upcoming right-click event on
+     the next mouseup will bubble down to the image. Once the right-click/contextmenu event occurs
+     we set the pointer events back to auto for the nav div so it can capture hover and left-click
+     events as usual.
+     */
+    this.$nav.on('mousedown', function(event) {
+      if (event.which === 3) {
+        self.$nav.css('pointer-events', 'none');
+
+        self.$lightbox.one('contextmenu', function() {
+          setTimeout(function() {
+            this.$nav.css('pointer-events', 'auto');
+          }.bind(self), 0);
+        });
+      }
+    });
+
+
+    this.$lightbox.find('.lb-loader, .lb-close').on('click', function() {
+      self.end();
+      return false;
+    });
+  };
+
+  // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
+  Lightbox.prototype.start = function($link) {
+    var self    = this;
+    var $window = $(window);
+
+    $window.on('resize', $.proxy(this.sizeOverlay, this));
+
+    $('select, object, embed').css({
+      visibility: 'hidden'
+    });
+
+    this.sizeOverlay();
+
+    this.album = [];
+    var imageNumber = 0;
+
+    function addToAlbum($link) {
+      self.album.push({
+        link: $link.attr('href'),
+        title: $link.attr('data-title') || $link.attr('title')
+      });
+    }
+
+    // Support both data-lightbox attribute and rel attribute implementations
+    var dataLightboxValue = $link.attr('data-lightbox');
+    var $links;
+
+    if (dataLightboxValue) {
+      $links = $($link.prop('tagName') + '[data-lightbox="' + dataLightboxValue + '"]');
+      for (var i = 0; i < $links.length; i = ++i) {
+        addToAlbum($($links[i]));
+        if ($links[i] === $link[0]) {
+          imageNumber = i;
+        }
+      }
+    } else {
+      if ($link.attr('rel') === 'lightbox') {
+        // If image is not part of a set
+        addToAlbum($link);
+      } else {
+        // If image is part of a set
+        $links = $($link.prop('tagName') + '[rel="' + $link.attr('rel') + '"]');
+        for (var j = 0; j < $links.length; j = ++j) {
+          addToAlbum($($links[j]));
+          if ($links[j] === $link[0]) {
+            imageNumber = j;
+          }
+        }
+      }
+    }
+
+    // Position Lightbox
+    var top  = $window.scrollTop() + this.options.positionFromTop;
+    var left = $window.scrollLeft();
+    this.$lightbox.css({
+      top: top + 'px',
+      left: left + 'px'
+    }).fadeIn(this.options.fadeDuration);
+
+    // Disable scrolling of the page while open
+    if (this.options.disableScrolling) {
+      $('body').addClass('lb-disable-scrolling');
+    }
+
+    this.changeImage(imageNumber);
+  };
+
+  // Hide most UI elements in preparation for the animated resizing of the lightbox.
+  Lightbox.prototype.changeImage = function(imageNumber) {
+    var self = this;
+
+    this.disableKeyboardNav();
+    var $image = this.$lightbox.find('.lb-image');
+
+    this.$overlay.fadeIn(this.options.fadeDuration);
+
+    $('.lb-loader').fadeIn('slow');
+    this.$lightbox.find('.lb-image, .lb-nav, .lb-prev, .lb-next, .lb-dataContainer, .lb-numbers, .lb-caption').hide();
+
+    this.$outerContainer.addClass('animating');
+
+    // When image to show is preloaded, we send the width and height to sizeContainer()
+    var preloader = new Image();
+    preloader.onload = function() {
+      var $preloader;
+      var imageHeight;
+      var imageWidth;
+      var maxImageHeight;
+      var maxImageWidth;
+      var windowHeight;
+      var windowWidth;
+
+      $image.attr('src', self.album[imageNumber].link);
+
+      $preloader = $(preloader);
+
+      $image.width(preloader.width);
+      $image.height(preloader.height);
+
+      if (self.options.fitImagesInViewport) {
+        // Fit image inside the viewport.
+        // Take into account the border around the image and an additional 10px gutter on each side.
+
+        windowWidth    = $(window).width();
+        windowHeight   = $(window).height();
+        maxImageWidth  = windowWidth - self.containerPadding.left - self.containerPadding.right - self.imageBorderWidth.left - self.imageBorderWidth.right - 20;
+        maxImageHeight = windowHeight - self.containerPadding.top - self.containerPadding.bottom - self.imageBorderWidth.top - self.imageBorderWidth.bottom - 120;
+
+        // Check if image size is larger then maxWidth|maxHeight in settings
+        if (self.options.maxWidth && self.options.maxWidth < maxImageWidth) {
+          maxImageWidth = self.options.maxWidth;
+        }
+        if (self.options.maxHeight && self.options.maxHeight < maxImageWidth) {
+          maxImageHeight = self.options.maxHeight;
+        }
+
+        // Is the current image's width or height is greater than the maxImageWidth or maxImageHeight
+        // option than we need to size down while maintaining the aspect ratio.
+        if ((preloader.width > maxImageWidth) || (preloader.height > maxImageHeight)) {
+          if ((preloader.width / maxImageWidth) > (preloader.height / maxImageHeight)) {
+            imageWidth  = maxImageWidth;
+            imageHeight = parseInt(preloader.height / (preloader.width / imageWidth), 10);
+            $image.width(imageWidth);
+            $image.height(imageHeight);
+          } else {
+            imageHeight = maxImageHeight;
+            imageWidth = parseInt(preloader.width / (preloader.height / imageHeight), 10);
+            $image.width(imageWidth);
+            $image.height(imageHeight);
+          }
+        }
+      }
+      self.sizeContainer($image.width(), $image.height());
+    };
+
+    preloader.src          = this.album[imageNumber].link;
+    this.currentImageIndex = imageNumber;
+  };
+
+  // Stretch overlay to fit the viewport
+  Lightbox.prototype.sizeOverlay = function() {
+    this.$overlay
+      .width($(document).width())
+      .height($(document).height());
+  };
+
+  // Animate the size of the lightbox to fit the image we are showing
+  Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight) {
+    var self = this;
+
+    var oldWidth  = this.$outerContainer.outerWidth();
+    var oldHeight = this.$outerContainer.outerHeight();
+    var newWidth  = imageWidth + this.containerPadding.left + this.containerPadding.right + this.imageBorderWidth.left + this.imageBorderWidth.right;
+    var newHeight = imageHeight + this.containerPadding.top + this.containerPadding.bottom + this.imageBorderWidth.top + this.imageBorderWidth.bottom;
+
+    function postResize() {
+      self.$lightbox.find('.lb-dataContainer').width(newWidth);
+      self.$lightbox.find('.lb-prevLink').height(newHeight);
+      self.$lightbox.find('.lb-nextLink').height(newHeight);
+      self.showImage();
+    }
+
+    if (oldWidth !== newWidth || oldHeight !== newHeight) {
+      this.$outerContainer.animate({
+        width: newWidth,
+        height: newHeight
+      }, this.options.resizeDuration, 'swing', function() {
+        postResize();
+      });
+    } else {
+      postResize();
+    }
+  };
+
+  // Display the image and its details and begin preload neighboring images.
+  Lightbox.prototype.showImage = function() {
+    this.$lightbox.find('.lb-loader').stop(true).hide();
+    this.$lightbox.find('.lb-image').fadeIn(this.options.imageFadeDuration);
+
+    this.updateNav();
+    this.updateDetails();
+    this.preloadNeighboringImages();
+    this.enableKeyboardNav();
+  };
+
+  // Display previous and next navigation if appropriate.
+  Lightbox.prototype.updateNav = function() {
+    // Check to see if the browser supports touch events. If so, we take the conservative approach
+    // and assume that mouse hover events are not supported and always show prev/next navigation
+    // arrows in image sets.
+    var alwaysShowNav = false;
+    try {
+      document.createEvent('TouchEvent');
+      alwaysShowNav = (this.options.alwaysShowNavOnTouchDevices) ? true : false;
+    } catch (e) {}
+
+    this.$lightbox.find('.lb-nav').show();
+
+    if (this.album.length > 1) {
+      if (this.options.wrapAround) {
+        if (alwaysShowNav) {
+          this.$lightbox.find('.lb-prev, .lb-next').css('opacity', '1');
+        }
+        this.$lightbox.find('.lb-prev, .lb-next').show();
+      } else {
+        if (this.currentImageIndex > 0) {
+          this.$lightbox.find('.lb-prev').show();
+          if (alwaysShowNav) {
+            this.$lightbox.find('.lb-prev').css('opacity', '1');
+          }
+        }
+        if (this.currentImageIndex < this.album.length - 1) {
+          this.$lightbox.find('.lb-next').show();
+          if (alwaysShowNav) {
+            this.$lightbox.find('.lb-next').css('opacity', '1');
+          }
+        }
+      }
+    }
+  };
+
+  // Display caption, image number, and closing button.
+  Lightbox.prototype.updateDetails = function() {
+    var self = this;
+
+    // Enable anchor clicks in the injected caption html.
+    // Thanks Nate Wright for the fix. @https://github.com/NateWr
+    if (typeof this.album[this.currentImageIndex].title !== 'undefined' &&
+      this.album[this.currentImageIndex].title !== '') {
+      var $caption = this.$lightbox.find('.lb-caption');
+      if (this.options.sanitizeTitle) {
+        $caption.text(this.album[this.currentImageIndex].title);
+      } else {
+        $caption.html(this.album[this.currentImageIndex].title);
+      }
+      $caption.fadeIn('fast')
+        .find('a').on('click', function(event) {
+        if ($(this).attr('target') !== undefined) {
+          window.open($(this).attr('href'), $(this).attr('target'));
+        } else {
+          location.href = $(this).attr('href');
+        }
+      });
+    }
+
+    if (this.album.length > 1 && this.options.showImageNumberLabel) {
+      var labelText = this.imageCountLabel(this.currentImageIndex + 1, this.album.length);
+      this.$lightbox.find('.lb-number').text(labelText).fadeIn('fast');
+    } else {
+      this.$lightbox.find('.lb-number').hide();
+    }
+
+    this.$outerContainer.removeClass('animating');
+
+    this.$lightbox.find('.lb-dataContainer').fadeIn(this.options.resizeDuration, function() {
+      return self.sizeOverlay();
+    });
+  };
+
+  // Preload previous and next images in set.
+  Lightbox.prototype.preloadNeighboringImages = function() {
+    if (this.album.length > this.currentImageIndex + 1) {
+      var preloadNext = new Image();
+      preloadNext.src = this.album[this.currentImageIndex + 1].link;
+    }
+    if (this.currentImageIndex > 0) {
+      var preloadPrev = new Image();
+      preloadPrev.src = this.album[this.currentImageIndex - 1].link;
+    }
+  };
+
+  Lightbox.prototype.enableKeyboardNav = function() {
+    $(document).on('keyup.keyboard', $.proxy(this.keyboardAction, this));
+  };
+
+  Lightbox.prototype.disableKeyboardNav = function() {
+    $(document).off('.keyboard');
+  };
+
+  Lightbox.prototype.keyboardAction = function(event) {
+    var KEYCODE_ESC        = 27;
+    var KEYCODE_LEFTARROW  = 37;
+    var KEYCODE_RIGHTARROW = 39;
+
+    var keycode = event.keyCode;
+    var key     = String.fromCharCode(keycode).toLowerCase();
+    if (keycode === KEYCODE_ESC || key.match(/x|o|c/)) {
+      this.end();
+    } else if (key === 'p' || keycode === KEYCODE_LEFTARROW) {
+      if (this.currentImageIndex !== 0) {
+        this.changeImage(this.currentImageIndex - 1);
+      } else if (this.options.wrapAround && this.album.length > 1) {
+        this.changeImage(this.album.length - 1);
+      }
+    } else if (key === 'n' || keycode === KEYCODE_RIGHTARROW) {
+      if (this.currentImageIndex !== this.album.length - 1) {
+        this.changeImage(this.currentImageIndex + 1);
+      } else if (this.options.wrapAround && this.album.length > 1) {
+        this.changeImage(0);
+      }
+    }
+  };
+
+  // Closing time. :-(
+  Lightbox.prototype.end = function() {
+    this.disableKeyboardNav();
+    $(window).off('resize', this.sizeOverlay);
+    this.$lightbox.fadeOut(this.options.fadeDuration);
+    this.$overlay.fadeOut(this.options.fadeDuration);
+    $('select, object, embed').css({
+      visibility: 'visible'
+    });
+    if (this.options.disableScrolling) {
+      $('body').removeClass('lb-disable-scrolling');
+    }
+  };
+
+  return new Lightbox();
+}));
+
+/*
+ * easy-autocomplete
+ * jQuery plugin for autocompletion
+ *
+ * @author Łukasz Pawełczak (http://github.com/pawelczak)
+ * @version 1.3.5
+ * Copyright  License:
+ */
+
+var EasyAutocomplete=function(a){return a.Configuration=function(a){function b(){if("xml"===a.dataType&&(a.getValue||(a.getValue=function(a){return $(a).text()}),a.list||(a.list={}),a.list.sort||(a.list.sort={}),a.list.sort.method=function(b,c){return b=a.getValue(b),c=a.getValue(c),c>b?-1:b>c?1:0},a.list.match||(a.list.match={}),a.list.match.method=function(a,b){return a.search(b)>-1}),void 0!==a.categories&&a.categories instanceof Array){for(var b=[],c=0,d=a.categories.length;d>c;c+=1){var e=a.categories[c];for(var f in h.categories[0])void 0===e[f]&&(e[f]=h.categories[0][f]);b.push(e)}a.categories=b}}function c(){function b(a,c){var d=a||{};for(var e in a)void 0!==c[e]&&null!==c[e]&&("object"!=typeof c[e]||c[e]instanceof Array?d[e]=c[e]:b(a[e],c[e]));return void 0!==c.data&&null!==c.data&&"object"==typeof c.data&&(d.data=c.data),d}h=b(h,a)}function d(){if("list-required"!==h.url&&"function"!=typeof h.url){var b=h.url;h.url=function(){return b}}if(void 0!==h.ajaxSettings.url&&"function"!=typeof h.ajaxSettings.url){var b=h.ajaxSettings.url;h.ajaxSettings.url=function(){return b}}if("string"==typeof h.listLocation){var c=h.listLocation;"XML"===h.dataType.toUpperCase()?h.listLocation=function(a){return $(a).find(c)}:h.listLocation=function(a){return a[c]}}if("string"==typeof h.getValue){var d=h.getValue;h.getValue=function(a){return a[d]}}void 0!==a.categories&&(h.categoriesAssigned=!0)}function e(){void 0!==a.ajaxSettings&&"object"==typeof a.ajaxSettings?h.ajaxSettings=a.ajaxSettings:h.ajaxSettings={}}function f(a){return void 0!==h[a]&&null!==h[a]}function g(a,b){function c(b,d){for(var e in d)void 0===b[e]&&a.log("Property '"+e+"' does not exist in EasyAutocomplete options API."),"object"==typeof b[e]&&-1===$.inArray(e,i)&&c(b[e],d[e])}c(h,b)}var h={data:"list-required",url:"list-required",dataType:"json",listLocation:function(a){return a},xmlElementName:"",getValue:function(a){return a},autocompleteOff:!0,placeholder:!1,ajaxCallback:function(){},matchResponseProperty:!1,list:{sort:{enabled:!1,method:function(a,b){return a=h.getValue(a),b=h.getValue(b),b>a?-1:a>b?1:0}},maxNumberOfElements:6,hideOnEmptyPhrase:!0,match:{enabled:!1,caseSensitive:!1,method:function(a,b){return a.search(b)>-1}},showAnimation:{type:"normal",time:400,callback:function(){}},hideAnimation:{type:"normal",time:400,callback:function(){}},onClickEvent:function(){},onSelectItemEvent:function(){},onLoadEvent:function(){},onChooseEvent:function(){},onKeyEnterEvent:function(){},onMouseOverEvent:function(){},onMouseOutEvent:function(){},onShowListEvent:function(){},onHideListEvent:function(){}},highlightPhrase:!0,theme:"",cssClasses:"",minCharNumber:0,requestDelay:0,adjustWidth:!0,ajaxSettings:{},preparePostData:function(a,b){return a},loggerEnabled:!0,template:"",categoriesAssigned:!1,categories:[{maxNumberOfElements:4}]},i=["ajaxSettings","template"];this.get=function(a){return h[a]},this.equals=function(a,b){return!(!f(a)||h[a]!==b)},this.checkDataUrlProperties=function(){return"list-required"!==h.url||"list-required"!==h.data},this.checkRequiredProperties=function(){for(var a in h)if("required"===h[a])return logger.error("Option "+a+" must be defined"),!1;return!0},this.printPropertiesThatDoesntExist=function(a,b){g(a,b)},b(),c(),h.loggerEnabled===!0&&g(console,a),e(),d()},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.Logger=function(){this.error=function(a){console.log("ERROR: "+a)},this.warning=function(a){console.log("WARNING: "+a)}},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.Constans=function(){var a={CONTAINER_CLASS:"easy-autocomplete-container",CONTAINER_ID:"eac-container-",WRAPPER_CSS_CLASS:"easy-autocomplete"};this.getValue=function(b){return a[b]}},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.ListBuilderService=function(a,b){function c(b,c){function d(){var d,e={};return void 0!==b.xmlElementName&&(e.xmlElementName=b.xmlElementName),void 0!==b.listLocation?d=b.listLocation:void 0!==a.get("listLocation")&&(d=a.get("listLocation")),void 0!==d?"string"==typeof d?e.data=$(c).find(d):"function"==typeof d&&(e.data=d(c)):e.data=c,e}function e(){var a={};return void 0!==b.listLocation?"string"==typeof b.listLocation?a.data=c[b.listLocation]:"function"==typeof b.listLocation&&(a.data=b.listLocation(c)):a.data=c,a}var f={};if(f="XML"===a.get("dataType").toUpperCase()?d():e(),void 0!==b.header&&(f.header=b.header),void 0!==b.maxNumberOfElements&&(f.maxNumberOfElements=b.maxNumberOfElements),void 0!==a.get("list").maxNumberOfElements&&(f.maxListSize=a.get("list").maxNumberOfElements),void 0!==b.getValue)if("string"==typeof b.getValue){var g=b.getValue;f.getValue=function(a){return a[g]}}else"function"==typeof b.getValue&&(f.getValue=b.getValue);else f.getValue=a.get("getValue");return f}function d(b){var c=[];return void 0===b.xmlElementName&&(b.xmlElementName=a.get("xmlElementName")),$(b.data).find(b.xmlElementName).each(function(){c.push(this)}),c}this.init=function(b){var c=[],d={};return d.data=a.get("listLocation")(b),d.getValue=a.get("getValue"),d.maxListSize=a.get("list").maxNumberOfElements,c.push(d),c},this.updateCategories=function(b,d){if(a.get("categoriesAssigned")){b=[];for(var e=0;e<a.get("categories").length;e+=1){var f=c(a.get("categories")[e],d);b.push(f)}}return b},this.convertXml=function(b){if("XML"===a.get("dataType").toUpperCase())for(var c=0;c<b.length;c+=1)b[c].data=d(b[c]);return b},this.processData=function(c,d){for(var e=0,f=c.length;f>e;e+=1)c[e].data=b(a,c[e],d);return c},this.checkIfDataExists=function(a){for(var b=0,c=a.length;c>b;b+=1)if(void 0!==a[b].data&&a[b].data instanceof Array&&a[b].data.length>0)return!0;return!1}},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.proccess=function(b,c,d){function e(a,c){var d=[],e="";if(b.get("list").match.enabled)for(var g=0,h=a.length;h>g;g+=1)e=b.get("getValue")(a[g]),f(e,c)&&d.push(a[g]);else d=a;return d}function f(a,c){return b.get("list").match.caseSensitive||("string"==typeof a&&(a=a.toLowerCase()),c=c.toLowerCase()),!!b.get("list").match.method(a,c)}function g(a){return void 0!==c.maxNumberOfElements&&a.length>c.maxNumberOfElements&&(a=a.slice(0,c.maxNumberOfElements)),a}function h(a){return b.get("list").sort.enabled&&a.sort(b.get("list").sort.method),a}a.proccess.match=f;var i=c.data,j=d;return i=e(i,j),i=g(i),i=h(i)},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.Template=function(a){var b={basic:{type:"basic",method:function(a){return a},cssClass:""},description:{type:"description",fields:{description:"description"},method:function(a){return a+" - description"},cssClass:"eac-description"},iconLeft:{type:"iconLeft",fields:{icon:""},method:function(a){return a},cssClass:"eac-icon-left"},iconRight:{type:"iconRight",fields:{iconSrc:""},method:function(a){return a},cssClass:"eac-icon-right"},links:{type:"links",fields:{link:""},method:function(a){return a},cssClass:""},custom:{type:"custom",method:function(){},cssClass:""}},c=function(a){var c,d=a.fields;return"description"===a.type?(c=b.description.method,"string"==typeof d.description?c=function(a,b){return a+" - <span>"+b[d.description]+"</span>"}:"function"==typeof d.description&&(c=function(a,b){return a+" - <span>"+d.description(b)+"</span>"}),c):"iconRight"===a.type?("string"==typeof d.iconSrc?c=function(a,b){return a+"<img class='eac-icon' src='"+b[d.iconSrc]+"' />"}:"function"==typeof d.iconSrc&&(c=function(a,b){return a+"<img class='eac-icon' src='"+d.iconSrc(b)+"' />"}),c):"iconLeft"===a.type?("string"==typeof d.iconSrc?c=function(a,b){return"<img class='eac-icon' src='"+b[d.iconSrc]+"' />"+a}:"function"==typeof d.iconSrc&&(c=function(a,b){return"<img class='eac-icon' src='"+d.iconSrc(b)+"' />"+a}),c):"links"===a.type?("string"==typeof d.link?c=function(a,b){return"<a href='"+b[d.link]+"' >"+a+"</a>"}:"function"==typeof d.link&&(c=function(a,b){return"<a href='"+d.link(b)+"' >"+a+"</a>"}),c):"custom"===a.type?a.method:b.basic.method},d=function(a){return a&&a.type&&a.type&&b[a.type]?c(a):b.basic.method},e=function(a){var c=function(){return""};return a&&a.type&&a.type&&b[a.type]?function(){var c=b[a.type].cssClass;return function(){return c}}():c};this.getTemplateClass=e(a),this.build=d(a)},a}(EasyAutocomplete||{}),EasyAutocomplete=function(a){return a.main=function(b,c){function d(){return 0===t.length?void p.error("Input field doesn't exist."):o.checkDataUrlProperties()?o.checkRequiredProperties()?(e(),void g()):void p.error("Will not work without mentioned properties."):void p.error("One of options variables 'data' or 'url' must be defined.")}function e(){function a(){var a=$("<div>"),c=n.getValue("WRAPPER_CSS_CLASS");o.get("theme")&&""!==o.get("theme")&&(c+=" eac-"+o.get("theme")),o.get("cssClasses")&&""!==o.get("cssClasses")&&(c+=" "+o.get("cssClasses")),""!==q.getTemplateClass()&&(c+=" "+q.getTemplateClass()),a.addClass(c),t.wrap(a),o.get("adjustWidth")===!0&&b()}function b(){var a=t.outerWidth();t.parent().css("width",a)}function c(){t.unwrap()}function d(){var a=$("<div>").addClass(n.getValue("CONTAINER_CLASS"));a.attr("id",f()).prepend($("<ul>")),function(){a.on("show.eac",function(){switch(o.get("list").showAnimation.type){case"slide":var b=o.get("list").showAnimation.time,c=o.get("list").showAnimation.callback;a.find("ul").slideDown(b,c);break;case"fade":var b=o.get("list").showAnimation.time,c=o.get("list").showAnimation.callback;a.find("ul").fadeIn(b),c;break;default:a.find("ul").show()}o.get("list").onShowListEvent()}).on("hide.eac",function(){switch(o.get("list").hideAnimation.type){case"slide":var b=o.get("list").hideAnimation.time,c=o.get("list").hideAnimation.callback;a.find("ul").slideUp(b,c);break;case"fade":var b=o.get("list").hideAnimation.time,c=o.get("list").hideAnimation.callback;a.find("ul").fadeOut(b,c);break;default:a.find("ul").hide()}o.get("list").onHideListEvent()}).on("selectElement.eac",function(){a.find("ul li").removeClass("selected"),a.find("ul li").eq(w).addClass("selected"),o.get("list").onSelectItemEvent()}).on("loadElements.eac",function(b,c,d){var e="",f=a.find("ul");f.empty().detach(),v=[];for(var h=0,i=0,k=c.length;k>i;i+=1){var l=c[i].data;if(0!==l.length){void 0!==c[i].header&&c[i].header.length>0&&f.append("<div class='eac-category' >"+c[i].header+"</div>");for(var m=0,n=l.length;n>m&&h<c[i].maxListSize;m+=1)e=$("<li><div class='eac-item'></div></li>"),function(){var a=m,b=h,f=c[i].getValue(l[a]);e.find(" > div").on("click",function(){t.val(f).trigger("change"),w=b,j(b),o.get("list").onClickEvent(),o.get("list").onChooseEvent()}).mouseover(function(){w=b,j(b),o.get("list").onMouseOverEvent()}).mouseout(function(){o.get("list").onMouseOutEvent()}).html(q.build(g(f,d),l[a]))}(),f.append(e),v.push(l[m]),h+=1}}a.append(f),o.get("list").onLoadEvent()})}(),t.after(a)}function e(){t.next("."+n.getValue("CONTAINER_CLASS")).remove()}function g(a,b){return o.get("highlightPhrase")&&""!==b?i(a,b):a}function h(a){return a.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,"\\$&")}function i(a,b){var c=h(b);return(a+"").replace(new RegExp("("+c+")","gi"),"<b>$1</b>")}t.parent().hasClass(n.getValue("WRAPPER_CSS_CLASS"))&&(e(),c()),a(),d(),u=$("#"+f()),o.get("placeholder")&&t.attr("placeholder",o.get("placeholder"))}function f(){var a=t.attr("id");return a=n.getValue("CONTAINER_ID")+a}function g(){function a(){s("autocompleteOff",!0)&&n(),b(),c(),d(),e(),f(),g()}function b(){t.focusout(function(){var a,b=t.val();o.get("list").match.caseSensitive||(b=b.toLowerCase());for(var c=0,d=v.length;d>c;c+=1)if(a=o.get("getValue")(v[c]),o.get("list").match.caseSensitive||(a=a.toLowerCase()),a===b)return w=c,void j(w)})}function c(){t.off("keyup").keyup(function(a){function b(a){function b(){var a={},b=o.get("ajaxSettings")||{};for(var c in b)a[c]=b[c];return a}function c(a,b){return o.get("matchResponseProperty")!==!1?"string"==typeof o.get("matchResponseProperty")?b[o.get("matchResponseProperty")]===a:"function"==typeof o.get("matchResponseProperty")?o.get("matchResponseProperty")(b)===a:!0:!0}if(!(a.length<o.get("minCharNumber"))){if("list-required"!==o.get("data")){var d=o.get("data"),e=r.init(d);e=r.updateCategories(e,d),e=r.processData(e,a),k(e,a),t.parent().find("li").length>0?h():i()}var f=b();void 0!==f.url&&""!==f.url||(f.url=o.get("url")),void 0!==f.dataType&&""!==f.dataType||(f.dataType=o.get("dataType")),void 0!==f.url&&"list-required"!==f.url&&(f.url=f.url(a),f.data=o.get("preparePostData")(f.data,a),$.ajax(f).done(function(b){var d=r.init(b);d=r.updateCategories(d,b),d=r.convertXml(d),c(a,b)&&(d=r.processData(d,a),k(d,a)),r.checkIfDataExists(d)&&t.parent().find("li").length>0?h():i(),o.get("ajaxCallback")()}).fail(function(){p.warning("Fail to load response data")}).always(function(){}))}}switch(a.keyCode){case 27:i(),l();break;case 38:a.preventDefault(),v.length>0&&w>0&&(w-=1,t.val(o.get("getValue")(v[w])),j(w));break;case 40:a.preventDefault(),v.length>0&&w<v.length-1&&(w+=1,t.val(o.get("getValue")(v[w])),j(w));break;default:if(a.keyCode>40||8===a.keyCode||0===a.keyCode){var c=t.val();o.get("list").hideOnEmptyPhrase!==!0||8!==a.keyCode||""!==c?o.get("requestDelay")>0?(void 0!==m&&clearTimeout(m),m=setTimeout(function(){b(c)},o.get("requestDelay"))):b(c):i()}}})}function d(){t.on("keydown",function(a){a=a||window.event;var b=a.keyCode;return 38===b?(suppressKeypress=!0,!1):void 0}).keydown(function(a){13===a.keyCode&&w>-1&&(t.val(o.get("getValue")(v[w])),o.get("list").onKeyEnterEvent(),o.get("list").onChooseEvent(),w=-1,i(),a.preventDefault())})}function e(){t.off("keypress")}function f(){t.focus(function(){""!==t.val()&&v.length>0&&(w=-1,h())})}function g(){t.blur(function(){setTimeout(function(){w=-1,i()},250)})}function n(){t.attr("autocomplete","off")}a()}function h(){u.trigger("show.eac")}function i(){u.trigger("hide.eac")}function j(a){u.trigger("selectElement.eac",a)}function k(a,b){u.trigger("loadElements.eac",[a,b])}function l(){t.trigger("blur")}var m,n=new a.Constans,o=new a.Configuration(c),p=new a.Logger,q=new a.Template(c.template),r=new a.ListBuilderService(o,a.proccess),s=o.equals,t=b,u="",v=[],w=-1;a.consts=n,this.getConstants=function(){return n},this.getConfiguration=function(){return o},this.getContainer=function(){return u},this.getSelectedItemIndex=function(){return w},this.getItems=function(){return v},this.getItemData=function(a){return v.length<a||void 0===v[a]?-1:v[a]},this.getSelectedItemData=function(){return this.getItemData(w)},this.build=function(){e()},this.init=function(){d()}},a.eacHandles=[],a.getHandle=function(b){return a.eacHandles[b]},a.inputHasId=function(a){return void 0!==$(a).attr("id")&&$(a).attr("id").length>0},a.assignRandomId=function(b){var c="";do c="eac-"+Math.floor(1e4*Math.random());while(0!==$("#"+c).length);elementId=a.consts.getValue("CONTAINER_ID")+c,$(b).attr("id",c)},a.setHandle=function(b,c){a.eacHandles[c]=b},a}(EasyAutocomplete||{});!function(a){a.fn.easyAutocomplete=function(b){return this.each(function(){var c=a(this),d=new EasyAutocomplete.main(c,b);EasyAutocomplete.inputHasId(c)||EasyAutocomplete.assignRandomId(c),d.init(),EasyAutocomplete.setHandle(d,c.attr("id"))})},a.fn.getSelectedItemIndex=function(){var b=a(this).attr("id");return void 0!==b?EasyAutocomplete.getHandle(b).getSelectedItemIndex():-1},a.fn.getItems=function(){var b=a(this).attr("id");return void 0!==b?EasyAutocomplete.getHandle(b).getItems():-1},a.fn.getItemData=function(b){var c=a(this).attr("id");return void 0!==c&&b>-1?EasyAutocomplete.getHandle(c).getItemData(b):-1},a.fn.getSelectedItemData=function(){var b=a(this).attr("id");return void 0!==b?EasyAutocomplete.getHandle(b).getSelectedItemData():-1}}(jQuery);
+
+(function (e) {
+  e.fn.contactUs = function (t) {
+    var form = e(this);
+
+    var name = form.find('input[name=NAME]');
+    var email = form.find('input[name=EMAIL]');
+    var message_text = form.find('textarea[name=MESSAGE]');
+
+    var action = form.attr('action');
+    var method = form.attr('method');
+
+
+    var message = $('#contact-status .message');
+    var block = $('#contact-status .block-message');
+    var note = $('#contact-status');
+
+    // Reset and hide all messages on .keyup()
+    $("#contactForm input, #contactForm textarea").keyup(function () {
+      block.addClass("").removeClass("show-block-valid show-block-error");
+      message.fadeOut();
+    });
+
+    $("#contactForm select").change(function () {
+      block.addClass("").removeClass("show-block-valid show-block-error");
+      message.fadeOut();
+    });
+
+    form.on("submit", function (t) {
+      var valid = true;
+      var error_message = '';
+
+      t.preventDefault();
+      var h = email.val();
+      var valid_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (name.val() === '') {
+        valid = false;
+        error_message = 'Name cannot be blank.<br>Please check it and try again.';
+        name.focus();
+      } else if ( !valid_email.test(email.val())) {
+        valid = false;
+        error_message = 'Email Address is Invalid.<br>Please check it and try again.';
+        email.focus();
+      } else if (message_text.val() === '') {
+        valid = false;
+        error_message = 'Message cannot be blank.<br>Please check it and try again.';
+        message_text.focus();
+      }
+
+      note.removeClass('alert alert-danger').hide();
+
+      if (valid) {
+        e.ajax({
+          type: method,
+          url: action,
+          data: e(this).serialize(),
+          cache: false,
+          dataType: 'json',
+          contentType: "application/json; charset=utf-8",
+          error: function(err) {
+            if (e.status == 404) {
+              message.html('Service is not available at the moment.<br>Please check your internet connection or try again later.').fadeIn();
+            } else {
+              message.html('Oops. Looks like something went wrong.<br>Please try again later.').fadeIn();
+            }
+
+            note.addClass('alert alert-success').slideDown();
+            CivilServices.trackEvent('Subscribe', 'AJAX Error', JSON.stringify(err));
+          },
+          success: function(data) {
+            note.hide();
+            if (data.result !== 'success') {
+              message.html(data.msg).fadeIn();
+              note.addClass('alert alert-danger').slideDown();
+
+              if(data.msg.indexOf('is already subscribed') > -1){
+                CivilServices.trackEvent('Subscribe', 'MailChimp Notice', 'Contacted Us Email Already Subscribed');
+              } else {
+                CivilServices.trackEvent('Subscribe', 'MailChimp Error', data.msg);
+              }
+            } else {
+              form.trigger( 'reset' );
+
+              message.html('<strong>Woo Hoo!</strong> We just sent you a confirmation email. Your message will be sent once you validate your email address.').fadeIn();
+              note.addClass('alert alert-success').slideDown();
+
+              CivilServices.trackEvent('Subscribe', 'MailChimp Success', 'User Contacted Us');
+
+              setTimeout(function () { $('#contact-status').slideUp(); }, 5000);
+            }
+          }
+        });
+      } else {
+        message.html(error_message).fadeIn();
+        note.addClass('alert alert-danger').slideDown();
+      }
+    })
+  }
+
+})(jQuery);
+
+(function (e) {
+  e.fn.subscribe = function (t) {
+    var form = e(this);
+
+    var email = form.find('input[name=EMAIL]');
+
+    var action = form.attr('action');
+    var method = form.attr('method');
+
+    var message = $('#subscribe-status .message');
+    var block = $('#subscribe-status .block-message');
+    var note = $('#subscribe-status');
+
+    form.on("submit", function (t) {
+      var valid = true;
+      var error_message = '';
+
+      t.preventDefault();
+      var h = email.val();
+      var valid_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if ( !valid_email.test(email.val())) {
+        valid = false;
+        error_message = 'Email Address is Invalid.';
+        email.focus();
+      }
+
+      note.removeClass('alert alert-danger').hide();
+
+      if (valid) {
+        e.ajax({
+          type: method,
+          url: action,
+          data: e(this).serialize(),
+          cache: false,
+          dataType: 'json',
+          contentType: "application/json; charset=utf-8",
+          error: function(err) {
+            if (e.status == 404) {
+              message.html('Service is not available at the moment.<br>Please check your internet connection or try again later.').fadeIn();
+            } else {
+              message.html('Oops. Looks like something went wrong.<br>Please try again later.').fadeIn();
+            }
+
+            note.addClass('alert alert-success').slideDown();
+            CivilServices.trackEvent('Subscribe', 'AJAX Error', JSON.stringify(err));
+          },
+          success: function(data) {
+            note.hide();
+            if (data.result !== 'success') {
+              message.html(data.msg).fadeIn();
+              note.addClass('alert alert-danger').slideDown();
+
+              if(data.msg.indexOf('is already subscribed') > -1){
+                CivilServices.trackEvent('Subscribe', 'MailChimp Notice', 'Email Already Subscribed');
+              } else {
+                CivilServices.trackEvent('Subscribe', 'MailChimp Error', data.msg);
+              }
+            } else {
+              form.trigger( 'reset' );
+
+              message.html('<strong>Woo Hoo!</strong> We just sent you a confirmation email..').fadeIn();
+              note.addClass('alert alert-success').slideDown();
+
+              CivilServices.trackEvent('Subscribe', 'MailChimp Success', 'User Subscribed');
+
+              setTimeout(function () { $('#subscribe-status').slideUp(); }, 5000);
+            }
+          }
+        });
+      } else {
+        message.html(error_message).fadeIn();
+        note.addClass('alert alert-danger').slideDown();
+      }
+    })
+  }
+
+})(jQuery);
+
+(function(){
+  function e(e, t) {
+    var n = 'font-size: 14px;' + (e ? "font-weight: bold;" : "") + "color: " + t + ";";
+    return n
+  }
+  console.log("%c★ Want to Volunteer? %c> %cjoinUsOnSlack()", e(!0, "#1E72A1"), e(!0, "#666"), e(!0, "#e52025")),
+    window.joinUsOnSlack = function() {
+      return console.log("%cWe look forward to chatting with you! %cRedirecting ...", e(!1, "#1E72A1"), e(!1, "#666")),
+        setTimeout(function(){ window.location.href = 'https://slack.civil.services/bkx7n2' }, 5000),
+        ""
+    }
+})();

@@ -39,26 +39,38 @@ var CivilServices = {
   bindEvents: function() {
     // Cache Element Lookups
     var mobileMenuButton = $('.navbar-onepage .navbar-collapse ul li a');
+    var navbarBrand = $('a.navbar-brand');
     var pageScroll = $('a.page-scroll');
-    var searchButton = $('button.search-button');
     var searchForm = $('#search');
     var toggleSearch = $('a.toggle-search');
+    var detectLocation = $('#detect-location');
+    var shareButton = $('#share-button');
+    var shareOverlay = $('.share-overlay');
+    var shareOptions = $('.share-options a');
 
     // Remove Current Event Listeners
     $(document).off('scroll.civil-services', CivilServices.scrollWindow);
     mobileMenuButton.off('click.civil-services', CivilServices.closeMobileMenu);
-    pageScroll.off('click.civil-services', CivilServices.backToTop);
-    searchButton.off('click.civil-services', CivilServices.doSearch);
+    navbarBrand.off('click.civil-services', CivilServices.backToTop);
+    pageScroll.off('click.civil-services', CivilServices.pageScroll);
     searchForm.off('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.off('click.civil-services', CivilServices.toggleSearch);
+    detectLocation.off('click.civil-services', CivilServices.detectLocation);
+    shareButton.off('click.civil-services', CivilServices.openShare);
+    shareOverlay.off('click.civil-services', CivilServices.closeShare);
+    shareOptions.off('click.civil-services', CivilServices.closeShare);
 
     // Add New Event Listeners
     $(document).on('scroll.civil-services', CivilServices.scrollWindow);
     mobileMenuButton.on('click.civil-services', CivilServices.closeMobileMenu);
-    pageScroll.on('click.civil-services', CivilServices.backToTop);
-    searchButton.on('click.civil-services', CivilServices.doSearch);
+    navbarBrand.on('click.civil-services', CivilServices.backToTop);
+    pageScroll.on('click.civil-services', CivilServices.pageScroll);
     searchForm.on('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.on('click.civil-services', CivilServices.toggleSearch);
+    detectLocation.on('click.civil-services', CivilServices.detectLocation);
+    shareButton.on('click.civil-services', CivilServices.openShare);
+    shareOverlay.on('click.civil-services', CivilServices.closeShare);
+    shareOptions.on('click.civil-services', CivilServices.closeShare);
   },
 
   /**
@@ -66,7 +78,25 @@ var CivilServices = {
    * @param event
    */
   backToTop: function (event) {
-    var $anchor = $('a.page-scroll');
+
+    if ($('body').scrollTop() === 0) {
+      window.location = '/';
+    } else {
+      var $anchor = $('a.navbar-brand');
+      $('html, body').stop().animate({
+        scrollTop: ($($anchor.attr('href')).offset().top - 55)
+      }, 1500, 'easeInOutExpo');
+    }
+
+    event.preventDefault();
+  },
+
+  /**
+   * Page Scroll
+   * @param event
+   */
+  pageScroll: function (event) {
+    var $anchor = $(this);
     $('html, body').stop().animate({
       scrollTop: ($($anchor.attr('href')).offset().top - 55)
     }, 1500, 'easeInOutExpo');
@@ -113,20 +143,17 @@ var CivilServices = {
   },
 
   /**
-   * Perform Search
-   * @returns {boolean}
+   * Open Share Widget
    */
-  doSearch: function () {
-    var value = $('#search').val();
-    var url = $('#search-autocomplete option').filter(function() {
-      return this.value == value;
-    }).data('url');
+  openShare: function () {
+    $('#share-widget').fadeIn();
+  },
 
-    if (url) {
-      window.location = url;
-    }
-
-    return false;
+  /**
+   * Close Share Widget
+   */
+  closeShare: function () {
+    $('#share-widget').fadeOut();
   },
 
   /**
@@ -137,9 +164,7 @@ var CivilServices = {
     $('form.search-form').toggleClass('active');
 
     if ($('form.search-form').hasClass('active')) {
-      setTimeout(function(){
-        $('#search').focus();
-      }, 25)
+      $('#search').focus();
     }
   },
 
@@ -160,9 +185,22 @@ var CivilServices = {
     $('#preloader').fadeOut();
     $('#loading').fadeOut('slow');
 
+    $('body').removeClass('loading');
+
+    $(window).on('beforeunload', function() {
+      $('body').addClass('loading');
+      $('#preloader').fadeIn('slow');
+      $('#loading').fadeIn();
+    });
+
     // HTML5 Placeholder
     if (typeof $.fn.placeholder === 'function') {
       $('input, textarea').placeholder();
+    }
+
+    // Hide Speech Synthesis if Not Supported
+    if (!'speechSynthesis' in window) {
+      $('.speak-text').hide();
     }
 
     // Load WOW.js
@@ -192,7 +230,6 @@ var CivilServices = {
       });
     }
 
-
     // Set Active Classes
     var url = window.location;
     $('ul.nav a[href="' + url + '"]').parent().addClass('active');
@@ -201,9 +238,73 @@ var CivilServices = {
     }).parent().addClass('active');
 
     $('ul.state-list a[href="' + url + '"]').parent().addClass('active');
+    $('ul.state-list a[href="' + url + '"]').parent().addClass('active');
     $('ul.state-list a').filter(function () {
       return this.href == url;
     }).parent().addClass('active');
+
+    if (typeof lightbox === 'object') {
+      lightbox.option({
+        'fadeDuration': 200,
+        'resizeDuration': 200,
+        'imageFadeDuration': 200,
+        'showImageNumberLabel': false,
+        'wrapAround': true
+      })
+    }
+
+    // Hide Detect Location on Insecure / Non Supported Browsers
+    if (!navigator.geolocation || document.location.protocol !== 'https:') {
+      $('#detect-location').hide();
+    }
+
+    if (typeof $.fn.jqBootstrapValidation === 'function') {
+      $('input,select,textarea').not('[type=submit]').jqBootstrapValidation();
+    }
+
+    // Support Standalone mode and keep local links within app
+    if (('standalone' in window.navigator) && window.navigator.standalone) {
+      $('a').on('click', function(e){
+        var new_location = $(this).attr('href');
+        if (new_location !== undefined && new_location.substr(0, 1) !== '#' && $(this).attr('target') !== '_blank' && $(this).attr('data-lightbox') === undefined){
+          window.location = new_location;
+          e.preventDefault();
+        }
+      });
+    }
+
+    if (typeof $.fn.easyAutocomplete === 'function') {
+      $('#search').easyAutocomplete({
+        data: window.searchAutoComplete || [],
+        getValue: 'name',
+        theme: 'bootstrap',
+        list: {
+          maxNumberOfElements: 5,
+          match: {
+            enabled: true
+          },
+          sort: {
+            enabled: true
+          },
+          onChooseEvent: function () {
+            var selection = $('#search').getSelectedItemData();
+            if (selection.url) {
+              window.location = selection.url;
+            }
+          }
+        }
+      });
+    }
+
+    if (typeof $.fn.contactUs === 'function') {
+      $('#contactForm').contactUs();
+    }
+
+    if (typeof $.fn.subscribe === 'function') {
+      $('#signup-form').subscribe();
+    }
+
+
   },
 
   /**
@@ -225,7 +326,7 @@ var CivilServices = {
 
         el.circleProgress({
           size: 100,
-          fill: { color: "#333" },
+          fill: { color: '#333' },
           startAngle: 300,
           animation: { duration: 4000 }
         })
@@ -241,11 +342,11 @@ var CivilServices = {
    */
   renderParallax: function () {
     if (typeof $.fn.parallax === 'function') {
-      $('.bg-img').parallax("50%", .12, true);
-      $('.bg-img2').parallax("50%", .12, true);
-      $('.bg-img3').parallax("50%", .12, true);
-      $('.bg-img4').parallax("50%", .12, true);
-      $('.bg-img5').parallax("50%", .12, true);
+      $('.bg-img').parallax('50%', .12, true);
+      $('.bg-img2').parallax('50%', .12, true);
+      $('.bg-img3').parallax('50%', .12, true);
+      $('.bg-img4').parallax('50%', .12, true);
+      $('.bg-img5').parallax('50%', .12, true);
     }
   },
 
@@ -253,7 +354,7 @@ var CivilServices = {
    * Render Progress Bars
    */
   renderProgressBar: function () {
-    $(".progress-bar").each(function () {
+    $('.progress-bar').each(function () {
       var each_bar_width;
       each_bar_width = $(this).attr('aria-valuenow');
       $(this).width(each_bar_width + '%');
@@ -267,12 +368,12 @@ var CivilServices = {
     if (typeof $.fn.carousel === 'function') {
       $('.carousel-big').carousel({
         interval: 6500, //changes the speed
-        pause: "false"
+        pause: 'false'
       });
 
       $('.carousel-small').carousel({
         interval: 5000, //changes the speed
-        pause: "false"
+        pause: 'false'
       });
     }
   },
@@ -319,7 +420,7 @@ var CivilServices = {
           jQuery('#swipebox-close').trigger('click');
         });
 
-      $(window).on("load scroll resize", function () {
+      $(window).on('load scroll resize', function () {
         $('.numscroller').scrollzip({
           showFunction: function () {
             numberRoller($(this).attr('data-slno'));
@@ -338,6 +439,119 @@ var CivilServices = {
   },
 
   /**
+   * Speak Name
+   *
+   * @param string
+   */
+  getVoice: function (string) {
+    if ('speechSynthesis' in window) {
+      return speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Google US English'; })[0];
+    }
+  },
+
+  /**
+   * Speak Text
+   *
+   * @param message
+   */
+  speak: function (message) {
+    if ('speechSynthesis' in window) {
+      var msg = new SpeechSynthesisUtterance();
+
+      msg.text = message;
+      msg.volume = 1;
+      msg.rate = 0.9;
+      msg.pitch = 1;
+      msg.voice = CivilServices.getVoice();
+
+      window.speechSynthesis.speak(msg);
+    }
+  },
+
+  /**
+   * Detect Browser Location
+   */
+  detectLocation: function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $('#fetching-location').html('<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>&nbsp; Fetching Location ...');
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        if (typeof position === 'object' && typeof position.coords === 'object' && position.coords.latitude && position.coords.longitude) {
+          $('#fetching-location').html('<i class="fa fa-check fa-fw"></i>&nbsp; Redirecting ...');
+          window.location = '/my-elected-officials/geolocation/' + position.coords.latitude + '/' + position.coords.longitude;
+        } else {
+          $('#fetching-location').html('&nbsp;');
+          alert('Unable to Fetch Location.');
+        }
+      }, function (error) {
+        $('#fetching-location').html('&nbsp;');
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            alert('User denied the request for Geolocation.');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            alert('Location information is unavailable.');
+            break;
+          case error.TIMEOUT:
+            alert('The request to get user location timed out.');
+            break;
+          case error.UNKNOWN_ERROR:
+            alert('An unknown error occurred.');
+            break;
+        }
+      }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      });
+    }
+
+    return false;
+  },
+
+  /**
+   * Geocode Address
+   */
+  geoCodeAddress: function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var address = $('#find-officials-address').val().trim();
+    var city = $('#find-officials-city').val().trim();
+    var state = $('#find-officials-state').val().trim();
+    var zipcode = $('#find-officials-zipcode').val().trim();
+
+    if (address !== '' && city !== '' && state !== '' && zipcode !== '') {
+      var buildAddress = address + ', ' + city + ', ' + state + '' + zipcode;
+      var cleanAddress = buildAddress.replace(/ /g, '+');
+
+      var jsonpUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + cleanAddress + '&key=AIzaSyBlgFUsVry1HfM7cbWEfNmbu_RSPNQin9o';
+
+      jQuery.ajax({
+        url: jsonpUrl,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+          if (response.status && response.status === 'OK' && response && response.results && response.results.length > 0) {
+            window.location = '/my-elected-officials/geolocation/' + response.results[0].geometry.location.lat + '/' + response.results[0].geometry.location.lng;
+          } else {
+            alert('Unable to Fetch Location.');
+          }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+          alert(errorThrown);
+        }
+      });
+    }
+
+    return false;
+  },
+
+  /**
    * Initialize Website
    */
   init: function () {
@@ -350,5 +564,6 @@ var CivilServices = {
     CivilServices.renderCountdown();
     CivilServices.renderSwipeBox();
     CivilServices.renderGrid();
+    CivilServices.getVoice();
   }
 };

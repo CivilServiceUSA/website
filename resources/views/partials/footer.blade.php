@@ -18,7 +18,7 @@
             <div class="col-sm-2 footer-menu">
                 <h5>Developers</h5>
                 <h6 class="no-pad"><a href="https://github.com/CivilServiceUSA">Use Our Data</a></h6>
-                <h6 class="no-pad"><a href="http://docs.civilservices.apiary.io/">API Docs</a></h6>
+                <h6 class="no-pad"><a href="https://api.civil.services/guide/">API Docs</a></h6>
             </div>
             <div class="col-sm-3 text-right">
                 <h5>Next Federal Election</h5>
@@ -34,10 +34,11 @@
                 <h6>Powered By <a href="https://civil.services"> civil.services</a></h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1">
-                <h6>For <i class="fa fa-heart fa-fw"></i> the people</h6>
+                <h6>By the People <i class="fa fa-heart fa-fw"></i> For the People</h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-right">
                 <ul class="list-inline">
+                    <li><a href="https://slack.civil.services/bkx7n2" title="Join us on Slack"><i class="fa fa-slack fa-fw fa-2x"></i></a></li>
                     <li><a href="https://github.com/CivilServiceUSA" title="View our Open Source Projects"><i class="fa fa-github fa-fw fa-2x"></i></a></li>
                     <li><a href="https://twitter.com/CivilServiceUSA" title="Visit our Twitter Account"><i class="fa fa-twitter fa-fw fa-2x"></i></a></li>
                     <li><a href="https://www.facebook.com/CivilServiceUSA/" title="Visit our Facebook Account"><i class="fa fa-facebook fa-fw fa-2x"></i></a></li>
@@ -46,6 +47,8 @@
         </div>
     </div>
 </section>
+
+@include('partials.share')
 
 <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="2070965b720f8a895ab228e900a50000"></script>
 <script src="{{ asset('/js/plugins.js') }}"></script>
@@ -59,19 +62,6 @@
     var plugins = document.createElement('link');
     plugins.rel = 'stylesheet';
     plugins.href = '{{ asset('css/plugins.css') }}';
-
-    {{-- @todo: Move these back into style.scss --}}
-    var fonts = [
-        'https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Roboto+Mono:100,400|Caveat',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'
-    ];
-    fonts.forEach(function (fontUrl) {
-        var font = document.createElement('link');
-        font.rel = 'stylesheet';
-        font.href = fontUrl;
-        head.appendChild(font);
-    });
 
     var styles = document.createElement('link');
     styles.rel = 'stylesheet';
@@ -119,6 +109,8 @@
       }
     });
   }}();
+
+  var searchAutoComplete = <?php echo json_encode($searchAutocomplete); ?>;
 </script>
 
 <!--[if lt IE 9]>

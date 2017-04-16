@@ -32,7 +32,7 @@
                         </div>
                         <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the <a href="https://civil.services">https://civil.services</a> website (together, or individually, the "Service") operated by <a href="http://manifestinteractive.com">Manifest Interactive, LLC</a> ("us", "we", or "our").</p>
+                                <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the <a href="https://civil.services">https://civil.services</a> website (together, or individually, the "Service") operated by <a href="https://civil.services">Civil Service USA Corp</a> ("us", "we", or "our").</p>
 
                                 <p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who wish to access or use the Service.</p>
 

@@ -8,7 +8,7 @@
     "test-unit": "./vendor/bin/phpunit",
     "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
     "test": "yarn run test-lint && yarn run test-unit",
-    "clean": "rm -f ./public/css/style.*.css && rm -f ./public/js/app.*.js",
+    "clean": "rm -f ./public/css/style.css && rm -f ./public/js/app.*.js",
     "dev": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -27,12 +27,12 @@
   "devDependencies": {
     "axios": "^0.15.2",
     "bootstrap-sass": "^3.3.7",
+    "graceful-fs": "^4.1.11",
     "jquery": "^3.1.0",
     "laravel-mix": "^0.5.0",
     "lodash": "^4.16.2",
     "npm-scripts-help": "^0.7.0",
-    "vue": "^2.0.1",
-    "graceful-fs": "^4.1.11"
+    "vue": "^2.0.1"
   },
   "scriptshelp": {
     "help-message": "Civil Services Website Commands:",
@@ -66,5 +66,6 @@
     "help": {
       "Desciption": "Generates List of Scripts you can run"
     }
-  }
+  },
+  "dependencies": {}
 }

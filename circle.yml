@@ -7,6 +7,21 @@ machine:
 general:
   artifacts:
     - "reports"
+  branches:
+    only:
+      - master
+      - staging
+deployment:
+  staging:
+    branch: staging
+    owner: CivilServiceUSA
+    commands:
+      - ./scripts/deploy-staging.sh
+  production:
+    branch: master
+    owner: CivilServiceUSA
+    commands:
+      - ./scripts/deploy-production.sh
 dependencies:
   override:
     - tests/commands/phplint.sh
