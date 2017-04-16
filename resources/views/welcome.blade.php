@@ -72,16 +72,16 @@
             <div class="col-md-8 col-sm-offset-2">
                 <h3>Subscribe</h3>
                 <h5>Sign-Up For News Updates and Alerts</h5>
-                <!-- MailChimp Signup Form - Replace the form action in the line below with your MailChimp embed action! For more information on how to do this please visit the Docs!-->
-                <form id="mc-embedded-subscribe-form" action="https://forbetterweb.us11.list-manage.com/subscribe/post?u=4f751a6c58b225179404715f0&amp;id=18fc72763a" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="" class="form-inline subscribe-form">
+                <div id="subscribe-status" class="block-message note">
+                    <div class="message"></div>
+                </div>
+                <form id="signup-form" action="https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=3336234d25&c=?" method="post" class="form-inline subscribe-form">
                     <div class="input-group input-group-lg">
-                        <label><input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control"></label>
+                        <label for="mce-EMAIL" class="sr-only control-label">Email Address</label>
+                        <input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control">
                         <span class="input-group-btn">
                             <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark btn-sm">Subscribe</button>
                         </span>
-                        <div id="mce-responses"></div>
-                        <div id="mce-error-response" class="response"></div>
-                        <div id="mce-success-response" class="response"></div>
                     </div>
                 </form>
             </div>
@@ -189,39 +189,41 @@
             </div>
             <div class="col-md-5 col-md-offset-2">
                 <h3>Say hello</h3>
-                <!-- Contact Form - Enter your email address on line 17 of the mail/contact_me.php file to make this form work. For more information on how to do this please visit the Docs!-->
-                <form id="contactForm" name="sentMessage" novalidate="">
+
+                <div id="contact-status" class="block-message note">
+                    <div class="message"></div>
+                </div>
+
+                <form id="contactForm" action="https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=9d016f8b94&c=?" method="POST" name="sentMessage" novalidate="">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
-                            <label for="name" class="sr-only control-label">You Name</label>
-                            <input id="name" type="text" placeholder="You Name" required="" data-validation-required-message="Please enter name" class="form-control input-lg"><span class="help-block text-danger"></span>
+                            <label for="name" class="sr-only control-label">Your Name</label>
+                            <input id="name" name="NAME" type="text" placeholder="Your Name" required="" data-validation-required-message="Please Enter Your Name" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'">
+                            <span class="help-block text-danger"></span>
                         </div>
                     </div>
+
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
-                            <label for="email" class="sr-only control-label">You Email</label>
-                            <input id="email" type="email" placeholder="You Email" required="" data-validation-required-message="Please enter email" class="form-control input-lg"><span class="help-block text-danger"></span>
+                            <label for="email" class="sr-only control-label">Your Email Address</label>
+                            <input id="email" name="EMAIL" type="email" placeholder="Your Email Address" required="" data-validation-required-message="Please Enter Your Email Address" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'">
+                            <span class="help-block text-danger"></span>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label for="phone" class="sr-only control-label">You Phone</label>
-                            <input id="phone" type="tel" placeholder="You Phone" required="" data-validation-required-message="Please enter phone number" class="form-control input-lg"><span class="help-block text-danger"></span>
-                        </div>
-                    </div>
+
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label for="message" class="sr-only control-label">Message</label>
-                            <textarea id="message" rows="2" placeholder="Message" required="" data-validation-required-message="Please enter a message." aria-invalid="false" class="form-control input-lg"></textarea><span class="help-block text-danger"></span>
+                            <textarea id="message" name="MESSAGE" rows="4" placeholder="Message" required="" data-validation-required-message="Please Enter a Message." aria-invalid="false" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"></textarea>
+                            <span class="help-block text-danger"></span>
                         </div>
                     </div>
-                    <div id="success"></div>
+
                     <button type="submit" class="btn btn-dark">Send</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
-
 
 @endsection

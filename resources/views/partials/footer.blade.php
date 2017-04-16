@@ -48,6 +48,8 @@
     </div>
 </section>
 
+@include('partials.share')
+
 <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="2070965b720f8a895ab228e900a50000"></script>
 <script src="{{ asset('/js/plugins.js') }}"></script>
 <script src="{{ asset('/js/app.js') }}"></script>

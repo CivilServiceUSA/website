@@ -35,7 +35,7 @@
                             <meta itemprop="position" content="3" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}/{{ $representative->name_slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}/representative/{{ $representative->name_slug }}">
                                 <span itemprop="name">{{ $representative->name }}</span>
                             </a>
                             <meta itemprop="position" content="4" />

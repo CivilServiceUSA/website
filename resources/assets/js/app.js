@@ -44,6 +44,9 @@ var CivilServices = {
     var searchForm = $('#search');
     var toggleSearch = $('a.toggle-search');
     var detectLocation = $('#detect-location');
+    var shareButton = $('#share-button');
+    var shareOverlay = $('.share-overlay');
+    var shareOptions = $('.share-options a');
 
     // Remove Current Event Listeners
     $(document).off('scroll.civil-services', CivilServices.scrollWindow);
@@ -53,6 +56,9 @@ var CivilServices = {
     searchForm.off('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.off('click.civil-services', CivilServices.toggleSearch);
     detectLocation.off('click.civil-services', CivilServices.detectLocation);
+    shareButton.off('click.civil-services', CivilServices.openShare);
+    shareOverlay.off('click.civil-services', CivilServices.closeShare);
+    shareOptions.off('click.civil-services', CivilServices.closeShare);
 
     // Add New Event Listeners
     $(document).on('scroll.civil-services', CivilServices.scrollWindow);
@@ -62,6 +68,9 @@ var CivilServices = {
     searchForm.on('blur.civil-services', CivilServices.hideSearch);
     toggleSearch.on('click.civil-services', CivilServices.toggleSearch);
     detectLocation.on('click.civil-services', CivilServices.detectLocation);
+    shareButton.on('click.civil-services', CivilServices.openShare);
+    shareOverlay.on('click.civil-services', CivilServices.closeShare);
+    shareOptions.on('click.civil-services', CivilServices.closeShare);
   },
 
   /**
@@ -131,6 +140,20 @@ var CivilServices = {
         navFixed.removeClass("top-nav-collapse");
       }
     }
+  },
+
+  /**
+   * Open Share Widget
+   */
+  openShare: function () {
+    $('#share-widget').fadeIn();
+  },
+
+  /**
+   * Close Share Widget
+   */
+  closeShare: function () {
+    $('#share-widget').fadeOut();
   },
 
   /**
@@ -272,6 +295,16 @@ var CivilServices = {
         }
       });
     }
+
+    if (typeof $.fn.contactUs === 'function') {
+      $('#contactForm').contactUs();
+    }
+
+    if (typeof $.fn.subscribe === 'function') {
+      $('#signup-form').subscribe();
+    }
+
+
   },
 
   /**

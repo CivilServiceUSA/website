@@ -7,6 +7,7 @@ use CivilServices\Data\Senate;
 use CivilServices\Data\State;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use MetaTag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,14 @@ class AppServiceProvider extends ServiceProvider
             return $view->with(
                 'searchAutocomplete',
                 (new State)->autocomplete()->merge((new Senate)->autocomplete())->merge((new House)->autocomplete())
+              )->with(
+                'shareComponent',
+                (object) array(
+                    'url' => request()->fullUrl(),
+                    'title' => MetaTag::get('title'),
+                    'description' => MetaTag::get('description'),
+                    'image' => MetaTag::get('image')
+                )
             );
         });
     }

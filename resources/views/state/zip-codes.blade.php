@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3 text-center">
                 <h3>{{ $state->state_name }} Cities &amp; Zip Codes</h3>
-                <p>Select a City to view a list of Zip Codes within that city.</p>
+                <p>Select a City in {{ $state->state_name }} to view a list of Zip Codes within that city.  Clicking a Zip Code will take you to the Elected Officials representing that area.</p>
             </div>
         </div>
         <div class="row component-cities">
@@ -60,7 +60,7 @@
                         <div class="panel panel-default">
                             <div id="heading{{ $key }}" role="tab" class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#z{{ $key }}" href="#z{{ $key }}" aria-expanded="false" aria-controls="z{{ $key }}">
+                                    <a role="button" title="View Zip Codes for {{ $city }}, {{ $state->state_name }}" data-toggle="collapse" data-parent="#z{{ $key }}" href="#z{{ $key }}" aria-expanded="false" aria-controls="z{{ $key }}">
                                         {{ $city }}
                                     </a>
                                 </h4>
@@ -70,7 +70,7 @@
                                     <ul>
                                         <?php foreach ($zip_codes as $zip_code): ?>
                                         <li>
-                                            <a href="/my-elected-officials/zipcode/{{ $zip_code }}">{{ $zip_code }}</a>
+                                            <a title="View Elected Officials for {{ $city }}, {{ $state->state_name }} {{ $zip_code }}" href="/my-elected-officials/zipcode/{{ $zip_code }}">{{ $zip_code }}</a>
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>
