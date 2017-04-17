@@ -1,24 +1,24 @@
 <div class="component-person-card wow fadeIn {{ $classes }} <?php if ($key === 0 || $key % 5 === 0) { echo $offset; } ?>">
     <h5 class="no-pad person-name">
-        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
+        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile" {!! trackData('U.S. House', 'Name', $representative->name) !!}>
             {{ $representative->name }}
         </a>
     </h5>
     <h6 class="person-title">{{ titleCase($representative->title) }}</h6>
     <p>
-        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="person-image" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
+        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="person-image" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile" {!! trackData('U.S. House', 'Image', $representative->name) !!}>
             <img src="{{ asset('/img/default-photo.jpg') }}" data-src="{{ $representative->photo_url_sizes->size_1024x1024 }}" onerror="this.src='{{ asset('/img/no-photo.jpg') }}';this.onerror=null;" alt="{{ titleCase($representative->title) }}" class="img-responsive center-block lazy-load">
         </a>
     </p>
     <ul class="list-inline contact-options">
       <?php if ($representative->twitter_url): ?>
-        <li><a href="{{ $representative->twitter_url }}" target="_blank" rel="noreferrer"><i class="fa fa-twitter fa-2x fa-fw"></i></a></li>
+        <li><a href="{{ $representative->twitter_url }}" target="_blank" rel="noreferrer" {!! trackData('U.S. House', 'Twitter', $representative->name) !!}><i class="fa fa-twitter fa-2x fa-fw"></i></a></li>
       <?php endif; ?>
       <?php if ($representative->facebook_url): ?>
-        <li><a href="{{ $representative->facebook_url }}" target="_blank" rel="noreferrer"><i class="fa fa-facebook fa-2x fa-fw"></i></a></li>
+        <li><a href="{{ $representative->facebook_url }}" target="_blank" rel="noreferrer" {!! trackData('U.S. House', 'Facebook', $representative->name) !!}><i class="fa fa-facebook fa-2x fa-fw"></i></a></li>
       <?php endif; ?>
       <?php if ($representative->website): ?>
-        <li><a href="{{ $representative->website }}" target="_blank" rel="noreferrer"><i class="fa fa-external-link fa-2x fa-fw"></i></a></li>
+        <li><a href="{{ $representative->website }}" target="_blank" rel="noreferrer" {!! trackData('U.S. House', 'Website', $representative->name) !!}><i class="fa fa-external-link fa-2x fa-fw"></i></a></li>
       <?php endif; ?>
     </ul>
     <h5 class="person-state with-district {{ $representative->party }}">{{ titleCase($representative->state_name_slug) }} [{{ substr($representative->party, 0, 1) }}]</h5>
@@ -32,7 +32,7 @@
         {{ truncateText($representative->biography, 90) }}
     </p>
     <p class="read-more no-pad">
-        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="btn btn-gray btn-xs" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
+        <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="btn btn-gray btn-xs" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile" {!! trackData('U.S. House', 'Read More', $representative->name) !!}>
             Read More
         </a>
     </p>

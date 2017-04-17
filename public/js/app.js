@@ -34,6 +34,42 @@ var CivilServices = {
   },
 
   /**
+   * Setup Tracking on Links
+   * @param event
+   */
+  trackLinks: function(event){
+    var data;
+
+    if (typeof event.target !== 'undefined' && typeof event.target.dataset !== 'undefined' && typeof event.target.dataset.track !== 'undefined') {
+      data = event.target.dataset;
+    } else if (typeof event.target !== 'undefined' && typeof event.target.parentNode !== 'undefined' && typeof event.target.parentNode.dataset !== 'undefined' && typeof event.target.parentNode.dataset.track !== 'undefined') {
+      data = event.target.parentNode.dataset;
+    }
+
+    if (typeof data === 'object' && typeof data.category === 'string' && typeof data.action === 'string' && typeof data.label === 'string') {
+      CivilServices.trackEvent(data.category, data.action, data.label, data.value);
+    }
+  },
+
+  /**
+   * Setup Tracking on Input
+   * @param event
+   */
+  trackInput: function(event){
+    var data;
+
+    if (typeof event.target !== 'undefined' && typeof event.target.dataset !== 'undefined' && typeof event.target.dataset.track !== 'undefined') {
+      data = event.target.dataset;
+    } else if (typeof event.target !== 'undefined' && typeof event.target.parentNode !== 'undefined' && typeof event.target.parentNode.dataset !== 'undefined' && typeof event.target.parentNode.dataset.track !== 'undefined') {
+      data = event.target.parentNode.dataset;
+    }
+    
+    if (typeof data === 'object' && typeof data.category === 'string' && typeof data.action === 'string') {
+      CivilServices.trackEvent(data.category, data.action, event.target.value, event.target.value.length);
+    }
+  },
+
+  /**
    * Bind Events to DOM Elements
    */
   bindEvents: function() {
@@ -47,6 +83,8 @@ var CivilServices = {
     var shareButton = $('#share-button');
     var shareOverlay = $('.share-overlay');
     var shareOptions = $('.share-options a');
+    var trackLinks = $('a[data-track], button[data-track]');
+    var trackInput = $('input[data-track], textarea[data-track], select[data-track]');
 
     // Remove Current Event Listeners
     $(document).off('scroll.civil-services', CivilServices.scrollWindow);
@@ -59,6 +97,8 @@ var CivilServices = {
     shareButton.off('click.civil-services', CivilServices.openShare);
     shareOverlay.off('click.civil-services', CivilServices.closeShare);
     shareOptions.off('click.civil-services', CivilServices.closeShare);
+    trackLinks.off('click.civil-services', CivilServices.trackLinks);
+    trackInput.off('change.civil-services', CivilServices.trackInput);
 
     // Add New Event Listeners
     $(document).on('scroll.civil-services', CivilServices.scrollWindow);
@@ -71,6 +111,8 @@ var CivilServices = {
     shareButton.on('click.civil-services', CivilServices.openShare);
     shareOverlay.on('click.civil-services', CivilServices.closeShare);
     shareOptions.on('click.civil-services', CivilServices.closeShare);
+    trackLinks.on('click.civil-services', CivilServices.trackLinks);
+    trackInput.on('change.civil-services', CivilServices.trackInput);
   },
 
   /**
@@ -491,21 +533,26 @@ var CivilServices = {
           window.location = '/my-elected-officials/geolocation/' + position.coords.latitude + '/' + position.coords.longitude;
         } else {
           $('#fetching-location').html('&nbsp;');
+          CivilServices.trackEvent('Error', 'GPS', 'Unable to Fetch Location.');
           alert('Unable to Fetch Location.');
         }
       }, function (error) {
         $('#fetching-location').html('&nbsp;');
         switch(error.code) {
           case error.PERMISSION_DENIED:
+            CivilServices.trackEvent('Error', 'GPS', 'User denied the request for Geolocation.');
             alert('User denied the request for Geolocation.');
             break;
           case error.POSITION_UNAVAILABLE:
+            CivilServices.trackEvent('Error', 'GPS', 'Location information is unavailable.');
             alert('Location information is unavailable.');
             break;
           case error.TIMEOUT:
+            CivilServices.trackEvent('Error', 'GPS', 'The request to get user location timed out.');
             alert('The request to get user location timed out.');
             break;
           case error.UNKNOWN_ERROR:
+            CivilServices.trackEvent('Error', 'GPS', 'An unknown error occurred.');
             alert('An unknown error occurred.');
             break;
         }
@@ -545,11 +592,13 @@ var CivilServices = {
           if (response.status && response.status === 'OK' && response && response.results && response.results.length > 0) {
             window.location = '/my-elected-officials/geolocation/' + response.results[0].geometry.location.lat + '/' + response.results[0].geometry.location.lng;
           } else {
+            CivilServices.trackEvent('Error', 'GeoCode', 'Unable to Fetch Location.');
             alert('Unable to Fetch Location.');
           }
         },
         error: function (jqXHR, textStatus, errorThrown) {
           console.log(jqXHR, textStatus, errorThrown);
+          CivilServices.trackEvent('Error', 'GeoCode', errorThrown);
           alert(errorThrown);
         }
       });
@@ -562,7 +611,6 @@ var CivilServices = {
    * Initialize Website
    */
   init: function () {
-    CivilServices.bindEvents();
     CivilServices.updateUI();
     CivilServices.renderCharts();
     CivilServices.renderParallax();
@@ -572,5 +620,6 @@ var CivilServices = {
     CivilServices.renderSwipeBox();
     CivilServices.renderGrid();
     CivilServices.getVoice();
+    CivilServices.bindEvents();
   }
 };

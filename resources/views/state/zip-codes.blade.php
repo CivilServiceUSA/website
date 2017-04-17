@@ -16,25 +16,25 @@
             <div class="col-md-12">
                 <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state" {!! trackData('Nav', 'Breadcrumb', 'State') !!}>
                             <span itemprop="name">State</span>
                         </a>
                         <meta itemprop="position" content="2" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}" {!! trackData('Nav', 'Breadcrumb', 'State ' . $state->state_name) !!}>
                             <span itemprop="name">{{ $state->state_name }}</span>
                         </a>
                         <meta itemprop="position" content="3" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}/zip-codes">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}/zip-codes" {!! trackData('Nav', 'Breadcrumb', 'State ' . $state->state_name_slug . ' Zip Codes') !!}>
                             <span itemprop="name">Zip Codes</span>
                         </a>
                         <meta itemprop="position" content="4" />
@@ -60,7 +60,7 @@
                         <div class="panel panel-default">
                             <div id="heading{{ $key }}" role="tab" class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a role="button" title="View Zip Codes for {{ $city }}, {{ $state->state_name }}" data-toggle="collapse" data-parent="#z{{ $key }}" href="#z{{ $key }}" aria-expanded="false" aria-controls="z{{ $key }}">
+                                    <a role="button" title="View Zip Codes for {{ $city }}, {{ $state->state_name }}" data-toggle="collapse" data-parent="#z{{ $key }}" href="#z{{ $key }}" aria-expanded="false" aria-controls="z{{ $key }}" {!! trackData('View', 'Zip Codes', $city . ', ' . $state->state_name) !!}>
                                         {{ $city }}
                                     </a>
                                 </h4>
@@ -70,7 +70,7 @@
                                     <ul>
                                         <?php foreach ($zip_codes as $zip_code): ?>
                                         <li>
-                                            <a title="View Elected Officials for {{ $city }}, {{ $state->state_name }} {{ $zip_code }}" href="/my-elected-officials/zipcode/{{ $zip_code }}">{{ $zip_code }}</a>
+                                            <a title="View Elected Officials for {{ $city }}, {{ $state->state_name }} {{ $zip_code }}" href="/my-elected-officials/zipcode/{{ $zip_code }}" {!! trackData('Nav', 'Link', 'Zip Code ' . $zip_code) !!}>{{ $zip_code }}</a>
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>

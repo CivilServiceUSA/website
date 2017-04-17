@@ -25,7 +25,7 @@
                     <div class="panel panel-default">
                         <div id="headingOne" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" {!! trackData('View', 'Accordion Section', 'Terms of Use Introduction') !!}>
                                     Introduction
                                 </a>
                             </h4>
@@ -44,7 +44,7 @@
                     <div class="panel panel-default">
                         <div id="headingTwo" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Links To Other Web Sites') !!}>
                                     Links To Other Web Sites
                                 </a>
                             </h4>
@@ -65,7 +65,7 @@
                     <div class="panel panel-default">
                         <div id="headingThree" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Termination') !!}>
                                     Termination
                                 </a>
                             </h4>
@@ -82,7 +82,7 @@
                     <div class="panel panel-default">
                         <div id="heading4" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Indemnification') !!}>
                                     Indemnification
                                 </a>
                             </h4>
@@ -97,7 +97,7 @@
                     <div class="panel panel-default">
                         <div id="heading5" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Limitation Of Liability') !!}>
                                     Limitation Of Liability
                                 </a>
                             </h4>
@@ -112,7 +112,7 @@
                     <div class="panel panel-default">
                         <div id="heading6" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Disclaimer') !!}>
                                     Disclaimer
                                 </a>
                             </h4>
@@ -129,7 +129,7 @@
                     <div class="panel panel-default">
                         <div id="heading7" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Exclusions') !!}>
                                     Exclusions
                                 </a>
                             </h4>
@@ -144,7 +144,7 @@
                     <div class="panel panel-default">
                         <div id="heading8" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Governing Law') !!}>
                                     Governing Law
                                 </a>
                             </h4>
@@ -161,7 +161,7 @@
                     <div class="panel panel-default">
                         <div id="heading9" role="tab" class="panel-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9" class="collapsed">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9" class="collapsed" {!! trackData('View', 'Accordion Section', 'Terms of Use Changes') !!}>
                                     Changes
                                 </a>
                             </h4>

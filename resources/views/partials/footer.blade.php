@@ -5,20 +5,20 @@
             <div class="col-sm-4">
                 <h5>Select Your State</h5>
                 <ul class="list-unstyled state-list">
-                @foreach ((new CivilServices\Data\State)->all() as $state)
-                    <li><a href="/state/{{ $state->slug }}" title="View {{ $state->state }} Government">{{ $state->code }}</a></li>
-                @endforeach
+@foreach ((new CivilServices\Data\State)->all() as $state)
+                    <li><a href="/state/{{ $state->slug }}" title="View {{ $state->state }} Government" {!! trackData('Nav', 'Footer', 'State ' . $state->state) !!}>{{ $state->code }}</a></li>
+@endforeach
                 </ul>
             </div>
             <div class="col-sm-2 col-sm-offset-1 footer-menu">
                 <h5>Legal</h5>
-                <h6 class="no-pad"><a href="/terms-of-use">Terms of Use</a></h6>
-                <h6 class="no-pad"><a href="/privacy-policy">Privacy Policy</a></h6>
+                <h6 class="no-pad"><a href="/terms-of-use" {!! trackData('Nav', 'Footer', 'Terms of Use') !!}>Terms of Use</a></h6>
+                <h6 class="no-pad"><a href="/privacy-policy" {!! trackData('Nav', 'Footer', 'Privacy Policy') !!}>Privacy Policy</a></h6>
             </div>
             <div class="col-sm-2 footer-menu">
                 <h5>Developers</h5>
-                <h6 class="no-pad"><a href="https://github.com/CivilServiceUSA">Use Our Data</a></h6>
-                <h6 class="no-pad"><a href="https://api.civil.services/guide/">API Docs</a></h6>
+                <h6 class="no-pad"><a href="https://github.com/CivilServiceUSA" {!! trackData('Nav', 'Footer', 'Use Our Data') !!} target="_blank">Use Our Data</a></h6>
+                <h6 class="no-pad"><a href="https://api.civil.services/guide/" {!! trackData('Nav', 'Footer', 'API Docs') !!} target="_blank">API Docs</a></h6>
             </div>
             <div class="col-sm-3 text-right">
                 <h5>Next Federal Election</h5>
@@ -38,10 +38,26 @@
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-right">
                 <ul class="list-inline">
-                    <li><a href="https://slack.civil.services/bkx7n2" title="Join us on Slack"><i class="fa fa-slack fa-fw fa-2x"></i></a></li>
-                    <li><a href="https://github.com/CivilServiceUSA" title="View our Open Source Projects"><i class="fa fa-github fa-fw fa-2x"></i></a></li>
-                    <li><a href="https://twitter.com/CivilServiceUSA" title="Visit our Twitter Account"><i class="fa fa-twitter fa-fw fa-2x"></i></a></li>
-                    <li><a href="https://www.facebook.com/CivilServiceUSA/" title="Visit our Facebook Account"><i class="fa fa-facebook fa-fw fa-2x"></i></a></li>
+                    <li>
+                        <a href="https://slack.civil.services/bkx7n2" title="Join us on Slack" {!! trackData('Nav', 'Footer', 'Slack') !!}>
+                            <i class="fa fa-slack fa-fw fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/CivilServiceUSA" title="View our Open Source Projects" {!! trackData('Nav', 'Footer', 'GitHub') !!}>
+                            <i class="fa fa-github fa-fw fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/CivilServiceUSA" title="Visit our Twitter Account" {!! trackData('Nav', 'Footer', 'Twitter') !!}>
+                            <i class="fa fa-twitter fa-fw fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/CivilServiceUSA/" title="Visit our Facebook Account" {!! trackData('Nav', 'Footer', 'Facebook') !!}>
+                            <i class="fa fa-facebook fa-fw fa-2x"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

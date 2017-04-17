@@ -16,19 +16,19 @@
             <div class="col-md-12">
                 <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state" {!! trackData('Nav', 'Breadcrumb', 'State') !!}>
                             <span itemprop="name">State</span>
                         </a>
                         <meta itemprop="position" content="2" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/state/{{ $state->state_name_slug }}" {!! trackData('Nav', 'Breadcrumb', 'State ' . $state->state_name) !!}>
                             <span itemprop="name">{{ $state->state_name }}</span>
                         </a>
                         <meta itemprop="position" content="3" />
@@ -46,26 +46,26 @@
             <div class="col-sm-6">
                 <h3>United States Senate</h3>
 
-                <a href="/us-senate/{{ $state->state_name_slug }}">
+                <a href="/us-senate/{{ $state->state_name_slug }}" {!! trackData('Nav', 'Link', $state->state_name . ' U.S. Senate Image') !!}>
                     <img src="{{ asset('img/senate.png') }}" alt="" class="img-responsive center-block">
                     <h5>Contact {{ $state->state_name }} Senators</h5>
                 </a>
 
                 <p>Get Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts of {{ $state->state_name }} Senators.</p>
 
-                <a href="/us-senate/{{ $state->state_name_slug }}" class="btn btn-success btn-lg">View Senators</a>
+                <a href="/us-senate/{{ $state->state_name_slug }}" class="btn btn-success btn-lg" {!! trackData('Nav', 'Link', $state->state_name . ' U.S. Senate') !!}>View Senators</a>
             </div>
             <div class="col-sm-6">
                 <h3>House of Representatives</h3>
 
-                <a href="/us-house/{{ $state->state_name_slug }}">
+                <a href="/us-house/{{ $state->state_name_slug }}" {!! trackData('Nav', 'Link', $state->state_name . ' U.S. House Image') !!}>
                     <img src="{{ asset('img/house.png') }}" alt="" class="img-responsive center-block">
                     <h5>Contact {{ $state->state_name }} House Members</h5>
                 </a>
 
                 <p>Get Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts of {{ $state->state_name }} House Representatives.</p>
 
-                <a href="/us-house/{{ $state->state_name_slug }}" class="btn btn-success btn-lg">View Representatives</a>
+                <a href="/us-house/{{ $state->state_name_slug }}" class="btn btn-success btn-lg" {!! trackData('Nav', 'Link', $state->state_name . ' U.S. House') !!}>View Representatives</a>
             </div>
         </div>
     </div>
@@ -81,19 +81,18 @@
                 <hr>
                 <?php if($state->state_name): ?><h5><i class="fa fa-map-marker fa-fw fa-lg"></i> State:&nbsp; {{ $state->state_name }}</h5><?php endif; ?>
                 <?php if($state->nickname): ?><h5><i class="fa fa-bookmark-o fa-fw fa-lg"></i> Nickname:&nbsp; {{ $state->nickname }}</h5><?php endif; ?>
-                <?php if($state->capital_city): ?><h5><i class="fa fa-university fa-fw fa-lg"></i> Capital City:&nbsp; <a href="{{ $state->capital_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Capital City">{{ $state->capital_city }}</a></h5><?php endif; ?>
+                <?php if($state->capital_city): ?><h5><i class="fa fa-university fa-fw fa-lg"></i> Capital City:&nbsp; <a href="{{ $state->capital_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Capital City" {!! trackData('External Link', 'Website', $state->state_name . ' Capital City') !!}>{{ $state->capital_city }}</a></h5><?php endif; ?>
                 <hr>
                 <?php if($state->population && $state->population_rank): ?><h5><i class="fa fa-user-circle-o fa-fw fa-lg"></i> Population:&nbsp; {{ number_format($state->population) }} <small>( {{ $state->population_rank }} / 50 )</small></h5><?php endif; ?>
                 <?php if($state->admission_date && $state->admission_number): ?><h5><i class="fa fa-clock-o fa-fw fa-lg"></i> Admission:&nbsp; {{ date_format(date_create($state->admission_date), 'F jS, Y') }} <small>( {{ $state->admission_number }} / 50 )</small></h5><?php endif; ?>
-                <?php if($state->constitution_url): ?><h5><i class="fa fa-gavel fa-fw fa-lg"></i> <a href="{{ $state->constitution_url }}" rel="noopener" title="Read {{ $state->state_name }}'s Constitution">{{ $state->state_name }}'s Constitution</a></h5><?php endif; ?>
+                <?php if($state->constitution_url): ?><h5><i class="fa fa-gavel fa-fw fa-lg"></i> <a href="{{ $state->constitution_url }}" rel="noopener" title="Read {{ $state->state_name }}'s Constitution" {!! trackData('External Link', 'Website', $state->state_name . ' Constitution') !!}>{{ $state->state_name }}'s Constitution</a></h5><?php endif; ?>
                 <hr>
-                <h5><i class="fa fa-globe fa-fw fa-lg"></i> <a href="/state/{{ $state->state_name_slug }}/zip-codes">{{ $state->state_name }} Cities &amp; Zip Codes</a></h5>
+                <h5><i class="fa fa-globe fa-fw fa-lg"></i> <a href="/state/{{ $state->state_name_slug }}/zip-codes" {!! trackData('Nav', 'Link', $state->state_name . '\'s Cities & Zip Codes') !!}>{{ $state->state_name }} Cities &amp; Zip Codes</a></h5>
                 <h5><i class="fa fa-share-alt fa-fw fa-lg"></i> Links:&nbsp;
-                <?php if($state->website): ?><a href="{{ $state->website }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Website"><i class="fa fa-fw fa-lg fa-external-link-square"></i></a><?php endif; ?>
-                <?php if($state->twitter_url): ?><a href="{{ $state->twitter_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Twitter Page"><i class="fa fa-fw fa-lg fa-twitter-square"></i></a><?php endif; ?>
-                <?php if($state->facebook_url): ?><a href="{{ $state->facebook_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Facebook Page"><i class="fa fa-fw fa-lg fa-facebook-square"></i></a><?php endif; ?>
+                <?php if($state->website): ?><a href="{{ $state->website }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Website" {!! trackData('External Link', 'Website', $state->state_name) !!}><i class="fa fa-fw fa-lg fa-external-link-square"></i></a><?php endif; ?>
+                <?php if($state->twitter_url): ?><a href="{{ $state->twitter_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Twitter Page" {!! trackData('External Link', 'Twitter', $state->state_name) !!}><i class="fa fa-fw fa-lg fa-twitter-square"></i></a><?php endif; ?>
+                <?php if($state->facebook_url): ?><a href="{{ $state->facebook_url }}" rel="noopener" title="Visit {{ $state->state_name }}'s Official Facebook Page" {!! trackData('External Link', 'Facebook', $state->state_name) !!}><i class="fa fa-fw fa-lg fa-facebook-square"></i></a><?php endif; ?>
                 </h5>
-
             </div>
 
             <div class="col-md-5 col-md-offset-2">
@@ -104,12 +103,12 @@
                 <ul role="tablist" class="nav nav-tabs">
                 <?php if($state->twitter_url): ?>
                     <li role="presentation" class="active">
-                        <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                        <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', $state->state_name . ' Twitter') !!}><i class="fa fa-fw fa-twitter"></i> Twitter</a>
                     </li>
                 <?php endif; ?>
                 <?php if($state->facebook_url): ?>
                     <li role="presentation"<?php if(empty($state->facebook_url)) echo ' class="active"'; ?>>
-                        <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+                        <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', $state->state_name . ' Facebook') !!}><i class="fa fa-fw fa-facebook"></i> Facebook</a>
                     </li>
                 <?php endif; ?>
                 </ul>
@@ -118,7 +117,7 @@
                 <div class="tab-content">
                 <?php if($state->twitter_url): ?>
                     <div id="twitter_tab" role="tabpanel" class="tab-pane fade in active">
-                        <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $state->twitter_url }}">
+                        <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $state->twitter_url }}" {!! trackData('External Link', 'Twitter', $state->state_name) !!}>
                             Loading Tweets from {{ $state->state_name }} ...
                         </a>
                         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -137,7 +136,7 @@
 
                         <div class="fb-page" data-href="{{ $state->facebook_url }}>" data-tabs="timeline, events" data-hide-cta="true" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                             <blockquote cite="{{ $state->facebook_url }}>" class="fb-xfbml-parse-ignore">
-                                <a href="{{ $state->facebook_url }}>">
+                                <a href="{{ $state->facebook_url }}>" {!! trackData('External Link', 'Facebook', $state->state_name) !!}>
                                     Loading Facebook from {{ $state->state_name }} ...
                                 </a>
                             </blockquote>
@@ -164,15 +163,21 @@
         <div class="row grid-pad">
             <div class="col-sm-6 col-md-4">
                 <h5>{{ $state->state_name }} on U.S. Map</h5>
-                <a href="{{ $state->map->large }}" data-lightbox="state-assets"><img src="{{ $state->map->large }}" alt="{{ $state->state_name }} Map Image" class="img-responsive center-block max-h-240" /></a>
+                <a href="{{ $state->map->large }}" data-lightbox="state-assets" {!! trackData('View', 'State Map', $state->state_name) !!}>
+                    <img src="{{ $state->map->large }}" alt="{{ $state->state_name }} Map Image" class="img-responsive center-block max-h-240" />
+                </a>
             </div>
             <div class="col-sm-6 col-md-4">
                 <h5>{{ $state->state_name }}'s State Flag</h5>
-                <a href="{{ $state->state_flag->large }}" data-lightbox="state-assets"><img src="{{ $state->state_flag->large }}" alt="{{ $state->state_name }}'s State Flag Image" class="img-responsive center-block max-h-240" /></a>
+                <a href="{{ $state->state_flag->large }}" data-lightbox="state-assets" {!! trackData('View', 'State Flag', $state->state_name) !!}>
+                    <img src="{{ $state->state_flag->large }}" alt="{{ $state->state_name }}'s State Flag Image" class="img-responsive center-block max-h-240" />
+                </a>
             </div>
             <div class="col-sm-6 col-md-4">
                 <h5>{{ $state->state_name }}'s State Seal</h5>
-                <a href="{{ $state->state_seal->large }}" data-lightbox="state-assets"><img src="{{ $state->state_seal->large }}" alt="{{ $state->state_name }}'s State Seal Image" class="img-responsive center-block max-h-240" /></a>
+                <a href="{{ $state->state_seal->large }}" data-lightbox="state-assets" {!! trackData('View', 'State Seal', $state->state_name) !!}>
+                    <img src="{{ $state->state_seal->large }}" alt="{{ $state->state_name }}'s State Seal Image" class="img-responsive center-block max-h-240" />
+                </a>
             </div>
         </div>
     </div>

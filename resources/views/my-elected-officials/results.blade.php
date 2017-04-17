@@ -17,19 +17,19 @@
             <div class="col-md-12">
                 <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                             <span itemprop="name">Home</span>
                         </a>
                         <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials" {!! trackData('Nav', 'Breadcrumb', 'My Elected Officials') !!}>
                             <span itemprop="name">My Elected Officials</span>
                         </a>
                         <meta itemprop="position" content="2" />
                     </li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials/{{ $breadcrumb->url }}">
+                        <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/my-elected-officials/{{ $breadcrumb->url }}" {!! trackData('Nav', 'Breadcrumb', 'My Elected Officials ' . $breadcrumb->name) !!}>
                             <span itemprop="name">{{ $breadcrumb->name }}</span>
                         </a>
                         <meta itemprop="position" content="3" />

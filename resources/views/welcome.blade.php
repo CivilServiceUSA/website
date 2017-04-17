@@ -9,7 +9,7 @@
         <h1>Accountability in Action</h1>
         <h4>Be a part of your Local, State & Federal Government.</h4>
         <ul class="list-inline lead">
-            <li><a href="#about" class="btn btn-border btn-lg page-scroll">Get Started</a></li>
+            <li><a href="#about" class="btn btn-border btn-lg page-scroll" {!! trackData('Nav', 'Button', 'Get Started') !!}>Get Started</a></li>
         </ul>
     </div>
 </header>
@@ -43,22 +43,22 @@
             <div data-wow-delay=".2s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-bookmarks-outline"></i> Developer API</h4>
                 <p>Use our API in your application to connect users to government.</p>
-                <p><a href="https://api.civil.services/guide/" rel="noopener" target="_blank" class="btn btn-dark btn-xs">More Info</a></p>
+                <p><a href="https://api.civil.services/guide/" rel="noopener" target="_blank" class="btn btn-dark btn-xs" {!! trackData('Nav', 'Button', 'Developer API') !!}>More Info</a></p>
             </div>
             <div data-wow-delay=".4s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-chatboxes-outline"></i> Contact Officials</h4>
                 <p>Search for Elected Officials and get their Contact Information.</p>
-                <p><a href="/state" class="btn btn-dark btn-xs">Get Started</a></p>
+                <p><a href="/state" class="btn btn-dark btn-xs" {!! trackData('Nav', 'Button', 'Contact Officials') !!}>Get Started</a></p>
             </div>
             <div data-wow-delay=".6s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-contact-outline"></i> State Legislators</h4>
                 <p>Find the Elected Officials for your States House &amp; Senate.</p>
-                <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs">Coming Soon</a></p>
+                <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs" {!! trackData('Nav', 'Button', 'State Legislators') !!}>Coming Soon</a></p>
             </div>
             <div data-wow-delay=".8s" class="col-lg-3 col-sm-6 wow fadeIn">
                 <h4><i class="icon-big ion-ios-search"></i> Legislation Searches</h4>
                 <p>Search for Bills in your state and how Elected Officials Voted.</p>
-                <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs">Coming Soon</a></p>
+                <p><a href="javascript:void(0);" class="btn btn-dark-border btn-xs" {!! trackData('Nav', 'Button', 'Legislation Searches') !!}>Coming Soon</a></p>
             </div>
         </div>
     </div>
@@ -100,9 +100,9 @@
                 <p><img itemprop="image" src="{{ asset('img/team/peter-schmalfeldt.jpg') }}" alt="Peter Schmalfeldt" class="img-responsive center-block"></p>
                 <h2 class="classic" itemprop="name">Peter Schmalfeldt</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/mrmidi" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/manifestinteractive" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://peterschmalfeldt.com" itemprop="url" rel="noopener" target="_blank" title="Peter Schmalfeldt's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/mrmidi" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Twitter Profile" {!! trackData('External Link', 'Twitter', 'Peter Schmalfeldt') !!}><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/manifestinteractive" itemprop="sameAs" rel="noopener" target="_blank" title="Peter Schmalfeldt's Github Profile" {!! trackData('External Link', 'GitHub', 'Peter Schmalfeldt') !!}><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://peterschmalfeldt.com" itemprop="url" rel="noopener" target="_blank" title="Peter Schmalfeldt's Website" {!! trackData('External Link', 'Website', 'Peter Schmalfeldt') !!}><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6 itemprop="jobTitle">Founder &nbsp;|&nbsp; Engineer &nbsp;|&nbsp; Designer</h6>
             </div>
@@ -110,9 +110,9 @@
                 <p><img itemprop="image"  src="{{ asset('img/team/matt-stauffer.jpg') }}" alt="Matt Stauffer" class="img-responsive center-block"></p>
                 <h2 class="classic"itemprop="name">Matt Stauffer</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/stauffermatt" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/mattstauffer" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://mattstauffer.co" rel="noopener" itemprop="url" target="_blank" title="Matt Stauffer's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/stauffermatt" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Twitter Profile" {!! trackData('External Link', 'Twitter', 'Matt Stauffer') !!}><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/mattstauffer" itemprop="sameAs" rel="noopener" target="_blank" title="Matt Stauffer's Github Profile" {!! trackData('External Link', 'GitHub', 'Matt Stauffer') !!}><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://mattstauffer.co" rel="noopener" itemprop="url" target="_blank" title="Matt Stauffer's Website" {!! trackData('External Link', 'Website', 'Matt Stauffer') !!}><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6 itemprop="jobTitle">Director &nbsp;|&nbsp; Engineer</h6>
             </div>
@@ -120,9 +120,9 @@
                 <p><img itemprop="image" src="{{ asset('img/team/john-kramlich.jpg') }}" alt="John Kramlich" class="img-responsive center-block"></p>
                 <h2 class="classic"itemprop="name">John Kramlich</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/jkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/johnkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="http://johnkramlich.com" rel="noopener" itemprop="url" target="_blank" title="John Kramlich's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/jkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Twitter Profile" {!! trackData('External Link', 'Twitter', 'John Kramlich') !!}><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/johnkramlich" itemprop="sameAs" rel="noopener" target="_blank" title="John Kramlich's Github Profile" {!! trackData('External Link', 'GitHub', 'John Kramlich') !!}><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="http://johnkramlich.com" rel="noopener" itemprop="url" target="_blank" title="John Kramlich's Website" {!! trackData('External Link', 'Website', 'John Kramlich') !!}><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6 itemprop="jobTitle">Director &nbsp;|&nbsp; Engineer</h6>
             </div>
@@ -130,9 +130,9 @@
                 <p><img itemprop="image" src="{{ asset('img/team/samuel-sinyangwe.jpg') }}" alt="Samuel Sinyangwe" class="img-responsive center-block"></p>
                 <h2 class="classic"itemprop="name">Samuel Sinyangwe</h2>
                 <ul class="list-inline">
-                    <li><a href="https://twitter.com/samswey" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Twitter Profile"><i class="fa fa-twitter fa-lg"></i></a></li>
-                    <li><a href="https://github.com/campaignzero" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Github Profile"><i class="fa fa-github fa-lg"></i></a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" itemprop="url" rel="noopener" target="_blank" title="Samuel Sinyangwe's Website"><i class="fa fa-external-link fa-lg"></i></a></li>
+                    <li><a href="https://twitter.com/samswey" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Twitter Profile" {!! trackData('External Link', 'Twitter', 'Samuel Sinyangwe') !!}><i class="fa fa-twitter fa-lg"></i></a></li>
+                    <li><a href="https://github.com/campaignzero" itemprop="sameAs" rel="noopener" target="_blank" title="Samuel Sinyangwe's Github Profile" {!! trackData('External Link', 'GitHub', 'Samuel Sinyangwe') !!}><i class="fa fa-github fa-lg"></i></a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Samuel_Sinyangwe" itemprop="url" rel="noopener" target="_blank" title="Samuel Sinyangwe's Website" {!! trackData('External Link', 'Website', 'Samuel Sinyangwe') !!}><i class="fa fa-external-link fa-lg"></i></a></li>
                 </ul>
                 <h6 itemprop="jobTitle">Policy Analyst &nbsp;|&nbsp; Advisor</h6>
             </div>
@@ -180,11 +180,11 @@
                 </h5>
                 <h5>
                     <i class="fa fa-envelope fa-fw fa-lg"></i>
-                    <a href="mailto:hello@civil.services">hello@civil.services</a>
+                    <a href="mailto:hello@civil.services" {!! trackData('External Link', 'Email', 'Contact Us') !!}>hello@civil.services</a>
                 </h5>
                 <h5>
                     <i class="fa fa-phone fa-fw fa-lg"></i>
-                    <a href="tel:7273145214">(727) 314-5214</a>
+                    <a href="tel:7273145214" {!! trackData('External Link', 'Phone', 'Contact Us') !!}>(727) 314-5214</a>
                 </h5>
             </div>
             <div class="col-md-5 col-md-offset-2">
@@ -219,7 +219,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-dark">Send</button>
+                    <button type="submit" class="btn btn-dark" {!! trackData('Form', 'Contact', 'Button Submit') !!}>Send</button>
                 </form>
             </div>
         </div>
