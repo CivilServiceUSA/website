@@ -886,6 +886,8 @@ var LazyLoad = (function() {
               message.html(data.msg).fadeIn();
               note.addClass('alert alert-danger').slideDown();
 
+              CivilServices.trackEvent('Error', 'Contact Form', data.msg);
+
               if(data.msg.indexOf('is already subscribed') > -1){
                 CivilServices.trackEvent('Subscribe', 'MailChimp Notice', 'Contacted Us Email Already Subscribed');
               } else {
@@ -904,6 +906,7 @@ var LazyLoad = (function() {
           }
         });
       } else {
+        CivilServices.trackEvent('Error', 'Contact Form', error_message);
         message.html(error_message).fadeIn();
         note.addClass('alert alert-danger').slideDown();
       }
@@ -965,6 +968,8 @@ var LazyLoad = (function() {
               message.html(data.msg).fadeIn();
               note.addClass('alert alert-danger').slideDown();
 
+              CivilServices.trackEvent('Error', 'Subscribe Form', data.msg);
+
               if(data.msg.indexOf('is already subscribed') > -1){
                 CivilServices.trackEvent('Subscribe', 'MailChimp Notice', 'Email Already Subscribed');
               } else {
@@ -983,6 +988,7 @@ var LazyLoad = (function() {
           }
         });
       } else {
+        CivilServices.trackEvent('Error', 'Subscribe Form', error_message);
         message.html(error_message).fadeIn();
         note.addClass('alert alert-danger').slideDown();
       }
@@ -998,6 +1004,7 @@ var LazyLoad = (function() {
   }
   console.log("%c★ Want to Volunteer? %c> %cjoinUsOnSlack()", e(!0, "#1E72A1"), e(!0, "#666"), e(!0, "#e52025")),
     window.joinUsOnSlack = function() {
+      CivilServices.trackEvent('Developer', 'Join Slack', 'Executed joinUsOnSlack()');
       return console.log("%cWe look forward to chatting with you! %cRedirecting ...", e(!1, "#1E72A1"), e(!1, "#666")),
         setTimeout(function(){ window.location.href = 'https://slack.civil.services/bkx7n2' }, 5000),
         ""

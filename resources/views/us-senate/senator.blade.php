@@ -17,25 +17,25 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                                 <span itemprop="name">Home</span>
                             </a>
                             <meta itemprop="position" content="1" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate') !!}>
                                 <span itemprop="name">U.S. Senate</span>
                             </a>
                             <meta itemprop="position" content="2" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $slug }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate ' . titleCase($slug) . ' Senators') !!}>
                                 <span itemprop="name">{{ titleCase($slug) }} Senators</span>
                             </a>
                             <meta itemprop="position" content="3" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $slug }}/senator/{{ $senator->name_slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $slug }}/senator/{{ $senator->name_slug }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senator ' . $senator->name) !!}>
                                 <span itemprop="name">{{ $senator->name }}</span>
                             </a>
                             <meta itemprop="position" content="4" />
@@ -51,24 +51,24 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div>
-                        <a href="{{ $senator->photo_url_sizes->size_1024x1024 }}" data-lightbox="senator">
+                        <a href="{{ $senator->photo_url_sizes->size_1024x1024 }}" data-lightbox="senator" {!! trackData('U.S. Senate', 'Image', $senator->name) !!}>
                             <img src="{{ $senator->photo_url_sizes->size_1024x1024 }}" onerror="this.src='/img/no-photo.jpg';this.onerror=null;" alt="{{ titleCase($senator->title) }}" class="img-responsive center-block">
                         </a>
                     </div>
                     <div class="contact-buttons text-center">
-                        <a href="{{ $senator->website }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Visit {{ $senator->name }}'s Official Website">
+                        <a href="{{ $senator->website }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Visit {{ $senator->name }}'s Official Website" {!! trackData('U.S. Senate', 'Website', $senator->name) !!}>
                             <i class="fa fa-external-link-square fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $senator->contact_page }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Contact {{ $senator->name }}">
+                        <a href="{{ $senator->contact_page }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Contact {{ $senator->name }}" {!! trackData('U.S. Senate', 'Email', $senator->name) !!}>
                             <i class="fa fa-envelope fa-fw fa-lg"></i>
                         </a>
-                        <a href="tel:{{ str_replace('-', '', $senator->phone) }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Call {{ $senator->name }}">
+                        <a href="tel:{{ str_replace('-', '', $senator->phone) }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Call {{ $senator->name }}" {!! trackData('U.S. Senate', 'Phone', $senator->name) !!}>
                             <i class="fa fa-phone fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $senator->twitter_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $senator->name }}'s Twitter Profile">
+                        <a href="{{ $senator->twitter_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $senator->name }}'s Twitter Profile" {!! trackData('U.S. Senate', 'Twitter', $senator->name) !!}>
                             <i class="fa fa-twitter fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $senator->facebook_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $senator->name }}'s Facebook Profile">
+                        <a href="{{ $senator->facebook_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $senator->name }}'s Facebook Profile" {!! trackData('U.S. Senate', 'Facebook', $senator->name) !!}>
                             <i class="fa fa-facebook fa-fw fa-lg"></i>
                         </a>
                     </div>
@@ -93,7 +93,7 @@
                     <h5>
                         <i class="fa fa-id-badge fa-fw fa-lg"></i>
                         Name:&nbsp; {{ $senator->name }} &nbsp;
-                        <a href="javascript:void(0);" title="Hear how to Pronounce {{ $senator->name }}'s Name" onclick="CivilServices.speak('{{ $senator->name }}'); this.blur(); return false;" class="speak-text"><i class="fa fa-volume-up fa-fw fa-lg"></i></a>
+                        <a href="javascript:void(0);" title="Hear how to Pronounce {{ $senator->name }}'s Name" onclick="CivilServices.speak('{{ $senator->name }}'); this.blur(); return false;" class="speak-text" {!! trackData('U.S. Senate', 'Pronounce', $senator->name) !!}><i class="fa fa-volume-up fa-fw fa-lg"></i></a>
                     </h5>
                     <?php endif; ?>
 
@@ -152,12 +152,12 @@
                     <ul role="tablist" class="nav nav-tabs">
                         <?php if($senator->twitter_url): ?>
                         <li role="presentation" class="active">
-                            <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                            <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', 'Twitter') !!}><i class="fa fa-fw fa-twitter"></i> Twitter</a>
                         </li>
                         <?php endif; ?>
                         <?php if($senator->facebook_url): ?>
                         <li role="presentation"<?php if(empty($senator->facebook_url)) echo ' class="active"'; ?>>
-                            <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+                            <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', 'Facebook') !!}><i class="fa fa-fw fa-facebook"></i> Facebook</a>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -166,7 +166,7 @@
                     <div class="tab-content">
                         <?php if($senator->twitter_url): ?>
                         <div id="twitter_tab" role="tabpanel" class="tab-pane fade in active">
-                            <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $senator->twitter_url }}">
+                            <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $senator->twitter_url }}" {!! trackData('U.S. Senate', 'Twitter', $senator->name) !!}>
                                 Loading Tweets from {{ $senator->name }} ...
                             </a>
                             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -184,7 +184,7 @@
                               }(document, 'script', 'facebook-jssdk'));</script>
 
                             <div class="fb-page" data-href="{{ $senator->facebook_url }}>" data-tabs="timeline, events" data-hide-cta="true" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
-                                <blockquote cite="{{ $senator->facebook_url }}>" class="fb-xfbml-parse-ignore">
+                                <blockquote cite="{{ $senator->facebook_url }}>" class="fb-xfbml-parse-ignore" {!! trackData('U.S. Senate', 'Facebook', $senator->name) !!}>
                                     <a href="{{ $senator->facebook_url }}>">
                                         Loading Facebook from {{ $senator->name }} ...
                                     </a>
@@ -218,43 +218,43 @@
                 <div class="col-lg-6">
                     <ul class="list-group accountability">
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->elections }}" target="_blank" rel="noreferrer" title="View Congressional Elections for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->elections }}" target="_blank" rel="noreferrer" title="View Congressional Elections for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Congressional Elections', $senator->name) !!}>
                                 Congressional Elections
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->industries }}" target="_blank" rel="noreferrer" title="View Top Industries for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->industries }}" target="_blank" rel="noreferrer" title="View Top Industries for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Top Industries', $senator->name) !!}>
                                 Top Industries
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->pacs }}" target="_blank" rel="noreferrer" title="View Political Action Committees for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->pacs }}" target="_blank" rel="noreferrer" title="View Political Action Committees for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Political Action Committees', $senator->name) !!}>
                                 Political Action Committees
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->donors }}" target="_blank" rel="noreferrer" title="View Top 20 Contributors for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->donors }}" target="_blank" rel="noreferrer" title="View Top 20 Contributors for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Top 20 Contributors', $senator->name) !!}>
                                 Top 20 Contributors
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->geography }}" target="_blank" rel="noreferrer" title="View Contributions by Geography for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->geography }}" target="_blank" rel="noreferrer" title="View Contributions by Geography for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Contributions by Geography', $senator->name) !!}>
                                 Contributions by Geography
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->expenditures }}" target="_blank" rel="noreferrer" title="View Expenditures for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->expenditures }}" target="_blank" rel="noreferrer" title="View Expenditures for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Expenditures', $senator->name) !!}>
                                 Expenditures
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->opensecrets_url_tabs->legislation }}" target="_blank" rel="noreferrer" title="View Congress Legislation for {{ $senator->name }} on OpenStates.org">
+                            <a href="{{ $senator->opensecrets_url_tabs->legislation }}" target="_blank" rel="noreferrer" title="View Congress Legislation for {{ $senator->name }} on OpenStates.org" {!! trackData('U.S. Senate', 'Congress Legislation', $senator->name) !!}>
                                 Congress Legislation
                                 <span class="badge float-right">GO</span>
                             </a>
@@ -264,43 +264,43 @@
                 <div class="col-lg-6">
                     <ul class="list-group accountability">
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->summary }}" target="_blank" rel="noreferrer" title="View Political Summary for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->summary }}" target="_blank" rel="noreferrer" title="View Political Summary for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Political Summary', $senator->name) !!}>
                                 Political Summary
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->bio }}" target="_blank" rel="noreferrer" title="View Political Biography for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->bio }}" target="_blank" rel="noreferrer" title="View Political Biography for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Political Biography', $senator->name) !!}>
                                 Political Biography
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->votes }}" target="_blank" rel="noreferrer" title="View Voting Records for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->votes }}" target="_blank" rel="noreferrer" title="View Voting Records for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Voting Records', $senator->name) !!}>
                                 Voting Records
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->positions }}" target="_blank" rel="noreferrer" title="View Issue Positions for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->positions }}" target="_blank" rel="noreferrer" title="View Issue Positions for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Issue Positions', $senator->name) !!}>
                                 Issue Positions
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->ratings }}" target="_blank" rel="noreferrer" title="View Ratings &amp; Endorsements for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->ratings }}" target="_blank" rel="noreferrer" title="View Ratings &amp; Endorsements for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Ratings & Endorsements', $senator->name) !!}>
                                 Ratings &amp; Endorsements
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->speeches }}" target="_blank" rel="noreferrer" title="View Public Statements for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->speeches }}" target="_blank" rel="noreferrer" title="View Public Statements for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Public Statements', $senator->name) !!}>
                                 Public Statements
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $senator->votesmart_url_tabs->funding }}" target="_blank" rel="noreferrer" title="View Campaign Finances for {{ $senator->name }} on VoteSmart.org">
+                            <a href="{{ $senator->votesmart_url_tabs->funding }}" target="_blank" rel="noreferrer" title="View Campaign Finances for {{ $senator->name }} on VoteSmart.org" {!! trackData('U.S. Senate', 'Campaign Finances', $senator->name) !!}>
                                 Campaign Finances
                                 <span class="badge float-right">GO</span>
                             </a>

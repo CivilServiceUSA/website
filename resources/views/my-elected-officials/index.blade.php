@@ -9,8 +9,8 @@
         <h1>Find My Elected Officials</h1>
         <h4>Get Contact Information &amp; Political History.</h4>
         <ul class="list-inline lead">
-            <li><button id="detect-location" class="btn btn-border btn-lg page-scroll ">Detect Location</button></li>
-            <li><a href="#enter-address" class="btn btn-border btn-lg page-scroll">Enter Address</a></li>
+            <li><button id="detect-location" class="btn btn-border btn-lg page-scroll" {!! trackData('Nav', 'Button', 'Detect Location') !!}>Detect Location</button></li>
+            <li><a href="#enter-address" class="btn btn-border btn-lg page-scroll" {!! trackData('Nav', 'Button', 'Enter Address') !!}>Enter Address</a></li>
         </ul>
         <p id="fetching-location">&nbsp;</p>
     </div>
@@ -24,7 +24,7 @@
                 <p class="no-pad">
                     To give you the most accurate information, we need to know where you live.  House Representatives
                     can only support people from within their district.  For this reason, we need your Home Address to
-                    determine your exact location. <a href="/privacy-policy">We do not collect personal information</a>,
+                    determine your exact location. <a href="/privacy-policy" {!! trackData('Nav', 'Link', 'Privacy Policy') !!}>We do not collect personal information</a>,
                     and your address is only used to determine your district's Representative.
                 </p>
                 <h2 class="classic">- Civil Services Team</h2>
@@ -42,14 +42,14 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label for="find-officials-city" class="sr-only control-label">City</label>
-                            <input id="find-officials-city" type="text" placeholder="City" pattern="[a-zA-Z-'. ]{5,}" required="" data-validation-pattern-message="City should be at least five characters" data-validation-required-message="Please Enter Your City" class="form-control input-lg">
+                            <input id="find-officials-city" type="text" placeholder="City" pattern="[a-zA-Z-'. ]{5,}" required="" data-validation-pattern-message="City should be at least five characters" data-validation-required-message="Please Enter Your City" class="form-control input-lg" {!! trackData('Form', 'Address City') !!}>
                             <span class="help-block text-danger"></span>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label for="find-officials-state" class="sr-only control-label">State</label>
-                            <select id="find-officials-state" name="state" size="1" class="form-control input-lg short" required="" data-validation-required-message="Please Select your State">
+                            <select id="find-officials-state" name="state" size="1" class="form-control input-lg short" required="" data-validation-required-message="Please Select your State" {!! trackData('Form', 'Address State') !!}>
                                 <option value="">State</option>
                                 <option value="AK">AK</option>
                                 <option value="AL">AL</option>
@@ -133,13 +133,13 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label for="find-officials-zipcode" class="sr-only control-label">Zip Code</label>
-                            <input id="find-officials-zipcode" type="text" placeholder="Zip Code" required="" maxlength="5" pattern="[0-9]{5}" data-validation-pattern-message="Zip Code must be five digits ( e.g. 10001 ) " data-validation-required-message="Please enter Zip Code" class="form-control input-lg short">
+                            <input id="find-officials-zipcode" type="text" placeholder="Zip Code" required="" maxlength="5" pattern="[0-9]{5}" data-validation-pattern-message="Zip Code must be five digits ( e.g. 10001 ) " data-validation-required-message="Please enter Zip Code" class="form-control input-lg short" {!! trackData('Form', 'Address Zip Code') !!}>
                             <span class="help-block text-danger"></span>
                         </div>
                     </div>
 
                     <div id="success"></div>
-                    <button type="submit" class="btn btn-dark">Find Officials</button>
+                    <button type="submit" class="btn btn-dark" {!! trackData('Nav', 'Button', 'Find Officials') !!}>Find Officials</button>
                 </form>
             </div>
         </div>

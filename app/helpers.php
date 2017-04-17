@@ -93,6 +93,7 @@ if (! function_exists('titleCase')) {
             }, ucwords(strtolower($title))
         );
 
+        $title = preg_replace('/\s+/', ' ', $title);
         return $title;
     }
 }
@@ -163,5 +164,31 @@ if (! function_exists('removeEmpty')) {
         }
 
         return $clean;
+    }
+}
+
+if (! function_exists('trackData')) {
+
+    function trackData($category, $action, $label = null, $value = null)
+    {
+        $data = array('data-track');
+
+        if ( !empty($category)) {
+            $data[] = 'data-category="' . $category . '"';
+        }
+
+        if ( !empty($action)) {
+            $data[] = 'data-action="' . $action . '"';
+        }
+
+        if ( !empty($label)) {
+            $data[] = 'data-label="' . $label . '"';
+        }
+
+        if ( !empty($value)) {
+            $data[] = 'data-value="' . $value . '"';
+        }
+
+        return join(' ', $data);
     }
 }

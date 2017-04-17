@@ -210,7 +210,7 @@
     html, body {padding:0;margin:0;width:100%;height:100%;}
     body.loading {overflow:hidden;pointer-events:none;touch-action:none;}
     body.loading div.section, body.loading section {display:none;}
-    #loading {width:100%;height:100%;background:#1e72a1;position:absolute;z-index:2000;top:0;right:0;bottom:0;left:0;pointer-events:none;touch-action:none;}
+    #loading {width:100%;height:100%;background:#1e72a1;position:fixed;z-index:2000;top:0;right:0;bottom:0;left:0;pointer-events:none;touch-action:none;}
     #loading #preloader {position:relative;width:100%;height:80px;top:calc(50% - 50px);text-align:center;margin:0 auto}
     #loading #preloader:after {content:"Civil Services";position:absolute;text-transform:uppercase;font-size:12px;font-weight:400;color:#fff;letter-spacing:1px;font-family:"Raleway", "Helvetica Neue", "Lucida Grande", Arial, Verdana, sans-serif;top:90px;width:100%;left:0;right:0;height:1px;text-align:center}
     #loading #preloader span {position:absolute;border:8px solid #fff;border-top:8px solid transparent;border-radius:999px}
@@ -246,7 +246,7 @@
                 <h3 class="no-pad"><i class="fa fa-fw fa-code"></i>&nbsp; We Open Source Our Data</h3>
             </div>
             <div class="col-md-3 text-right">
-                <a href="https://github.com/CivilServiceUSA" class="btn btn-dark btn-lg wow fadeInDown">View  Our Github</a>
+                <a href="https://github.com/CivilServiceUSA" class="btn btn-dark btn-lg wow fadeInDown" {!! trackData('External Link', 'GitHub', 'CivilServiceUSA') !!}>View  Our Github</a>
             </div>
         </div>
     </div>

@@ -17,25 +17,25 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                                 <span itemprop="name">Home</span>
                             </a>
                             <meta itemprop="position" content="1" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house" {!! trackData('Nav', 'Breadcrumb', 'U.S. House') !!}>
                                 <span itemprop="name">U.S. House</span>
                             </a>
                             <meta itemprop="position" content="2" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. House ' . titleCase($slug) . ' Representatives') !!}>
                                 <span itemprop="name">{{ titleCase($slug) }} Representatives</span>
                             </a>
                             <meta itemprop="position" content="3" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}/representative/{{ $representative->name_slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}/representative/{{ $representative->name_slug }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. House ' . titleCase($slug) . ' '. $representative->name) !!}>
                                 <span itemprop="name">{{ $representative->name }}</span>
                             </a>
                             <meta itemprop="position" content="4" />
@@ -51,24 +51,24 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div>
-                        <a href="{{ $representative->photo_url_sizes->size_1024x1024 }}" data-lightbox="representative">
-                            <img src="{{ $representative->photo_url_sizes->size_1024x1024 }}" onerror="this.src='/img/no-photo.jpg';this.onerror=null;" alt="{{ titleCase($representative->title) }}" class="img-responsive center-block">
+                        <a href="{{ $representative->photo_url_sizes->size_1024x1024 }}" data-lightbox="representative" {!! trackData('U.S. House', 'Image', $representative->name) !!}>
+                            <img src="{{ $representative->photo_url_sizes->size_1024x1024 }}" onerror="this.src='/img/no-photo.jpg';this.onerror=null;" alt="{{ titleCase($representative->name) }}" class="img-responsive center-block">
                         </a>
                     </div>
                     <div class="contact-buttons text-center">
-                        <a href="{{ $representative->website }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Visit {{ $representative->name }}'s Official Website">
+                        <a href="{{ $representative->website }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Visit {{ $representative->name }}'s Official Website" {!! trackData('U.S. House', 'Website', $representative->name) !!}>
                             <i class="fa fa-external-link-square fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $representative->contact_page }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Contact {{ $representative->name }}">
+                        <a href="{{ $representative->contact_page }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Contact {{ $representative->name }}" {!! trackData('U.S. House', 'Email', $representative->name) !!}>
                             <i class="fa fa-envelope fa-fw fa-lg"></i>
                         </a>
-                        <a href="tel:{{ str_replace('-', '', $representative->phone) }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Call {{ $representative->name }}">
+                        <a href="tel:{{ str_replace('-', '', $representative->phone) }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="Call {{ $representative->name }}" {!! trackData('U.S. House', 'Phone', $representative->name) !!}>
                             <i class="fa fa-phone fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $representative->twitter_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $representative->name }}'s Twitter Profile">
+                        <a href="{{ $representative->twitter_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $representative->name }}'s Twitter Profile" {!! trackData('U.S. House', 'Twitter', $representative->name) !!}>
                             <i class="fa fa-twitter fa-fw fa-lg"></i>
                         </a>
-                        <a href="{{ $representative->facebook_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $representative->name }}'s Facebook Profile">
+                        <a href="{{ $representative->facebook_url }}" target="_blank" rel="noreferrer" class="btn btn-gray btn-lg" title="View {{ $representative->name }}'s Facebook Profile" {!! trackData('U.S. House', 'Facebook', $representative->name) !!}>
                             <i class="fa fa-facebook fa-fw fa-lg"></i>
                         </a>
                     </div>
@@ -93,7 +93,7 @@
                     <h5>
                         <i class="fa fa-id-badge fa-fw fa-lg"></i>
                         Name:&nbsp; {{ $representative->name }} &nbsp;
-                        <a href="javascript:void(0);" title="Hear how to Pronounce {{ $representative->name }}'s Name" onclick="CivilServices.speak('{{ $representative->name }}'); this.blur(); return false;" class="speak-text"><i class="fa fa-volume-up fa-fw fa-lg"></i></a>
+                        <a href="javascript:void(0);" title="Hear how to Pronounce {{ $representative->name }}'s Name" onclick="CivilServices.speak('{{ $representative->name }}'); this.blur(); return false;" class="speak-text" {!! trackData('U.S. House', 'Pronounce', $representative->name) !!}><i class="fa fa-volume-up fa-fw fa-lg"></i></a>
                     </h5>
                     <?php endif; ?>
 
@@ -159,12 +159,12 @@
                     <ul role="tablist" class="nav nav-tabs">
                         <?php if($representative->twitter_url): ?>
                         <li role="presentation" class="active">
-                            <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+                            <a href="#twitter_tab" aria-controls="twitter_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', 'Twitter') !!}><i class="fa fa-fw fa-twitter"></i> Twitter</a>
                         </li>
                         <?php endif; ?>
                         <?php if($representative->facebook_url): ?>
                         <li role="presentation"<?php if(empty($representative->facebook_url)) echo ' class="active"'; ?>>
-                            <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+                            <a href="#facebook_tab" aria-controls="facebook_tab" role="tab" data-toggle="tab" {!! trackData('Nav', 'Tab', 'Facebook') !!}><i class="fa fa-fw fa-facebook"></i> Facebook</a>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -173,7 +173,7 @@
                     <div class="tab-content">
                         <?php if($representative->twitter_url): ?>
                         <div id="twitter_tab" role="tabpanel" class="tab-pane fade in active">
-                            <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $representative->twitter_url }}">
+                            <a class="twitter-timeline" data-height="400" data-dnt="true" data-theme="light" data-link-color="#2B7BB9" href="{{ $representative->twitter_url }}" {!! trackData('U.S. House', 'Twitter', $representative->name) !!}>
                                 Loading Tweets from {{ $representative->name }} ...
                             </a>
                             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -192,7 +192,7 @@
 
                             <div class="fb-page" data-href="{{ $representative->facebook_url }}>" data-tabs="timeline, events" data-hide-cta="true" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                                 <blockquote cite="{{ $representative->facebook_url }}>" class="fb-xfbml-parse-ignore">
-                                    <a href="{{ $representative->facebook_url }}>">
+                                    <a href="{{ $representative->facebook_url }}>" {!! trackData('U.S. House', 'Facebook', $representative->name) !!}>
                                         Loading Facebook from {{ $representative->name }} ...
                                     </a>
                                 </blockquote>
@@ -238,43 +238,43 @@
                 <div class="col-lg-6">
                     <ul class="list-group accountability">
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->elections }}" target="_blank" rel="noreferrer" title="View Congressional Elections for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->elections }}" target="_blank" rel="noreferrer" title="View Congressional Elections for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Congressional Elections', $representative->name) !!}>
                                 Congressional Elections
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->industries }}" target="_blank" rel="noreferrer" title="View Top Industries for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->industries }}" target="_blank" rel="noreferrer" title="View Top Industries for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Top Industries', $representative->name) !!}>
                                 Top Industries
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->pacs }}" target="_blank" rel="noreferrer" title="View Political Action Committees for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->pacs }}" target="_blank" rel="noreferrer" title="View Political Action Committees for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Political Action Committees', $representative->name) !!}>
                                 Political Action Committees
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->donors }}" target="_blank" rel="noreferrer" title="View Top 20 Contributors for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->donors }}" target="_blank" rel="noreferrer" title="View Top 20 Contributors for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Top 20 Contributors', $representative->name) !!}>
                                 Top 20 Contributors
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->geography }}" target="_blank" rel="noreferrer" title="View Contributions by Geography for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->geography }}" target="_blank" rel="noreferrer" title="View Contributions by Geography for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Contributions by Geography', $representative->name) !!}>
                                 Contributions by Geography
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->expenditures }}" target="_blank" rel="noreferrer" title="View Expenditures for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->expenditures }}" target="_blank" rel="noreferrer" title="View Expenditures for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Expenditures', $representative->name) !!}>
                                 Expenditures
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->opensecrets_url_tabs->legislation }}" target="_blank" rel="noreferrer" title="View Congress Legislation for {{ $representative->name }} on OpenStates.org">
+                            <a href="{{ $representative->opensecrets_url_tabs->legislation }}" target="_blank" rel="noreferrer" title="View Congress Legislation for {{ $representative->name }} on OpenStates.org" {!! trackData('U.S. House', 'Congress Legislation', $representative->name) !!}>
                                 Congress Legislation
                                 <span class="badge float-right">GO</span>
                             </a>
@@ -284,43 +284,43 @@
                 <div class="col-lg-6">
                     <ul class="list-group accountability">
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->summary }}" target="_blank" rel="noreferrer" title="View Political Summary for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->summary }}" target="_blank" rel="noreferrer" title="View Political Summary for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Political Summary', $representative->name) !!}>
                                 Political Summary
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->bio }}" target="_blank" rel="noreferrer" title="View Political Biography for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->bio }}" target="_blank" rel="noreferrer" title="View Political Biography for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Political Biography', $representative->name) !!}>
                                 Political Biography
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->votes }}" target="_blank" rel="noreferrer" title="View Voting Records for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->votes }}" target="_blank" rel="noreferrer" title="View Voting Records for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Voting Records', $representative->name) !!}>
                                 Voting Records
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->positions }}" target="_blank" rel="noreferrer" title="View Issue Positions for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->positions }}" target="_blank" rel="noreferrer" title="View Issue Positions for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Issue Positions', $representative->name) !!}>
                                 Issue Positions
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->ratings }}" target="_blank" rel="noreferrer" title="View Ratings &amp; Endorsements for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->ratings }}" target="_blank" rel="noreferrer" title="View Ratings &amp; Endorsements for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Ratings & Endorsements', $representative->name) !!}>
                                 Ratings &amp; Endorsements
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->speeches }}" target="_blank" rel="noreferrer" title="View Public Statements for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->speeches }}" target="_blank" rel="noreferrer" title="View Public Statements for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Public Statements', $representative->name) !!}>
                                 Public Statements
                                 <span class="badge float-right">GO</span>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{ $representative->votesmart_url_tabs->funding }}" target="_blank" rel="noreferrer" title="View Campaign Finances for {{ $representative->name }} on VoteSmart.org">
+                            <a href="{{ $representative->votesmart_url_tabs->funding }}" target="_blank" rel="noreferrer" title="View Campaign Finances for {{ $representative->name }} on VoteSmart.org" {!! trackData('U.S. House', 'Campaign Finances', $representative->name) !!}>
                                 Campaign Finances
                                 <span class="badge float-right">GO</span>
                             </a>

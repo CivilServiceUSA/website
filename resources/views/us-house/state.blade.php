@@ -17,19 +17,19 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                                 <span itemprop="name">Home</span>
                             </a>
                             <meta itemprop="position" content="1" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house" {!! trackData('Nav', 'Breadcrumb', 'U.S. House') !!}>
                                 <span itemprop="name">U.S. House</span>
                             </a>
                             <meta itemprop="position" content="2" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-house/{{ $slug }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. House ' . titleCase($slug)) !!}>
                                 <span itemprop="name">{{ titleCase($slug) }} Representatives</span>
                             </a>
                             <meta itemprop="position" content="3" />

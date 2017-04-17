@@ -17,20 +17,20 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb component-breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/" {!! trackData('Nav', 'Breadcrumb', 'Home') !!}>
                                 <span itemprop="name">Home</span>
                             </a>
                             <meta itemprop="position" content="1" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate">
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate') !!}>
                                 <span itemprop="name">U.S. Senate</span>
                             </a>
                             <meta itemprop="position" content="2" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $filter }}">
-                                <span itemprop="name">{{ titleCase($filter) }} Senators</span>
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $filter }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate ' . titleCase($filter)) !!}>
+                                <span itemprop="name">{{ titleCase($filter) }}</span>
                             </a>
                             <meta itemprop="position" content="3" />
                         </li>
