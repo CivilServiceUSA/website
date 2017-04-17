@@ -7,7 +7,7 @@
     <h6 class="person-title">{{ titleCase($senator->title) }}</h6>
     <p>
         <a href="/us-senate/{{ $senator->state_name_slug }}/senator/{{ $senator->name_slug }}" class="person-image" title="View {{ titleCase($senator->title) }} {{ $senator->name }}'s Profile">
-            <img src="{{ $senator->photo_url_sizes->size_1024x1024 }}" onerror="this.src='/img/no-photo.jpg';this.onerror=null;" alt="{{ titleCase($senator->title) }}" class="img-responsive center-block">
+            <img src="{{ asset('/img/default-photo.jpg') }}" data-src="{{ $senator->photo_url_sizes->size_1024x1024 }}" onerror="this.src='{{ asset('/img/no-photo.jpg') }}';this.onerror=null;" alt="{{ titleCase($senator->title) }}" class="img-responsive center-block lazy-load">
         </a>
     </p>
     <ul class="list-inline contact-options">
@@ -22,8 +22,10 @@
       <?php endif; ?>
     </ul>
     <h5 class="person-state {{ $senator->party }}">{{ titleCase($senator->state_name_slug) }} [{{ substr($senator->party, 0, 1) }}]</h5>
-    <p class="person-bio">
-        {{ truncateText($senator->biography, 90) }}<br><br>
+    <p class="person-bio no-pad">
+        {{ truncateText($senator->biography, 90) }}
+    </p>
+    <p class="read-more no-pad">
         <a href="/us-senate/{{ $senator->state_name_slug }}/senator/{{ $senator->name_slug }}" class="btn btn-gray btn-xs" title="View {{ titleCase($senator->title) }} {{ $senator->name }}'s Profile">
             Read More
         </a>

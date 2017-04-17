@@ -304,7 +304,14 @@ var CivilServices = {
       $('#signup-form').subscribe();
     }
 
+    if (typeof LazyLoad !== 'undefined') {
+      LazyLoad.lazyLoadImages();
 
+      $(document).scroll(function () {
+        clearTimeout(window.lazyInterval);
+        window.lazyInterval = setTimeout(LazyLoad.lazyLoadImages, 25);
+      });
+    }
   },
 
   /**
