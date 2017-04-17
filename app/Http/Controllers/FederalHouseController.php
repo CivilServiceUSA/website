@@ -36,6 +36,7 @@ class FederalHouseController extends Controller
             'state' => $state,
             'sort' => 'district',
             'order' => 'asc',
+            'pageSize' => '500',
             'fields' => 'name,name_slug,photo_url_sizes,title,party,biography,twitter_url,facebook_url,website,state_name_slug,date_of_birth,entered_office,gender,term_end,opensecrets_url,votesmart_url,phone,contact_page,district,at_large'
         ]);
 
@@ -65,8 +66,6 @@ class FederalHouseController extends Controller
         } else if(!is_object($stateData)) {
             abort(400, 'Unable to Fetch State');
         }
-
-
     }
 
     /**
@@ -80,7 +79,8 @@ class FederalHouseController extends Controller
     {
         $representatives = CivilServices::searchHouse([
             'state' => $state,
-            'name' => $name
+            'name' => $name,
+            'pageSize' => '500'
         ]);
 
         $stateData = CivilServices::getState($state);

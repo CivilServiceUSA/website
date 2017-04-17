@@ -7,7 +7,7 @@
     <h6 class="person-title">{{ titleCase($representative->title) }}</h6>
     <p>
         <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="person-image" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
-            <img src="{{ $representative->photo_url_sizes->size_1024x1024 }}" onerror="this.src='/img/no-photo.jpg';this.onerror=null;" alt="{{ titleCase($representative->title) }}" class="img-responsive center-block">
+            <img src="{{ asset('/img/default-photo.jpg') }}" data-src="{{ $representative->photo_url_sizes->size_1024x1024 }}" onerror="this.src='{{ asset('/img/no-photo.jpg') }}';this.onerror=null;" alt="{{ titleCase($representative->title) }}" class="img-responsive center-block lazy-load">
         </a>
     </p>
     <ul class="list-inline contact-options">
@@ -28,8 +28,10 @@
     <h5 class="person-district">At-Large</h5>
     <?php endif; ?>
 
-    <p class="person-bio">
-        {{ truncateText($representative->biography, 90) }}<br><br>
+    <p class="person-bio no-pad">
+        {{ truncateText($representative->biography, 90) }}
+    </p>
+    <p class="read-more no-pad">
         <a href="/us-house/{{ $representative->state_name_slug }}/representative/{{ $representative->name_slug }}" class="btn btn-gray btn-xs" title="View {{ titleCase($representative->title) }} {{ $representative->name }}'s Profile">
             Read More
         </a>
