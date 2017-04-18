@@ -29,7 +29,7 @@
                             <meta itemprop="position" content="2" />
                         </li>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/{{ $filter }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate ' . titleCase($filter)) !!}>
+                            <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="/us-senate/list/{{ $filter }}" {!! trackData('Nav', 'Breadcrumb', 'U.S. Senate ' . titleCase($filter)) !!}>
                                 <span itemprop="name">{{ titleCase($filter) }}</span>
                             </a>
                             <meta itemprop="position" content="3" />
