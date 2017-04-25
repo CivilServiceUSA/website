@@ -2,12 +2,17 @@
 namespace App\Http\Controllers;
 
 use CivilServices\Data\State;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use MetaTag;
 use CivilServices;
+use Bugsnag;
 
 class StateController extends Controller
 {
+    /**
+     * @return mixed
+     */
     public function index()
     {
         // Setup Meta Tags
@@ -18,31 +23,47 @@ class StateController extends Controller
         return view('state.index');
     }
 
+    /**
+     * Get State by Slug
+     * @param $stateSlug
+     * @return mixed
+     */
     public function getState($stateSlug)
     {
-        $state = (new State)->findBySlug($stateSlug);
+        try {
+            $state = (new State)->findBySlug($stateSlug);
 
-        // Setup Meta Tags
-        MetaTag::set('title', $state->state_name . ' Government Data & Social Media');
-        MetaTag::set('description', $state->state_name . ' Government Data & Social Media');
-        MetaTag::set('image', $state->skyline->size_1280x720);
-        MetaTag::set('keywords', 'Cities, Zip Code, ' . $state->state_name);
+            // Setup Meta Tags
+            MetaTag::set('title', $state->state_name . ' Government Data & Social Media');
+            MetaTag::set('description', 'Government Data & Social Media for the state of ' . $state->state_name);
+            MetaTag::set('image', $state->skyline->size_1280x720);
+            MetaTag::set('keywords', 'Cities, Zip Code, Population, Nickname, Capital, State Map, State Flag, State Seal, ' . $state->state_name);
 
-        return view('state.show')
-            ->with('state', $state);
+            return view('state.show')
+                ->with('state', $state);
+
+        } catch (\Exception $exception) {
+            Bugsnag::notifyException($exception);
+            Log::error($exception);
+            abort(404, 'Unable to find ' . titleCase($stateSlug));
+        }
     }
 
+    /**
+     * Get Zip Codes for State
+     * @param $stateSlug
+     * @return mixed
+     */
     public function getZipCodes($stateSlug)
     {
-        $state = (new State)->findBySlug($stateSlug);
-        $zip_codes = CivilServices::searchGeolocation([
-            'state' => $state->state_code,
-            'fields' => 'city,zipcode',
-            'sort' => 'city,zipcode',
-            'pageSize' => '2000'
-        ]);
-
-        if (is_array($zip_codes)) {
+        try {
+            $state = (new State)->findBySlug($stateSlug);
+            $zip_codes = CivilServices::searchGeolocation([
+                'state' => $state->state_code,
+                'fields' => 'city,zipcode',
+                'sort' => 'city,zipcode',
+                'pageSize' => '2000'
+            ]);
 
             $cities = array();
 
@@ -62,8 +83,10 @@ class StateController extends Controller
                 ->with('state', $state)
                 ->with('cities', $cities);
 
-        } else if(!is_array($zip_codes)) {
-            abort(400, 'Unable to Fetch Your Elected Officials');
+        } catch (\Exception $exception) {
+            Bugsnag::notifyException($exception);
+            Log::error($exception);
+            abort(404, 'Unable to find ' . titleCase($stateSlug));
         }
     }
 }

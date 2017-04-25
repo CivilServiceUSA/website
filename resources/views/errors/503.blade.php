@@ -3,11 +3,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Civil Services - Server Error</title>
+    <title>Civil Services - Server Unavailable</title>
 
     <meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src * 'self' gap: ws:; style-src 'self' 'unsafe-inline' https://cdn.civil.services https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://cdn.civil.services https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google-analytics.com https://maps.googleapis.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://cdn.civil.services;">
 
-    <meta name="description" content="Civil Services - Server Error">
+    <meta name="description" content="Civil Services - Server Unavailable">
     <meta name="keywords" content="" />
     <meta name="author" content="Civil Services">
     <meta name="robots" content="noodp,noydir">
@@ -25,28 +25,28 @@
 
     <!-- Twitter Metadata -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Civil Services - Server Error">
+    <meta name="twitter:title" content="Civil Services - Server Unavailable">
     <meta name="twitter:site" content="@CivilServiceUSA">
     <meta name="twitter:creator" content="@CivilServiceUSA">
-    <meta name="twitter:description" content="Civil Services - Server Error">
+    <meta name="twitter:description" content="Civil Services - Server Unavailable">
     <meta name="twitter:image" content="https://cdn.civil.services/nginx-error-pages/img/app-image.jpg">
-    <meta name="twitter:image:alt" content="Civil Services - Server Error">
+    <meta name="twitter:image:alt" content="Civil Services - Server Unavailable">
     <meta name="twitter:domain" content="civil.services">
 
     <!-- Open Graph Metadata -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Civil Services - Server Error">
+    <meta property="og:title" content="Civil Services - Server Unavailable">
     <meta property="og:url" content="https://civil.services">
     <meta property="og:image" content="https://cdn.civil.services/nginx-error-pages/img/app-image.jpg">
     <meta property="og:site_name" content="Civil Services">
-    <meta property="og:description" content="Civil Services - Server Error">
+    <meta property="og:description" content="Civil Services - Server Unavailable">
 
     <!-- Dublin Core Metadata -->
     <meta name="dc:language" content="en_US">
-    <meta name="dc:title" content="Civil Services - Server Error">
+    <meta name="dc:title" content="Civil Services - Server Unavailable">
     <meta name="dc:source" content="https://civil.services">
-    <meta name="dc:description" content="Civil Services - Server Error">
+    <meta name="dc:description" content="Civil Services - Server Unavailable">
 
     <!-- App Icons -->
     <link rel="shortcut icon" href="https://cdn.civil.services/nginx-error-pages/img/icons/favicon.ico">
@@ -100,11 +100,11 @@
 <header data-background="https://cdn.civil.services/nginx-error-pages/img/header/civil-services-bg.jpg" class="intro intro-fullscreen">
     <!-- Intro Header-->
     <div class="intro-body">
-        <h1>500</h1>
+        <h1>503</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <h3>Server Error</h3>
+                    <h3>Server Unavailable</h3>
                     <h4>{{ $exception->getMessage() }}</h4>
 
                     <ul class="list-inline">
