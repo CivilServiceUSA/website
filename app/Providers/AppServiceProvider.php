@@ -20,9 +20,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('partials.footer', function ($view) {
             return $view->with(
-                'searchAutocomplete',
-                (new State)->autocomplete()->merge((new Senate)->autocomplete())->merge((new House)->autocomplete())
-              )->with(
                 'shareComponent',
                 (object) array(
                     'url' => request()->fullUrl(),

@@ -316,10 +316,45 @@ var CivilServices = {
     }
 
     if (typeof $.fn.easyAutocomplete === 'function') {
+      var seachTimeOut = null;
       $('#search').easyAutocomplete({
-        data: window.searchAutoComplete || [],
-        getValue: 'name',
+        url: function(phrase) {
+          return '/search/' + phrase;
+        },
+        getValue: function(element) {
+          return element.name;
+        },
         theme: 'bootstrap',
+        template: {
+          type: 'custom',
+          method: function(value, item) {
+
+            // Website does not currently have pages for these types
+            if (item.data_type === 'us-governor' || item.data_type === 'city-councilor') {
+              return '';
+            }
+
+            var image = (item.data_type === 'us-state')
+              ? item.photo_url.replace('512x512', '64x64')
+              : item.photo_url.replace('1280x720', '640x360');
+
+            var title = item.data_type.replace(/-/g, ' ');
+
+            var html = '<div class="search-result">' +
+              '<div class="image" style="background-image: url(\'' + image + '\')"></div>' +
+              '<div class="details">' +
+                '<div class="name">' +
+                  value +
+                '</div>' +
+                '<div class="title">' +
+                  title +
+                '</div>' +
+              '</div>' +
+            '</div>';
+
+            return html;
+          }
+        },
         list: {
           maxNumberOfElements: 5,
           match: {
@@ -330,8 +365,34 @@ var CivilServices = {
           },
           onChooseEvent: function () {
             var selection = $('#search').getSelectedItemData();
-            if (selection.url) {
-              window.location = selection.url;
+            if (selection.civil_services_url) {
+              window.location = selection.civil_services_url.replace('https://civil.services', '');
+            }
+          },
+          showAnimation: {
+            type: 'slide',
+            time: 100,
+            callback: function() {
+              console.log('showAnimation');
+              $('.search-form input').removeClass('no-results');
+              clearTimeout(seachTimeOut);
+            }
+          },
+          hideAnimation: {
+            type: 'slide',
+            time: 100,
+            callback: function() {
+              var $input = $('.search-form input');
+              var keyword = $('#search').val();
+
+              clearTimeout(seachTimeOut);
+
+              $input.removeClass('no-results');
+              if ($('.easy-autocomplete-container ul li').length === 0 && keyword.length >= 3) {
+                seachTimeOut = setTimeout(function(){
+                  $input.addClass('no-results');
+                }, 1000);
+              }
             }
           }
         }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="{{ pageClass(Request::path()) }}">
+<html lang="en" class="{{ pageClass(Request::path()) }} mode-{{ env('APP_MODE') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +16,14 @@
     <meta name="cache-control" content="public">
     <meta name="googlebot" content="index,follow">
 
-    <!-- Progressive Web App -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1E72A1">
-
     <!-- Mobile Metadata -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Civil Services">
     <meta name="application-name" content="Civil Services">
+    <meta name="apple-itunes-app" content="app-id=1232436177">
+    <link rel="alternate" href="android-app://app.civil.services/https/civil.services" />
 
     <!-- Twitter Metadata -->
     {!! MetaTag::twitterCard() !!}
@@ -211,8 +209,8 @@
     body.loading {overflow:hidden;pointer-events:none;touch-action:none;}
     body.loading div.section, body.loading section {display:none;}
     #loading {width:100%;height:100%;background:#1e72a1;position:fixed;z-index:2000;top:0;right:0;bottom:0;left:0;pointer-events:none;touch-action:none;}
-    #loading #preloader {position:relative;width:100%;height:80px;top:calc(50% - 50px);text-align:center;margin:0 auto}
-    #loading #preloader:after {content:"Civil Services";position:absolute;text-transform:uppercase;font-size:12px;font-weight:400;color:#fff;letter-spacing:1px;font-family:"Raleway", "Helvetica Neue", "Lucida Grande", Arial, Verdana, sans-serif;top:90px;width:100%;left:0;right:0;height:1px;text-align:center}
+    #loading #preloader {position:fixed;width:100%;height:80px;top:calc(50% - 50px);text-align:center;margin:0 auto}
+    #loading #preloader:after {box-sizing: border-box; -webkit-font-smoothing: antialiased; content:"Civil Services";position:fixed;text-transform:uppercase !important;font-size:12px !important;font-weight:400 !important;color:#fff !important;letter-spacing:1px !important;font-family:Arial, Verdana, sans-serif !important;top:calc(50% + 50px);width:100%;left:0;right:0;height:1px;text-align:center}
     #loading #preloader span {position:absolute;border:8px solid #fff;border-top:8px solid transparent;border-radius:999px}
     #loading #preloader span:nth-child(1) {width:80px;height:80px;left:calc(50% - 40px);-webkit-animation:spin-1 1s infinite ease;-moz-animation:spin-1 1s infinite ease;animation:spin-1 1s infinite ease}
     #loading #preloader span:nth-child(2) {top:20px;left:calc(50% - 20px);width:40px;height:40px;-webkit-animation:spin-2 1s infinite ease;-moz-animation:spin-2 1s infinite ease;animation:spin-2 1s infinite ease}

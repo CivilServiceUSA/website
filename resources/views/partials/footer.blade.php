@@ -125,8 +125,6 @@
       }
     });
   }}();
-
-  var searchAutoComplete = <?php echo json_encode($searchAutocomplete); ?>;
 </script>
 
 <!--[if lt IE 9]>
