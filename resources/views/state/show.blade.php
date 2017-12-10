@@ -98,7 +98,7 @@
             <div class="col-md-5 col-md-offset-2">
                 <h3>{{ $state->state_name }}'s Social Media</h3>
 
-            <?php if(isset($state->facebook_url) && isset($state->twitter_url)): ?>
+            <?php if(isset($state->facebook_url) || isset($state->twitter_url)): ?>
                 <!-- Nav tabs-->
                 <ul role="tablist" class="nav nav-tabs">
                 <?php if($state->twitter_url): ?>
