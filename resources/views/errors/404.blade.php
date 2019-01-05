@@ -114,7 +114,7 @@
                         <li><a href="https://www.facebook.com/CivilServiceUSA/" title="Visit our Facebook Account"><i class="fa fa-facebook fa-fw fa-2x"></i></a></li>
                     </ul>
 
-                    <p class="small"><a href="https://civil.services">&copy; 2017 <i class="fa fa-heart fa-fw"></i> CIVIL SERVICES</a></p>
+                    <p class="small"><a href="https://civil.services">&copy; 2017 - {{ date('Y') }} <i class="fa fa-heart fa-fw"></i> CIVIL SERVICES</a></p>
                 </div>
             </div>
         </div>
