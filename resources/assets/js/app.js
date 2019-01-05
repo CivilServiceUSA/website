@@ -63,7 +63,7 @@ var CivilServices = {
     } else if (typeof event.target !== 'undefined' && typeof event.target.parentNode !== 'undefined' && typeof event.target.parentNode.dataset !== 'undefined' && typeof event.target.parentNode.dataset.track !== 'undefined') {
       data = event.target.parentNode.dataset;
     }
-    
+
     if (typeof data === 'object' && typeof data.category === 'string' && typeof data.action === 'string') {
       CivilServices.trackEvent(data.category, data.action, event.target.value, event.target.value.length);
     }
@@ -492,7 +492,7 @@ var CivilServices = {
    */
   renderCountdown: function () {
     if (typeof $.fn.countdown === 'function') {
-      $('#next-election').countdown('2018/11/06 14:00:00').on('update.countdown', function (event) {
+      $('#next-election').countdown('2020/11/03 14:00:00').on('update.countdown', function (event) {
         var $this = $(this).html(event.strftime(''
           + '<div><span>%-w</span>week%!w</div>'
           + '<div><span>%-d</span>day%!d</div>'));

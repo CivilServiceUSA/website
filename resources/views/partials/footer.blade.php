@@ -31,18 +31,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <h6>Powered By <a href="https://civil.services"> civil.services</a></h6>
+                <h6>&copy; 2017 - {{ date('Y') }} <a href="https://civil.services"> civil.services</a></h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1">
                 <h6>By the People <i class="fa fa-heart fa-fw"></i> For the People</h6>
             </div>
             <div class="col-sm-3 col-sm-offset-1 text-right">
                 <ul class="list-inline">
-                    <li>
-                        <a href="https://slack.civil.services/bkx7n2" title="Join us on Slack" {!! trackData('Nav', 'Footer', 'Slack') !!}>
-                            <i class="fa fa-slack fa-fw fa-2x"></i>
-                        </a>
-                    </li>
                     <li>
                         <a href="https://github.com/CivilServiceUSA" title="View our Open Source Projects" {!! trackData('Nav', 'Footer', 'GitHub') !!}>
                             <i class="fa fa-github fa-fw fa-2x"></i>
@@ -89,10 +84,12 @@
     plugins.addEventListener('load', function(){ head.appendChild(styles); });
     styles.addEventListener('load', function(){
       document.body.className = 'top';
-      CivilServices.anon = '{{ anon(Request::ip()) }}';
-      CivilServices.env = '{{ env("APP_ENV") }}';
-      CivilServices.devFlags.debug = {{ isDevelopment() }};
-      CivilServices.init();
+      if (typeof CivilServices !== 'undefined') {
+        CivilServices.anon = '{{ anon(Request::ip()) }}';
+        CivilServices.env = '{{ env("APP_ENV") }}';
+        CivilServices.devFlags.debug = {{ isDevelopment() }};
+        CivilServices.init();
+      }
     });
 
   };

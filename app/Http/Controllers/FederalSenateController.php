@@ -84,6 +84,11 @@ class FederalSenateController extends Controller
             ]);
 
             $stateData = CivilServices::getState($state);
+
+            if (!isset($senators) || !array_key_exists(0, $senators)) {
+              abort(404, titleCase($name) . ' is not a US Senator');
+            }
+
             $senator = $senators[0];
 
             // Setup Meta Tags
@@ -102,7 +107,7 @@ class FederalSenateController extends Controller
         } catch (\Exception $exception) {
             Bugsnag::notifyException($exception);
             Log::error($exception);
-            abort(404, 'Unable to find ' . titleCase($name));
+            abort(404, titleCase($name) . ' is not a US Senator');
         }
     }
 

@@ -88,6 +88,10 @@ class FederalHouseController extends Controller
 
             $stateData = CivilServices::getState($state);
 
+            if (!isset($representatives) || !array_key_exists(0, $representatives)) {
+              abort(404, titleCase($name) . ' is not a US Representative');
+            }
+
             $representative = $representatives[0];
 
             // Setup Meta Tags
@@ -106,7 +110,7 @@ class FederalHouseController extends Controller
         } catch (\Exception $exception) {
             Bugsnag::notifyException($exception);
             Log::error($exception);
-            abort(404, 'Unable to find ' . titleCase($name));
+            abort(404, titleCase($name) . ' is not a US Representative');
         }
     }
 
