@@ -19,7 +19,7 @@ class FederalHouseController extends Controller
     {
         // Setup Meta Tags
         MetaTag::set('title', 'United States House of Representatives');
-        MetaTag::set('description', 'United States House of Representatives of the 115th United States Congress');
+        MetaTag::set('description', 'United States House of Representatives of the 116th United States Congress');
         MetaTag::set('image', asset('img/header/us-house.jpg'));
         MetaTag::set('keywords', 'House of Representatives, United States, Congress');
 
@@ -51,7 +51,7 @@ class FederalHouseController extends Controller
             foreach ($stateRepresentatives as $representative) { $keywords[] = $representative->name; }
 
             MetaTag::set('title', $title);
-            MetaTag::set('description', $title . ' of the 115th United States Congress.');
+            MetaTag::set('description', $title . ' of the 116th United States Congress.');
             MetaTag::set('image', $stateData->landscape->size_1280x720);
             MetaTag::set('keywords', join(', ', $keywords));
 
@@ -230,7 +230,7 @@ class FederalHouseController extends Controller
             foreach ($stateRepresentatives as $representative) { $keywords[] = $representative->name; }
 
             MetaTag::set('title', $title);
-            MetaTag::set('description', $title . ' of the 115th United States Congress.');
+            MetaTag::set('description', $title . ' of the 116th United States Congress.');
             MetaTag::set('image', asset('img/header/us-senate.jpg'));
             MetaTag::set('keywords', join(', ', $keywords));
 

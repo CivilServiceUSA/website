@@ -21,7 +21,7 @@
             <div class="col-lg-6">
                 <h3>By the People. For the People.</h3>
                 <p><strong>Civil Service USA Corp</strong> is a nonpartisan, independent and <strong>Non-Profit Organization</strong> with the goal to help United States Citizens to be a part of what is happening in their Local, State & Federal Governments.</p>
-                <p class="no-pad">Select a State to access Government & Demographic data on the 115th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
+                <p class="no-pad">Select a State to access Government & Demographic data on the 116th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                 <h2 class="classic">- Civil Services Team</h2>
             </div>
             <div class="col-lg-5 col-lg-offset-1">

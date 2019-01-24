@@ -7,7 +7,7 @@
         <!-- Intro Header-->
         <div class="intro-body">
             <h1>{{ titleCase($filter) }}</h1>
-            <h4>115th United States Congress - U.S. Senate</h4>
+            <h4>116th United States Congress - U.S. Senate</h4>
         </div>
     </header>
 
@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3">
                     <h3>{{ str_replace('Senators', '', titleCase($filter)) }} Senators</h3>
-                    <p>There are 100 senators, two from each of the 50 U.S. states. This is a list of the <strong>{{ count($senators) }} {{ str_replace('Senators', '', titleCase($filter)) }} Senators</strong> of the United States Senate (115th United States Congress).</p>
+                    <p>There are 100 senators, two from each of the 50 U.S. states. This is a list of the <strong>{{ count($senators) }} {{ str_replace('Senators', '', titleCase($filter)) }} Senators</strong> of the United States Senate (116th United States Congress).</p>
                 </div>
             </div>
             <div class="row">
@@ -97,7 +97,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h3>United States Senate</h3>
-                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 115th United States Senate. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
+                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 116th United States Senate. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                     <h2 class="classic">- Civil Services Team</h2>
                 </div>
                 <div class="col-lg-5 col-lg-offset-1">
