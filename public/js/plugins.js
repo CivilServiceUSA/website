@@ -822,10 +822,7 @@ var LazyLoad = (function() {
     var name = form.find('input[name=NAME]');
     var email = form.find('input[name=EMAIL]');
     var message_text = form.find('textarea[name=MESSAGE]');
-
-    var action = form.attr('action');
-    var method = form.attr('method');
-
+    var contact_honeypot = form.find('textarea[name=contact-honeypot]');
 
     var message = $('#contact-status .message');
     var block = $('#contact-status .block-message');
@@ -849,8 +846,14 @@ var LazyLoad = (function() {
       t.preventDefault();
       var h = email.val();
       var valid_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var message_raw = message_text.val();
+      var message_clean = message_raw.replace(/<[^>]*>?/gm, '');
+      var has_link = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?").test(message_raw);
 
-      if (name.val() === '') {
+      if (contact_honeypot.val() !== '' || message_raw !== message_clean || has_link) {
+        valid = false;
+        error_message = 'This Message was Detected as SPAM.';
+      } else if (name.val() === '') {
         valid = false;
         error_message = 'Name cannot be blank.<br>Please check it and try again.';
         name.focus();
@@ -868,8 +871,8 @@ var LazyLoad = (function() {
 
       if (valid) {
         e.ajax({
-          type: method,
-          url: action,
+          type: 'post',
+          url: 'https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=9d016f8b94&c=?',
           data: e(this).serialize(),
           cache: false,
           dataType: 'json',
@@ -924,6 +927,7 @@ var LazyLoad = (function() {
     var form = e(this);
 
     var email = form.find('input[name=EMAIL]');
+    var signup_honeypot = form.find('textarea[name=signup-honeypot]');
 
     var action = form.attr('action');
     var method = form.attr('method');
@@ -940,7 +944,10 @@ var LazyLoad = (function() {
       var h = email.val();
       var valid_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if ( !valid_email.test(email.val())) {
+      if (signup_honeypot.val() !== '') {
+        valid = false;
+        error_message = 'This Message was Detected as SPAM.';
+      } else if ( !valid_email.test(email.val())) {
         valid = false;
         error_message = 'Email Address is Invalid.';
         email.focus();
@@ -950,8 +957,8 @@ var LazyLoad = (function() {
 
       if (valid) {
         e.ajax({
-          type: method,
-          url: action,
+          type: 'post',
+          url: 'https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=3336234d25&c=?',
           data: e(this).serialize(),
           cache: false,
           dataType: 'json',

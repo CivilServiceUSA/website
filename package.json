@@ -1,9 +1,10 @@
 {
   "name": "civil-services-website",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Civil Services Website",
   "license": "MIT",
   "scripts": {
+    "start": "php artisan serv",
     "test-lint": "./tests/commands/phplint.sh",
     "test-unit": "./vendor/bin/phpunit",
     "test-coverage": "./vendor/bin/phpunit -d memory_limit=1024M --log-junit 'reports/unitreport.xml' --coverage-html 'reports/clover_html' tests/",
@@ -13,7 +14,8 @@
     "watch": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "node node_modules/cross-env/bin/cross-env.js NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "yarn run clean && node node_modules/cross-env/bin/cross-env.js NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "help": "node node_modules/npm-scripts-help"
+    "help": "node node_modules/npm-scripts-help",
+    "clear-cache": "php artisan cache:clear && php artisan route:clear && php artisan config:clear && php artisan view:clear"
   },
   "repository": {
     "type": "git",

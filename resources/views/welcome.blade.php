@@ -75,13 +75,20 @@
                 <div id="subscribe-status" class="block-message note">
                     <div class="message"></div>
                 </div>
-                <form id="signup-form" action="https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=3336234d25&c=?" method="post" class="form-inline subscribe-form">
+                <form id="signup-form" action="#" method="post" class="form-inline subscribe-form">
                     <div class="input-group input-group-lg">
                         <label for="mce-EMAIL" class="sr-only control-label">Email Address</label>
                         <input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email address..." class="form-control">
                         <span class="input-group-btn">
                             <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="btn btn-dark btn-sm">Subscribe</button>
                         </span>
+                    </div>
+                    <div class="input-group hide">
+                        <div class="form-group floating-label-form-group controls">
+                            <label for="message" class="sr-only control-label">Message</label>
+                            <textarea id="signup-honeypot" name="signup-honeypot" rows="4" placeholder="This input tests for bots. Leave empty if you are a human." aria-invalid="false" class="form-control"></textarea>
+                            <span class="help-block text-danger"></span>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -194,7 +201,7 @@
                     <div class="message"></div>
                 </div>
 
-                <form id="contactForm" action="https://services.us14.list-manage.com/subscribe/post-json?u=158de27f713f7ed26783835cd&id=9d016f8b94&c=?" method="POST" name="sentMessage" novalidate="">
+                <form id="contactForm" action="#" method="POST" name="sentMessage" novalidate="">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label for="name" class="sr-only control-label">Your Name</label>
@@ -215,6 +222,14 @@
                         <div class="form-group floating-label-form-group controls">
                             <label for="message" class="sr-only control-label">Message</label>
                             <textarea id="message" name="MESSAGE" rows="4" placeholder="Message" required="" data-validation-required-message="Please Enter a Message." aria-invalid="false" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"></textarea>
+                            <span class="help-block text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="control-group hide">
+                        <div class="form-group floating-label-form-group controls">
+                            <label for="message" class="sr-only control-label">Message</label>
+                            <textarea id="contact-honeypot" name="contact-honeypot" rows="4" placeholder="This input tests for bots. Leave empty if you are a human." aria-invalid="false" class="form-control input-lg"></textarea>
                             <span class="help-block text-danger"></span>
                         </div>
                     </div>
