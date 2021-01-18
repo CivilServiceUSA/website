@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/civilserviceusa/website#readme",
   "devDependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.21.1",
     "bootstrap-sass": "^3.3.7",
     "graceful-fs": "^4.1.11",
     "jquery": "^3.5.0",
