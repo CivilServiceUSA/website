@@ -16,7 +16,7 @@ class MyElectedOfficialsController extends Controller
     {
         // Setup Meta Tags
         MetaTag::set('title', 'Find My Elected Officials');
-        MetaTag::set('description', 'Get Contact Information & Political History for members of the 116th United States Congress');
+        MetaTag::set('description', 'Get Contact Information & Political History for members of the 117th United States Congress');
         MetaTag::set('image', asset('img/header/lady-justice.jpg'));
         MetaTag::set('keywords', 'Find My Officials, Contact Information, Elected Officials, Political History, Location, Address');
 

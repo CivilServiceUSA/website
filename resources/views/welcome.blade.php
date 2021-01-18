@@ -21,7 +21,7 @@
             <div class="col-lg-6">
                 <h3>By the People. For the People.</h3>
                 <p><strong>Civil Service USA Corp</strong> is a nonpartisan, independent and <strong>Non-Profit Organization</strong> with the goal to help United States Citizens to be a part of what is happening in their Local, State & Federal Governments.</p>
-                <p class="no-pad">Select a State to access Government & Demographic data on the 116th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
+                <p class="no-pad">Select a State to access Government & Demographic data on the 117th United States Congress. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                 <h2 class="classic">- Civil Services Team</h2>
             </div>
             <div class="col-lg-5 col-lg-offset-1">
@@ -163,79 +163,6 @@
             </div>
             <div class="col-sm-3"><span data-min="0" data-max="29793" data-delay="4" data-increment="123" class="numscroller">0</span>
                 <h5 class="no-pad">Zip Codes</h5>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section-->
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <h3>contact us</h3>
-                <p>
-                    Be a part of your Local, State & Federal Government. The Civil Services team is here to help!
-                </p>
-
-                <hr>
-
-                <h5>
-                    <i class="fa fa-map-marker fa-fw fa-lg"></i> 200 2nd Avenue South<br>
-                    <i class="fa fa-fw fa-lg"></i> Suite 420<br>
-                    <i class="fa fa-fw fa-lg"></i> St. Petersburg, FL 33701
-                </h5>
-                <h5>
-                    <i class="fa fa-envelope fa-fw fa-lg"></i>
-                    <a href="mailto:hello@civil.services" {!! trackData('External Link', 'Email', 'Contact Us') !!}>hello@civil.services</a>
-                </h5>
-                <h5>
-                    <i class="fa fa-phone fa-fw fa-lg"></i>
-                    <a href="tel:7273145214" {!! trackData('External Link', 'Phone', 'Contact Us') !!}>(727) 314-5214</a>
-                </h5>
-            </div>
-            <div class="col-md-5 col-md-offset-2">
-                <h3>Say hello</h3>
-
-                <div id="contact-status" class="block-message note">
-                    <div class="message"></div>
-                </div>
-
-                <form id="contactForm" action="#" method="POST" name="sentMessage" novalidate="">
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label for="name" class="sr-only control-label">Your Name</label>
-                            <input id="name" name="NAME" type="text" placeholder="Your Name" required="" data-validation-required-message="Please Enter Your Name" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'">
-                            <span class="help-block text-danger"></span>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label for="email" class="sr-only control-label">Your Email Address</label>
-                            <input id="email" name="EMAIL" type="email" placeholder="Your Email Address" required="" data-validation-required-message="Please Enter Your Email Address" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'">
-                            <span class="help-block text-danger"></span>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label for="message" class="sr-only control-label">Message</label>
-                            <textarea id="message" name="MESSAGE" rows="4" placeholder="Message" required="" data-validation-required-message="Please Enter a Message." aria-invalid="false" class="form-control input-lg" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"></textarea>
-                            <span class="help-block text-danger"></span>
-                        </div>
-                    </div>
-
-                    <div class="control-group hide">
-                        <div class="form-group floating-label-form-group controls">
-                            <label for="message" class="sr-only control-label">Message</label>
-                            <textarea id="contact-honeypot" name="contact-honeypot" rows="4" placeholder="This input tests for bots. Leave empty if you are a human." aria-invalid="false" class="form-control input-lg"></textarea>
-                            <span class="help-block text-danger"></span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-dark" {!! trackData('Form', 'Contact', 'Button Submit') !!}>Send</button>
-                </form>
             </div>
         </div>
     </div>

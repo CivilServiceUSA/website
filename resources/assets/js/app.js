@@ -492,7 +492,7 @@ var CivilServices = {
    */
   renderCountdown: function () {
     if (typeof $.fn.countdown === 'function') {
-      $('#next-election').countdown('2020/11/03 14:00:00').on('update.countdown', function (event) {
+      $('#next-election').countdown('2022/11/03 14:00:00').on('update.countdown', function (event) {
         var $this = $(this).html(event.strftime(''
           + '<div><span>%-w</span>week%!w</div>'
           + '<div><span>%-d</span>day%!d</div>'));

@@ -19,7 +19,7 @@ class FederalSenateController extends Controller
     {
         // Setup Meta Tags
         MetaTag::set('title', 'United States Senate');
-        MetaTag::set('description', 'United States Senate of the 116th United States Congress');
+        MetaTag::set('description', 'United States Senate of the 117th United States Congress');
         MetaTag::set('image', asset('img/header/us-senate.jpg'));
         MetaTag::set('keywords', 'Senators, United States, Congress');
 
@@ -50,7 +50,7 @@ class FederalSenateController extends Controller
             foreach ($stateSenators as $senator) { $keywords[] = $senator->name; }
 
             MetaTag::set('title', $title);
-            MetaTag::set('description', $title . ' of the 116th United States Congress.');
+            MetaTag::set('description', $title . ' of the 117th United States Congress.');
             MetaTag::set('image', $stateData->landscape->size_1280x720);
             MetaTag::set('keywords', join(', ', $keywords));
 
@@ -236,7 +236,7 @@ class FederalSenateController extends Controller
             foreach ($stateSenators as $senator) { $keywords[] = $senator->name; }
 
             MetaTag::set('title', $title);
-            MetaTag::set('description', $title . ' of the 116th United States Congress.');
+            MetaTag::set('description', $title . ' of the 117th United States Congress.');
             MetaTag::set('image', asset('img/header/us-senate.jpg'));
             MetaTag::set('keywords', join(', ', $keywords));
 

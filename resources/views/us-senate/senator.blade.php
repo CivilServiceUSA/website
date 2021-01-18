@@ -211,7 +211,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h3>Accountability in Action</h3>
-                    <p>There are 100 senators, two from each of the 50 U.S. states. This is a list of the current {{ titleCase($slug) }} Senator's of the United States Senate (116th United States Congress).</p>
+                    <p>There are 100 senators, two from each of the 50 U.S. states. This is a list of the current {{ titleCase($slug) }} Senator's of the United States Senate (117th United States Congress).</p>
                 </div>
             </div>
             <div class="row">
@@ -316,7 +316,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h3>United States Senate</h3>
-                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 116th United States Senate. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
+                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 117th United States Senate. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-1">
                     @include('partials.map', ['base' => '/us-senate'])

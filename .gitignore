@@ -13,3 +13,4 @@ composer
 /.idea
 .env
 /reports
+*.zip

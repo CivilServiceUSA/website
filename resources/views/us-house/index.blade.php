@@ -7,7 +7,7 @@
         <!-- Intro Header-->
         <div class="intro-body">
             <h1>House of Representatives</h1>
-            <h4>116th United States Congress</h4>
+            <h4>117th United States Congress</h4>
         </div>
     </header>
 
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h3>U.S. House of Representatives</h3>
-                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 116th United States House of Representatives. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
+                    <p class="no-pad">Select a State to access Government &amp; Demographic data on the 117th United States House of Representatives. Contact Information includes Phone Number, Mailing Address, Official Website, Twitter &amp; Facebook Accounts.</p>
                     <h2 class="classic">- Civil Services Team</h2>
                 </div>
                 <div class="col-lg-5 col-lg-offset-1">
