@@ -28,7 +28,7 @@
   "homepage": "https://github.com/civilserviceusa/website#readme",
   "devDependencies": {
     "axios": "^0.21.1",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "graceful-fs": "^4.1.11",
     "jquery": "^3.5.0",
     "laravel-mix": "^0.5.0",
